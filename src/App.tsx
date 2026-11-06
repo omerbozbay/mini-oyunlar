@@ -46,6 +46,7 @@ import { useRoom } from "./features/rooms/useRoom";
 import { AuctionBoard, ThemePicker } from "./games/auction/Auction";
 import { selectTheme, startAuction } from "./games/auction/api";
 import { PuzzleBoard } from "./games/puzzles/PuzzleBoard";
+import { ReverseBoard } from "./games/reverse/ReverseBoard";
 
 function savedName() {
   try {
@@ -120,7 +121,7 @@ export default function App() {
             <li>
               <b>Lobide buluşun, hazır olun.</b>
               <p>
-                Oda sahibi dört oyundan birini seçsin. İkiniz de hazır olun;
+                Oda sahibi beş oyundan birini seçsin. İkiniz de hazır olun;
                 bütçenizle yarışın veya birbirinize gizli bulmacalar hazırlayın.
               </p>
             </li>
@@ -342,7 +343,7 @@ function Home() {
             </h2>
           </div>
           <span className="count-tag">
-            <Gamepad2 size={16} /> 4 oyun hazır
+            <Gamepad2 size={16} /> {games.length} oyun hazır
           </span>
         </div>
         <div className="games-grid">
@@ -633,7 +634,15 @@ function Lobby({ code }: { code: string }) {
                 : "Yeniden bağlanıyor · Durum kontrol ediliyor"}
           </div>
         </aside>
-        {snapshot.game && snapshot.game.game !== "auction" ? (
+        {snapshot.game?.game === "reverse" ? (
+          <ReverseBoard
+            key={snapshot.game.id}
+            session={snapshot.game}
+            userId={userId}
+            players={players}
+            reload={reload}
+          />
+        ) : snapshot.game && snapshot.game.game !== "auction" ? (
           <PuzzleBoard
             key={snapshot.game.id}
             session={snapshot.game}

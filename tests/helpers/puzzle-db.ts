@@ -1,6 +1,7 @@
 import { PGlite } from "@electric-sql/pglite";
 import { readFileSync, readdirSync } from "node:fs";
 import { randomUUID } from "node:crypto";
+import {installStorageSchema} from './storage-db';
 import type { PuzzleSession, PuzzleId } from "../../src/games/puzzles/types";
 export const users = [
   "00000000-0000-4000-8000-000000000001",
@@ -16,6 +17,7 @@ export class PuzzleDb {
       .exec(`create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key);
  create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
  grant usage on schema auth to authenticated,anon;grant execute on function auth.uid() to authenticated,anon;`);
+    await installStorageSchema(this.db);
     for (const id of users)
       await this.db.query("insert into auth.users values($1)", [id]);
     const dir = new URL("../../supabase/migrations/", import.meta.url);

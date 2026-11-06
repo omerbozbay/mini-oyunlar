@@ -1,4 +1,4 @@
-export type GameId = "auction" | "chain" | "detective" | "wordhunt";
+export type GameId = "auction" | "chain" | "detective" | "wordhunt" | "reverse";
 
 export interface GameDefinition {
   id: GameId;

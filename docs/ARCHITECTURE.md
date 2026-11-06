@@ -16,7 +16,7 @@ Odalar bağlantı koptu diye silinmez. Açık ayrılmada üyelik `active=false` 
 
 Heartbeat aynı oda satırını kilitler, süresi dolmuş üyelerin yalnız hazır bayrağını temizler ve çağıranın JWT kimliğine ait `last_seen` değerini yeniler. UPDATE'ler mevcut RLS korumalı Realtime aboneliğiyle yayılır. Süresi dolmuş bir kayda tekrar yazıldığında BEFORE UPDATE trigger'ı eski hazır durumunu geri taşımaz; böylece `join_room` tekrar katılma yolu da güvenlidir. `set_ready(true)` güncel heartbeat ister; başlatma iki güncel ve hazır üyeyi ayrıca sunucuda doğrular. İstemci hesaplaması yetkilendirme yerine geçmez.
 
-`start_game` RPC'si üyelik, sahiplik, iki hazır ve yakın zamanda bağlı oyuncuyu doğrular ve seçilen dört oyundan birini başlatır. `rooms.current_game_id` mevcut maçı işaret eder; oda durumunu değiştirmeden mevcut heartbeat ve oturum kurtarma akışı korunur. Açık Artırma bidding, diğerleri preparing evresinde açılır. [Açık Artırma](AUCTION.md) · [Üç gizli cevap motoru](PUZZLES.md).
+`start_game` RPC'si üyelik, sahiplik, iki hazır ve yakın zamanda bağlı oyuncuyu doğrular ve seçilen beş oyundan birini başlatır. `rooms.current_game_id` mevcut maçı işaret eder; oda durumunu değiştirmeden mevcut heartbeat ve oturum kurtarma akışı korunur. Açık Artırma bidding, bulmacalar preparing, sesli oyun playing/alt aşama preparing evresinde açılır. [Açık Artırma](AUCTION.md) · [Üç gizli cevap motoru](PUZZLES.md) · [Sesli oyun](REVERSE.md).
 
 ## Oyun modülü ekleme sözleşmesi
 
@@ -47,3 +47,7 @@ Kelime Avı'nda 5/6 harf modu iki oyuncu için eşittir. İki oyuncu da altı ha
 ## Kontrol sınırı
 
 Yerel PostgreSQL testleri migration'ı ve RLS'yi çalıştırır. PGlite tek bağlantılı olduğundan gerçek yarış koşulları, Supabase Realtime sunucusu ve JWT ağı için iki cihaz entegrasyon testi gerekir. Ücretsiz planın kotası, uykuya alınması ve Auth hız limitleri dış hizmet davranışıdır. Bot önleme ve per-user RPC rate limiting trafik artmadan değerlendirilmelidir.
+
+## Beşinci oyun: sesli maç
+
+008 migration `reverse` oyununu ekler. Mevcut oda/heartbeat/Realtime/RLS altyapısı korunur. `reverse_action` oda→maç kilidi, rol/tur/aşama/UUID, çevrimiçi durum ve mevcut maç kontrolü yapar. Gizli kelime ve medya biletleri private tablolarda, ortak aşama/puan public game state içindedir. Web Audio PCM çözümleme ve Worker üzerinden her kanalın ters çevrilmesi/WAV üretimi sonrası yalnız ters dosya Storage'a gider. Storage RLS bilet bazlı yükleme ve süreli dinleme erişimini doğrular. İndirme istekleri yeni cacheNonce ve no-store kullanır. Oynatmanın fiziksel olarak bir kez gerçekleştiği tarayıcıdan kanıtlanamaz. Süreli RLS erişimi ve Storage API ile yönetici temizliği ayrı süreçlerdir; [REVERSE.md](REVERSE.md) güvenlik sınırlarını ve saklama yöntemini açıklar.

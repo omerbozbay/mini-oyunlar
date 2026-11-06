@@ -2,7 +2,7 @@
 
 İki kişinin farklı telefonlardan aynı lobide buluşması için Türkçe, mobil öncelikli bir platform. React, Vite, TypeScript, Tailwind CSS, React Router, Lucide ve Supabase kullanır. Netlify üzerinde statik olarak yayınlanabilir. Ücretli servis veya yapay zekâ API'si kullanmaz; servislerin ücretsiz plan limitleri geçerlidir.
 
-**Bu sürüm:** anonim kimlik, iki kişilik lobi ve **dört oynanabilir oyun**: Açık Artırma, Kelime Zinciri, Sayı Dedektifi ve Kelime Avı. Sunucuda doğrulanan kurallar, gizli cevaplar, bağlantıda duraklama ve iki tarafın onayıyla rövanş içerir. [Açık Artırma](docs/AUCTION.md) · [Üç bulmaca oyunu](docs/PUZZLES.md).
+**Bu sürüm:** anonim kimlik, iki kişilik lobi ve **beş oynanabilir oyun**: Açık Artırma, Kelime Zinciri, Sayı Dedektifi, Kelime Avı ve Tersine Konuş!. Sunucuda doğrulanan kurallar, gizli cevaplar, bağlantıda duraklama ve iki tarafın onayıyla rövanş içerir. [Açık Artırma](docs/AUCTION.md) · [Üç bulmaca oyunu](docs/PUZZLES.md) · [Tersine Konuş!](docs/REVERSE.md).
 
 ## Yerelde çalıştırma
 
@@ -31,7 +31,7 @@ Supabase Dashboard → Project Settings → API Keys bölümünden **publishable
 
 1. `mini-oyunlar` Supabase projesini açın.
 2. Authentication → Sign In / Providers bölümünde **Anonymous Sign-Ins** seçeneğini etkinleştirin. Kullanıcıdan e-posta veya şifre istenmez.
-3. SQL Editor → New query açın. Yeni kurulumda `supabase/migrations` içindeki **001 → 002 → 003 → 004 → 005 → 006 → 007** dosyalarının tamamını sırasıyla birer kez çalıştırın. Açık Artırma zaten çalışıyorsa yalnız **005 Zincir, 006 Dedektif ve 007 Kelime Avı** dosyaları gerekir. Başarılı migration'ı ikinci kez çalıştırmayın. [Yeni oyunların kurulum ayrıntıları](docs/PUZZLES.md).
+3. SQL Editor → New query açın. Yeni kurulumda `supabase/migrations` içindeki **001 → 002 → 003 → 004 → 005 → 006 → 007 → 008** dosyalarının tamamını sırasıyla birer kez çalıştırın. İlk dört oyun zaten çalışıyorsa yalnız **008 Tersine Konuş!** gerekir. Başarılı migration'ı ikinci kez çalıştırmayın. [Sesli oyunun kurulum ayrıntıları](docs/REVERSE.md).
 4. `rooms`, `room_players` ve `game_sessions` tablolarında RLS'nin açık olduğunu kontrol edin. Migration'lar bunları `supabase_realtime` publication'ına ekler. Replication/Realtime ayarlarında üçünü de doğrulayın. Supabase'in standart publication'ı yoksa önce panelden etkinleştirin, ardından aşağıdaki komutu yalnız henüz eklenmemiş tablolar için çalıştırın:
 
    ```sql
@@ -72,6 +72,8 @@ Migration'lar uygulandıktan sonra `npm run test:auction:live` gerçek Supabase 
 
 ## Netlify
 
+Sesli oyun telefonda HTTPS gerektirir. `npm run test:reverse:live` gerçek Storage, gizlilik, tek dinleme, bağlantı kesintisi ve altı turluk maç akışını sentetik sesle test eder; mikrofon donanımı testi değildir. Geçici seslerin fiziksel temizliği için yönetici ortamında günlük `npm run cleanup:audio -- --delete` görevi kurulmalıdır. [Kurulum ve güvenlik sınırları](docs/REVERSE.md).
+
 Repository: `https://github.com/omerbozbay/mini-oyunlar`, branch: `main`.
 
 Netlify'da **Import an existing project** ile repository'yi seçin. Build command `npm run build`, publish directory `dist`. `netlify.toml` bu değerleri ve SPA yönlendirmesini içerir. Ortam değişkenlerine `VITE_SUPABASE_URL` ve `VITE_SUPABASE_PUBLISHABLE_KEY` ekleyip yeniden deploy edin. Anahtar kaynak repo'ya yüklenmez; tarayıcı paketinde publishable anahtarın bulunması normaldir. Yetkilendirme RLS ile yapılır.
@@ -90,7 +92,7 @@ src/
   lib/                    Supabase istemcisi, kimlik ve doğrulama
 supabase/migrations/      RLS ve sunucu doğrulamalı oda işlemleri
 tests/                    PostgreSQL güvenlik ve giriş testleri
-docs/GAME_RULES.md        Dört oyunun tam kuralları
+docs/GAME_RULES.md        Beş oyunun tam kuralları
 docs/ARCHITECTURE.md      Gelecek oyunlar, gizli durum ve eşzamanlılık
 docs/TESTING.md           Gerçek iki cihaz için test adımları
 ```

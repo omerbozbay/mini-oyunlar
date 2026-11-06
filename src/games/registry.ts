@@ -57,4 +57,18 @@ export const games: GameDefinition[] = [
       "Altı hakkınız var. Daha az tahminde bulan kazanır.",
     ],
   },
+  {
+    id: "reverse",
+    title: "Tersine Konuş!",
+    category: "SES & KAHKAHA",
+    description: "Tersten dinle, taklit et, bir daha ters çevir. Kelimeyi bul!",
+    emoji: "🎙️",
+    color: "rose",
+    status: "available",
+    rules: [
+      "Altı tur, üçer anlatım. Kategoriyi ve kelimeyi anlatıcı seçer.",
+      "Ters sesi bir kez dinle, tek taklidini kaydet, tersini dinleyip bir tahmin yap.",
+      "Anlatıcı doğru derse tahminci 1 puan kazanır. Özgün ses cihazında kalır.",
+    ],
+  },
 ];

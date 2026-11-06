@@ -1,10 +1,23 @@
 import type { GameId } from "../games/types";
+import { Mic, Headphones } from "lucide-react";
 
 export function GameArt({ game }: { game: GameId }) {
   return (
     <div className={`game-art art-${game}`} aria-hidden="true">
       <span className="art-spark spark-one">✦</span>
       <span className="art-spark spark-two">✧</span>
+      {game === "reverse" && (
+        <div className="reverse-card-art">
+          <Mic size={45} />
+          <div className="reverse-card-waves">
+            {[16, 33, 49, 36, 23].map((height, i) => (
+              <i key={i} style={{ height }} />
+            ))}
+          </div>
+          <Headphones size={42} />
+          <span>↶</span>
+        </div>
+      )}
       {game === "auction" && (
         <>
           <div className="pizza">

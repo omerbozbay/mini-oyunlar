@@ -1,6 +1,7 @@
 import type { GameId } from "../../games/types";
 import type { AuctionSession } from "../../games/auction/types";
 import type { PuzzleSession } from "../../games/puzzles/types";
+import type { ReverseSession } from "../../games/reverse/types";
 
 export interface Room {
   id: string;
@@ -28,5 +29,5 @@ export interface RoomSnapshot {
   room: Room;
   players: Player[];
   server_time: string;
-  game?: AuctionSession | PuzzleSession | null;
+  game?: AuctionSession | PuzzleSession | ReverseSession | null;
 }

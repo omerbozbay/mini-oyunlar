@@ -1,5 +1,18 @@
 # Doğrulama raporu — 6 Kasım 2026
 
+## Güncel: Tersine Konuş!
+
+- Beş oyunla birlikte **21 dosyada 154 otomatik test** geçti. Yeni testler PCM çok kanal/örnekleme hızı, izin hataları, 10 saniye sınırı, geç gelen izin sonucu, arka plan iptali, bozuk dosya/oynatma kurtarması, tek dinleme, tek tahmin, rol/puan/altı tur/beraberlik, arayüz ve Storage RLS/temizlik akışını kapsıyor.
+- TypeScript ve üretim derlemesi geçti. `npm audit --omit=dev`: bilinen açık yok.
+- Kullanıcı **008 reverse_audio** migration'ını uyguladığını bildirdi. Sonrasında gerçek Supabase'de **40 sesli oyun kontrolü** geçti: private Storage yükleme/indirme, yetkisiz erişim, gizli kelimenin ortak veri/Realtime'da açılmaması, dinleme hakkının yenilemede korunması, altı tur/üçer rol, doğru puanlama, idempotency, eski tur koruması, rövanş ve gerçek 72 saniyelik heartbeat kesintisi/dönüş.
+- Mevcut oyunların gerçek Supabase regresyonu yeniden çalıştırıldı: Açık Artırma **19**, üç bulmaca **31** kontrol geçti. Güncel canlı toplam **90** kontrol.
+- İlk sesli canlı koşusu 38 kontrol geçti. Bağlantı kesintisi eklenen tekrarda eski izinli Storage yanıtının CDN'den gelebilmesi görüldü. İndirmeye yeni cacheNonce ve no-store eklendi; son 40 kontrol geçti. Bu değişiklik SQL gerektirmiyor. İndirilmiş dosyayı geri çekme, CDN ve imzalı URL sınırları [REVERSE.md](REVERSE.md) içinde açıklandı.
+- Kaynak test sesi sentetik PCM'dir. Mikrofon, MediaRecorder ve AudioContext birim testlerinde taklit edildi. Gerçek iPhone Safari/Android Chrome, codec/donanım çıktısı, Bluetooth ve görsel/dokunmatik QA yapılmadı. Tarayıcı otomasyon erişimi bu oturumda kurulamadı.
+- 24 saat sonunda normal güncel RLS erişimi kapanır. Fiziksel silme aracı dry-run/silme ve hata davranışı test edildi; yönetici anahtarı alınmadı, gerçek fiziksel silme veya günlük görev kurulmadı. Kurulum [REVERSE.md](REVERSE.md) içinde. Canlı testlerin küçük ters WAV dosyaları bu saklama sürecine bırakıldı.
+- `.env.local` ve yerel test çıktıları Git dışında tutulur. Netlify deploy bu çalışma tarafından başlatılmadı; main push bağlı Netlify projesinin otomatik build'ini tetikleyebilir.
+
+## Önceki sürümlerin doğrulama kayıtları
+
 - `npm run build`: TypeScript kontrolü ve Vite üretim derlemesi başarılı.
 - `npm test`: Dört oyunla birlikte **14 dosyada 103 test** başarılı. PostgreSQL migration/RLS/RPC, giriş kuralları, sayfa render durumları, bağlantı yaşam döngüsü, dört oyun motoru, katalog ve oyun arayüzleri kapsanıyor.
 - `npm audit --omit=dev`: üretim bağımlılıklarında bilinen açık bildirilmedi.

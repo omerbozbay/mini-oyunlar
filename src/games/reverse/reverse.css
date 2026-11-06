@@ -1,0 +1,426 @@
+.rose {
+  --art-bg: #f2dfe9;
+  --art-ink: #b97e9e;
+}
+.reverse-card-art {
+  position: relative;
+  color: #aa82bd;
+  width: 170px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  transform: rotate(-8deg);
+}
+.reverse-card-art > svg:first-child {
+  color: #b888ab;
+  filter: drop-shadow(0 4px 0 #ac769125);
+}
+.reverse-card-art > svg:last-of-type {
+  color: #9d8bbd;
+}
+.reverse-card-art > span {
+  position: absolute;
+  bottom: 0;
+  left: 68px;
+  font-size: 24px;
+  color: #c1a3be;
+}
+.reverse-card-waves {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.reverse-card-waves i {
+  display: block;
+  width: 5px;
+  border-radius: 5px;
+  background: #c49cbe;
+  transform: rotate(10deg);
+}
+.reverse-board {
+  min-width: 0;
+}
+.reverse-board .auction-heading h2 {
+  font-size: 31px;
+}
+.audio-privacy {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 13px 14px;
+  background: #ede8f3;
+  border-radius: 11px;
+  color: #9c86ad;
+  font-size: 10px;
+  line-height: 1.8;
+  margin: 19px 0;
+}
+.audio-privacy > svg {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.reverse-role {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 13px;
+  margin: 24px 0 12px;
+  flex-wrap: wrap;
+}
+.reverse-role > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #e9e2f5;
+  color: #9374b7;
+  padding: 8px 11px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 650;
+}
+.reverse-role > b {
+  color: #b094a9;
+  font-size: 11px;
+  font-weight: 600;
+}
+.stage-instruction {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8e789e;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.reverse-surface {
+  background: #fff;
+  border: 1px solid #e9dfec;
+  border-radius: 19px;
+  padding: 25px;
+  margin: 18px 0;
+}
+.reverse-board label {
+  font-size: 11px;
+  color: #9e88ad;
+  margin: 18px 0 9px;
+}
+.reverse-board input,
+.reverse-board select {
+  width: 100%;
+  height: 47px;
+  border: 1px solid #e4d7eb;
+  border-radius: 10px;
+  padding: 10px 13px;
+  font: inherit;
+  font-size: 13px;
+  color: #856a99;
+  background: #fcfafe;
+  min-width: 0;
+}
+.reverse-board input::placeholder {
+  color: #beaeca;
+}
+.reverse-board select {
+  appearance: auto;
+}
+.reverse-board form > .primary-button {
+  margin-top: 18px;
+}
+.reverse-surface > .small {
+  margin: 10px 0;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.reverse-tip {
+  font-size: 12px;
+  color: #a493ae;
+  margin-bottom: 17px;
+}
+.reverse-wave {
+  height: 89px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 15px auto;
+  max-width: 350px;
+  color: #c5a2c7;
+}
+.reverse-wave i {
+  display: block;
+  width: 7px;
+  border-radius: 10px;
+  background: currentColor;
+  min-height: 4px;
+  transition: transform 0.1s;
+}
+.wave-playing i {
+  animation: reverse-pulse 0.7s ease-in-out infinite alternate;
+}
+.recorder-widget {
+  background: #faf7fc;
+  border: 1px solid #ece2f1;
+  border-radius: 14px;
+  padding: 18px;
+  margin: 22px 0;
+}
+.record-duration {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 10px;
+  color: #b29abe;
+  margin: 10px 0;
+}
+.recorder-widget meter {
+  width: 100%;
+  height: 6px;
+  display: block;
+  accent-color: #b899cf;
+  margin-bottom: 19px;
+}
+.record-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.audio-preview {
+  padding: 13px 0;
+  min-width: 0;
+}
+.audio-preview > span {
+  display: block;
+  font-size: 10px;
+  color: #b19abe;
+  margin-bottom: 9px;
+}
+.audio-preview audio {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 40px;
+}
+.remote-audio {
+  padding: 8px 0;
+}
+.remote-audio > .outline-button {
+  font-size: 11px;
+  width: 100%;
+}
+.remote-audio > .notice {
+  margin-top: 7px;
+}
+.reverse-wait {
+  text-align: center;
+  padding: 26px 19px;
+  background: #f6f1fa;
+  border: 1px dashed #e2d5ed;
+  border-radius: 17px;
+  margin: 18px 0;
+  color: #a28cb5;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.reverse-wait > .primary-button {
+  margin-top: 18px;
+}
+.listen-panel {
+  text-align: center;
+}
+.listen-panel > p {
+  font-size: 12px;
+  color: #a48bb3;
+  line-height: 1.8;
+  margin: 15px 0 23px;
+}
+.listen-panel > .primary-button {
+  min-width: 220px;
+}
+.listen-playing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  color: #9471b0 !important;
+}
+.listen-recovery {
+  font-size: 12px;
+  color: #aa92ba;
+  line-height: 1.8;
+}
+.listen-recovery > button {
+  margin: 10px 5px 0;
+}
+.judging-panel {
+  text-align: center;
+}
+.judging-panel h3 {
+  font-size: 30px;
+  font-weight: 750;
+  color: #a37bbb;
+  overflow-wrap: anywhere;
+  margin: 20px 0;
+}
+.judging-panel > p {
+  font-size: 12px;
+  color: #ab96b8;
+}
+.judging-panel > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 23px;
+}
+.round-result,
+.reverse-final {
+  text-align: center;
+}
+.round-result h3 {
+  font-size: 25px;
+  font-weight: 750;
+  color: #8f75a1;
+  margin: 15px 0;
+}
+.round-result p,
+.reverse-final p {
+  font-size: 12px;
+  color: #ac95b7;
+  line-height: 1.8;
+  margin: 9px 0;
+}
+.round-result > .primary-button {
+  margin-top: 20px;
+}
+.round-result-icon {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  background: #f0e1e4;
+  color: #bc8894;
+  border-radius: 20px;
+  transform: rotate(-6deg);
+}
+.round-result-icon.result-correct {
+  background: #e4ecd9;
+  color: #8a9f72;
+}
+.round-audio {
+  text-align: left;
+  margin: 17px 0;
+  min-width: 0;
+}
+.reverse-final h2 {
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.6px;
+  color: #8e6f9f;
+}
+.reverse-final .result-actions {
+  margin-top: 25px;
+}
+.reverse-history {
+  margin-top: 28px;
+}
+.reverse-history > h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.reverse-history > details {
+  background: #fbf8fc;
+  border: 1px solid #e8dfee;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 10px;
+}
+.reverse-history summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 9px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #a489b4;
+  line-height: 1.7;
+  list-style: none;
+}
+.reverse-history summary > b {
+  font-size: 10px;
+  white-space: nowrap;
+  color: #a2988b;
+}
+.reverse-history details > p {
+  font-size: 12px;
+  color: #9e87ad;
+  margin-top: 13px;
+  overflow-wrap: anywhere;
+}
+.reverse-history details > .small {
+  font-size: 10px;
+}
+.reverse-board > .notice.setup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@keyframes reverse-pulse {
+  from {
+    opacity: 0.6;
+    scale: 1 0.4;
+  }
+  to {
+    opacity: 1;
+    scale: 1 1;
+  }
+}
+@media (max-width: 760px) {
+  .reverse-surface {
+    padding: 20px 16px;
+  }
+  .reverse-board .auction-heading h2 {
+    font-size: 28px;
+  }
+  .reverse-role {
+    margin-top: 20px;
+  }
+  .reverse-role > span {
+    font-size: 11px;
+  }
+  .stage-instruction {
+    font-size: 13px;
+  }
+  .recorder-widget {
+    padding: 15px;
+  }
+  .reverse-wave {
+    gap: 4px;
+  }
+  .reverse-wave i {
+    width: 6px;
+  }
+  .reverse-surface .primary-button {
+    font-size: 12px;
+  }
+  .audio-privacy {
+    font-size: 9px;
+  }
+  .reverse-history > details {
+    padding: 13px;
+  }
+  .reverse-history summary {
+    font-size: 10px;
+  }
+  .reverse-final h2 {
+    font-size: 24px;
+  }
+  .reverse-surface .outline-button {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wave-playing i {
+    animation: none;
+  }
+}

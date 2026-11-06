@@ -14,7 +14,7 @@ Kelime Zinciri, Sayı Dedektifi ve Kelime Avı mevcut iki kişilik odayı, anoni
 
 ## Oynama
 
-Oda sahibi dört oyundan birini seçer. Kelime Avı'nda ayrıca 5 veya 6 harf modunu seçer; seçim değiştirilirse iki lobi hazır durumu da sıfırlanır. İki oyuncu hazır ve çevrimiçiyken oda sahibi başlatır. Bulmaca oyunları önce ayrı bir gizli hazırlık aşamasına geçer. Herkes kendi cevabını kilitler; ikinci hazırlık tamamlandığında tahmin başlar.
+Oda sahibi beş oyundan birini seçer. Kelime Avı'nda ayrıca 5 veya 6 harf modunu seçer; seçim değiştirilirse iki lobi hazır durumu da sıfırlanır. İki oyuncu hazır ve çevrimiçiyken oda sahibi başlatır. Bulmaca oyunları önce ayrı bir gizli hazırlık aşamasına geçer. Herkes kendi cevabını kilitler; ikinci hazırlık tamamlandığında tahmin başlar.
 
 ### Kelime Zinciri
 

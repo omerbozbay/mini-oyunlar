@@ -7,7 +7,7 @@
 3. C profilinden aynı koda katılın: oda dolu hatası alınmalı. C üzerinden tabloları SELECT eden bir authenticated istek odayı veya oyuncuları görmemeli.
 4. İki oyuncu sırayla hazır olsun. Durum diğer cihazda yenilemeden değişmeli.
 5. B oyun seçememeli. A başka oyun seçtiğinde her iki hazır durumu sıfırlanmalı.
-6. Dört oyunun her birini seçip ikisini de hazır yapın. Yalnız oda sahibi oyunu başlatabilmeli. Açık Artırma'da tema, Kelime Avı'nda 5/6 harf modu seçimi iki hazır durumunu sıfırlamalı.
+6. Beş oyunun her birini seçip ikisini de hazır yapın. Yalnız oda sahibi oyunu başlatabilmeli. Açık Artırma'da tema, Kelime Avı'nda 5/6 harf modu seçimi iki hazır durumunu sıfırlamalı.
 7. B sayfayı yenilesin: aynı kimlikle aynı odaya dönmeli. Ana sayfadaki mevcut oda bağlantısı da çalışmalı.
 8. İki oyuncu hazırken B sekmesini kapatın veya B'nin ağını kesin. Son başarılı heartbeat'ten 70 saniye sonra A'da **Çevrimdışı** görünmeli; hazır rozeti kaybolmalı. Son heartbeat kapanıştan önce geldiği için sekmeyi kapattıktan sonra yaklaşık 45–71 saniye sürebilir. A sayfasını yenilemeyin. Üyelik silinmemeli; üçüncü kişi hâlâ oda dolu hatası almalı. Sunucuda `start_game` çağrısı `players_not_ready` ile reddedilmeli. B aynı anonim kimlikle yeniden bağlandığında **Bağlı** görünmeli, yeniden hazır olması istenmeli. B sayfasını yenilemek üyeliği silmemeli. Ağ yokken veri sorguları da başarısız olsa A'daki zaman aşımı ilerlemeli.
 9. Oda sahibi A açıkça ayrılsın. B oda sahibi olmalı ve hazır durumu sıfırlanmalı. A'nın aynı odayı doğrudan okuması engellenmeli.
@@ -36,3 +36,17 @@ Gizli moddaki bütün pencereler kapatıldığında tarayıcı anonim kimliğin 
 5. 320/375/390 px genişliklerde kelime kutuları ve klavye yatay taşmasın; uzun zincir kelimeleri satıra yayılsın. Mobil klavyenin açılması formu kullanılmaz hale getirmesin. Reduced motion ayarında animasyonlar kapanmalı.
 
 Gizli cevap kontrolü yalnız DOM'a bakılarak yapılmaz: Network RPC yanıtı ve WebSocket mesajı da incelenmelidir. Kendi cevabını döndüren `my_game_secret` yanıtı doğal olarak yalnız kendi cihazında bulunur. Rakibin henüz çözülmeyen cevabı public `game_sessions` veya `get_room_snapshot` içinde görünmemelidir.
+
+## Tersine Konuş! — gerçek telefon kontrolü
+
+008 sonrasında `npm run test:reverse:live` gerçek Storage/Realtime protokolünü sentetik PCM ile test eder. Aşağıdakiler fiziksel iPhone Safari ve Android Chrome üzerinde HTTPS adresinde ayrıca yapılmalıdır; otomatik testlerin geçmesi bu listeyi yapılmış saymaz.
+
+1. Ayrı kimliklerle oda açın, beşinci kartı seçip başlatın. On kategori/özel ad, kelimenin yalnız anlatıcıda görünmesi ve diğer telefona aşama değişimi aktarımını kontrol edin.
+2. Mikrofon iznini önce reddedin, site izinlerinden açıp tekrar deneyin. Mikrofon yok/meşgul durumunu ve 10 saniyede otomatik durmayı deneyin. Anlatıcı göndermeden önce yeniden kayıt yapabilsin.
+3. Anlaşılır bir kelime kaydedin. Ters sesin hızı aynı, zaman yönü ters olmalı. Network'te yalnız WAV yüklenmeli; orijinal kayıt yüklenmemeli. Stereo donanım varsa her kanalı ayrı kontrol edin.
+4. Dinlemeden önce bağlantıyı kesin; dosya/decode hatası hakkı tüketmesin. Oynatma başladıktan sonra ekranı kilitleyin; hata bildirimi ve anlatıcı onayı yeni izin açsın. Dinleme başladıktan sonra yenileme sesi tekrar indirmesin.
+5. Taklidi kaydedin; normal akışta yeniden kayıt düğmesi olmasın. Teknik hata/yenileme kaydı kaybettirirse kurtarma açılsın. Kendi ters taklidi sınırsız dinlenebilsin. iOS kulaklık/Bluetooth ve Chrome MP4/WebM biçimlerini gerçek ses çıktısıyla kontrol edin.
+6. Tek tahmin gönderin. Yalnız anlatıcı değerlendirebilsin; iki tarafta puan aynı olsun. Altı turda üçer rol, tur geçmişi, beraberlik/kazanan, çift onay rövanş ve lobi çalışsın.
+7. 70 saniyeden uzun ağ kesintisinde hamleler dursun; dönüşte aynı tur açılsın. Sekme kapatma üyeliği silmesin; Odadan ayrıl maçı terk etsin.
+8. 320/375/390 px ekranda kayıt/durdurma/dinleme butonları, klavye açılınca tahmin, yatay taşma, reduced motion ve native audio kontrollerini inceleyin.
+9. Sonuçta yalnız ters sesler uzaktan açılmalı; özgün ses yalnız kendi yerel belleğinde mevcutsa görünmeli. Yönetici ortamında temizliğin dry-run/silme modunu ve 24 saat sonrasında erişimin kapanmasını doğrulayın.

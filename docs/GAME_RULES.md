@@ -1,6 +1,6 @@
 ﻿# Oyun Kuralları
 
-Dört oyun da oynanabilir olarak geliştirilmiştir. Kurulum ve ayrıntılı kurallar: [Açık Artırma](AUCTION.md) · [Kelime Zinciri, Sayı Dedektifi ve Kelime Avı](PUZZLES.md).
+Beş oyun da oynanabilir olarak geliştirilmiştir. Kurulum ve ayrıntılı kurallar: [Açık Artırma](AUCTION.md) · [Kelime Zinciri, Sayı Dedektifi ve Kelime Avı](PUZZLES.md) · [Tersine Konuş!](REVERSE.md).
 
 ### OYUN 1 — AÇIK ARTIRMA
 
@@ -114,3 +114,7 @@ Eşit sayıda tahminle bulan oyuncular berabere kalır.
 Harf modunu oda sahibi maç başlamadan seçer. İki hazırlık tamamlanmadan tahmin yapılamaz. Tekrarlı harflerde önce yeşiller, ardından kalan harf sayıları tüketilerek sarılar hesaplanır. Sözlük API'si yoktur; yalnız uzunluk ve Türkçe harf doğrulanır. Bir oyuncu bulduğunda veya altı hakkı bittiğinde diğer oyuncunun sonucu beklenir. Yalnız biri bulursa o kazanır, ikisi de bulamazsa beraberliktir. Cevaplar iki oyuncu da bitirince açılır. Türkçe ekran ve fiziksel klavye desteklenir.
 
 Üç oyunda da iki oyuncu çevrimiçi değilse ilerleme durur; aynı kimlikle geri dönüldüğünde aynı maç devam eder. Rövanş iki tarafın onayıyla temiz hazırlık açar. Lobiye dönüş üyelikleri koruyup lobi hazır durumlarını sıfırlar. Yeni maç eski isteklerden etkilenmez.
+
+## Tersine Konuş!
+
+Altı turda roller sırayla değişir; herkes üç kez anlatıcı olur. Anlatıcı kategorisini ve kelimesini kendi seçer, en fazla 10 saniye kaydeder. Yalnız ters ses paylaşılır. Tahminci bir kez dinleyip tek taklit kaydı yapar; ters çevrilmiş kendi taklidini sınırsız dinleyip tek tahmin gönderir. Anlatıcı doğru derse tahminci 1 puan alır. Tur sonunda kelime açıklanır; iki onay sonraki turu açar. Altı tur sonunda yüksek puan kazanır; eşitlik beraberliktir. Teknik ses hataları için kurtarma, sonuçtan rövanş ve lobi vardır. [Tüm akış ve sınırlar](REVERSE.md).

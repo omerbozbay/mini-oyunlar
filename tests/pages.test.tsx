@@ -27,7 +27,7 @@ describe("sayfa kabuğu ve kurulum durumları", () => {
       "Kelime Avı",
     ])
       expect(html).toContain(title);
-    expect(html.match(/soon-tag/g)).toHaveLength(4);
+    expect(html.match(/soon-tag/g)).toHaveLength(5);
     expect(html).toContain("Oynamaya hazır");
     expect(html).toContain(".env.local");
     expect(html).toContain('id="player-name"');

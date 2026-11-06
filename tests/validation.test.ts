@@ -27,8 +27,8 @@ describe("Türkçe girişler ve sürüm kapsamı", () => {
     );
   });
   it("dört oyunu oynanabilir gibi göstermez", () => {
-    expect(games).toHaveLength(4);
-    expect(new Set(games.map((game) => game.id)).size).toBe(4);
+    expect(games).toHaveLength(5);
+    expect(new Set(games.map((game) => game.id)).size).toBe(5);
     expect(
       games.every(
         (game) => game.status === "available" && game.rules.length > 0,

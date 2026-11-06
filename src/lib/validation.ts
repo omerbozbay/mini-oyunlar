@@ -16,6 +16,22 @@ export function roomCode(value: string): string {
 }
 
 const messages: Record<string, string> = {
+  invalid_reverse_word:
+    "Kategori 2–60, gizli kelime ve tahmin 1–120 karakter olmalı.",
+  invalid_audio:
+    "Ses dosyası doğrulanamadı. En fazla 10 saniyelik WAV kaydını yeniden hazırlayabilirsin.",
+  invalid_audio_ticket:
+    "Ses yükleme izni geçerli değil. Güncel turu yeniden yükle.",
+  audio_expired: "Bu sesin saklama süresi dolmuş veya dosya bulunamıyor.",
+  not_your_role:
+    "Bu işlem bu aşamada diğer oyuncuya ait veya zaten tamamlandı.",
+  stale_round: "Tur değişmiş. Eski kayıt veya istek yeni turu etkileyemez.",
+  listen_unavailable:
+    "Bu dinleme hakkı şu anda kullanılamaz. Güncel durumu kontrol et.",
+  listen_not_finished:
+    "Ses henüz tamamlanmış görünmüyor. Birkaç saniye sonra yeniden deneyebilirsin.",
+  mimic_locked:
+    "Taklit kaydın alındı. Normal akışta yeniden kayıt yapılamaz; teknik hata kurtarmasını kullanabilirsin.",
   invalid_length: "Kelime uzunluğu 5 veya 6 harf olmalı.",
   guess_limit:
     "Altı tahmin hakkını tamamladın. Arkadaşının sonucunu bekleyelim.",

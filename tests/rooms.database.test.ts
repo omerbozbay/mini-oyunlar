@@ -1,6 +1,7 @@
 import { PGlite } from "@electric-sql/pglite";
 import { readFileSync, readdirSync } from "node:fs";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import {installStorageSchema} from './helpers/storage-db';
 
 const users = [
   "00000000-0000-4000-8000-000000000001",
@@ -36,6 +37,7 @@ beforeAll(async () => {
     $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
     grant usage on schema auth to authenticated, anon;
     grant execute on function auth.uid() to authenticated, anon;`);
+  await installStorageSchema(db);
   for (const user of users)
     await db.query("insert into auth.users values($1)", [user]);
   const migrations = new URL("../supabase/migrations/", import.meta.url);

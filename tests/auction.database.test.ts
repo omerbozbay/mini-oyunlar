@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { beforeAll, beforeEach, afterAll, it, expect, describe } from "vitest";
 import type { AuctionSession } from "../src/games/auction/types";
 import themes from "../src/games/auction/themes.json";
+import {installStorageSchema} from './helpers/storage-db';
 const ids = [
   "00000000-0000-4000-8000-000000000001",
   "00000000-0000-4000-8000-000000000002",
@@ -64,6 +65,7 @@ beforeAll(async () => {
   await db.exec(`create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key);
  create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
  grant usage on schema auth to authenticated,anon;grant execute on function auth.uid() to authenticated,anon;`);
+  await installStorageSchema(db);
   for (const id of ids)
     await db.query("insert into auth.users values($1)", [id]);
   const dir = new URL("../supabase/migrations/", import.meta.url);
