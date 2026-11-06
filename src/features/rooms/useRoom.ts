@@ -48,6 +48,10 @@ export function useRoom(code: string) {
       try {
         const id = await ensureIdentity();
         if (!active || !supabase) return;
+        // Anonim girişten hemen sonra kanal açılırken JWT'nin Realtime'a
+        // aktarılmasını bekle; aksi halde ilk abonelik yetkisiz kalabilir.
+        await supabase.realtime.setAuth();
+        if (!active) return;
         setUserId(id);
         await reload();
         if (!active) return;
