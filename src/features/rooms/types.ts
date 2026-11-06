@@ -22,4 +22,5 @@ export interface Player {
 export interface RoomSnapshot {
   room: Room;
   players: Player[];
+  server_time: string;
 }

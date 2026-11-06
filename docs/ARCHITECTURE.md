@@ -12,6 +12,10 @@ Odaya katılma, çıkma, seçim, hazır olma ve başlatma fonksiyonları aynı o
 
 Odalar bağlantı koptu diye silinmez. Açık ayrılmada üyelik `active=false` olur. Bu, Realtime DELETE olaylarında RLS sınırlamalarına dayanma ihtiyacını da kaldırır. Kalan oyuncuya sahiplik devredilir. Son ayrılmada oda kapanır. Kalıcı olarak terk edilmiş odaların ve Auth hesaplarının süreli temizliği bu sürümde yapılmaz; gelecekte saklama politikasına göre sunucuda planlanmalıdır.
 
+`202611060002_presence_lease.sql` bağlantı lease'ini güçlendirir. `get_room_snapshot` SECURITY INVOKER RPC'si mevcut RLS ile tek görüntü ve sunucu zamanı döndürür. İstemci bu zamanı `performance.now()` ile ilerletir ve saniyede bir çevrimiçi/hazır durumunu yeniden hesaplar; `Date.now()` ile telefon saatine güvenmez. 25 saniyelik heartbeat durduğunda son başarılı sinyalden 70 saniye sonra oyuncu çevrimdışı sayılır. Ayrı Presence kanalına veya istemcinin iddia ettiği kullanıcı/online alanlarına güvenilmez. Zaman aşımı üyelik ve kapasiteyi değiştirmez.
+
+Heartbeat aynı oda satırını kilitler, süresi dolmuş üyelerin yalnız hazır bayrağını temizler ve çağıranın JWT kimliğine ait `last_seen` değerini yeniler. UPDATE'ler mevcut RLS korumalı Realtime aboneliğiyle yayılır. Süresi dolmuş bir kayda tekrar yazıldığında BEFORE UPDATE trigger'ı eski hazır durumunu geri taşımaz; böylece `join_room` tekrar katılma yolu da güvenlidir. `set_ready(true)` güncel heartbeat ister; başlatma iki güncel ve hazır üyeyi ayrıca sunucuda doğrular. İstemci hesaplaması yetkilendirme yerine geçmez.
+
 `start_game` RPC'si üyelik, sahiplik, iki hazır ve yakın zamanda bağlı oyuncuyu doğrular, ardından `game_not_available` döndürür. Oyun motoru olmadığı halde skor, oturum veya sonuç uydurmaz. Arayüzde başlatma düğmesi bu nedenle kapalıdır.
 
 ## Oyun modülü ekleme sözleşmesi

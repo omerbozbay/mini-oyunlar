@@ -442,7 +442,7 @@ function EmptyRoom({ message }: { message: string }) {
 
 function Lobby({ code }: { code: string }) {
   const navigate = useNavigate();
-  const { snapshot, userId, loading, error, connection, reload } =
+  const { snapshot, players, userId, loading, error, connection, reload } =
     useRoom(code);
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState("");
@@ -500,10 +500,11 @@ function Lobby({ code }: { code: string }) {
     return (
       <EmptyRoom message="Oda kapalı veya bu kimlikle üye değilsin. Katılmak için ana sayfada ismini ve oda kodunu gir." />
     );
-  const { room, players } = snapshot;
+  const { room } = snapshot;
   const me = players.find((p) => p.user_id === userId);
   const host = room.host_id === userId;
-  const bothReady = players.length === 2 && players.every((p) => p.ready);
+  const bothReady =
+    players.length === 2 && players.every((p) => p.online && p.ready);
   const game = games.find((g) => g.id === room.selected_game)!;
 
   return (
@@ -549,7 +550,7 @@ function Lobby({ code }: { code: string }) {
             <span>{players.length}/2</span>
           </div>
           {players.map((player, i) => {
-            const online = Date.now() - Date.parse(player.last_seen) < 70000;
+            const online = player.online;
             return (
               <div className="player-row" key={player.user_id}>
                 <span className={`avatar avatar-${i}`}>
@@ -564,7 +565,7 @@ function Lobby({ code }: { code: string }) {
                       <Crown size={13} aria-label="Oda sahibi" />
                     )}
                   </b>
-                  <span>{online ? "Bağlı" : "Bağlantı bekleniyor"}</span>
+                  <span>{online ? "Bağlı" : "Çevrimdışı"}</span>
                 </div>
                 <span
                   className={`ready-pill ${player.ready ? "is-ready" : ""}`}
@@ -593,7 +594,7 @@ function Lobby({ code }: { code: string }) {
           )}
           <button
             className={`primary-button w-full ${me?.ready ? "ready-button" : ""}`}
-            disabled={busy || !me}
+            disabled={busy || !me?.online}
             onClick={() => {
               void act(() => setReady(room.id, !me?.ready));
             }}

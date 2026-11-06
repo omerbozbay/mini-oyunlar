@@ -31,7 +31,7 @@ Supabase Dashboard → Project Settings → API Keys bölümünden **publishable
 
 1. `mini-oyunlar` Supabase projesini açın.
 2. Authentication → Sign In / Providers bölümünde **Anonymous Sign-Ins** seçeneğini etkinleştirin. Kullanıcıdan e-posta veya şifre istenmez.
-3. SQL Editor → New query açın. [Migration dosyasının](supabase/migrations/202611060001_room_foundation.sql) **tamamını** kopyalayıp bir kez çalıştırın. Transaction hatada geri alınır; başarılı migration'ı ikinci kez çalıştırmayın.
+3. SQL Editor → New query açın. Yeni kurulumda önce [oda migration'ının](supabase/migrations/202611060001_room_foundation.sql), sonra [bağlantı migration'ının](supabase/migrations/202611060002_presence_lease.sql) **tamamını** sırasıyla birer kez çalıştırın. İlk dosyayı daha önce uyguladıysanız yalnız `202611060002_presence_lease.sql` dosyasını çalıştırın. Transaction hatada geri alınır; başarılı migration'ı ikinci kez çalıştırmayın.
 4. `rooms` ve `room_players` tablolarında RLS'nin açık olduğunu kontrol edin. Migration her ikisini `supabase_realtime` publication'ına ekler. Replication/Realtime ayarlarında iki tabloyu da doğrulayın. Supabase'in standart publication'ı yoksa önce panelden etkinleştirin, ardından aşağıdaki komutu yalnız henüz eklenmemiş tablolar için çalıştırın:
 
    ```sql
@@ -51,7 +51,9 @@ Anonim Auth için Supabase'in yerleşik hız sınırlarını koruyun. Turnstile/
 
 Sayfayı yenilemek üyeliği silmez; URL'den aynı odaya dönülebilir. Ana sayfada **Mevcut odana dön** bağlantısı da çıkar. Tarayıcı depolaması silinir veya farklı tarayıcı kullanılırsa eski anonim kimlik geri alınamaz. Aynı tarayıcı profili içindeki sekmeler aynı oyuncuyu temsil eder; iki kişilik test için iki ayrı profil/gizli pencere kullanın.
 
-Bağlantı kesildiğinde üyelik korunur. 25 saniyelik heartbeat ve 70 saniyelik zaman aşımı bağlantı göstergesini besler. Realtime kesintisinde 15 saniyelik sorgu yedeği çalışır. Arka planda telefon tarayıcısı zamanlayıcıları durdurabildiğinden çevrimiçi göstergesi yaklaşık bilgidir. Odadan ayrılmak açık bir işlemdir; sahip ayrılırsa kalan oyuncu sahip olur, son oyuncu ayrılırsa oda kapanır.
+Bağlantı kesildiğinde veya sekme kapandığında üyelik korunur. 25 saniyelik heartbeat ve son heartbeat'ten itibaren 70 saniyelik zaman aşımı kullanılır. Gösterge sunucunun saatine göre hesaplanır ve veri gelmese bile saniyede bir yenilenir; telefonun tarih/saat ayarına bağlı değildir. Süresi dolan oyuncu **Çevrimdışı** ve hazır değil sayılır. Aktif oyuncuların heartbeat'i sunucuda eski hazır bayraklarını temizler; yeniden bağlanan oyuncu yeniden hazır olmalıdır. `set_ready` ve `start_game` de sunucudaki süreyi doğrular.
+
+Realtime güncellemeleri iki tarayıcıya aktarılır; kesintide 15 saniyelik sorgu yedeği çalışır. Ağ geri geldiğinde ve görünür sekmeye dönüldüğünde hemen heartbeat denenir. Sekme kapanışında güvenilmez unload isteğiyle üyelik silinmez. Arka planda telefon tarayıcısı zamanlayıcıları durdurabildiğinden çevrimiçi göstergesi yaklaşık bilgidir. Çevrimdışı üye iki kişilik kapasitede yer tutmaya devam eder. Odadan ayrılmak açık bir işlemdir; sahip ayrılırsa kalan oyuncu sahip olur, son oyuncu ayrılırsa oda kapanır.
 
 ## Kontroller
 

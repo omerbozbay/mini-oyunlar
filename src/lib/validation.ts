@@ -16,6 +16,8 @@ export function roomCode(value: string): string {
 }
 
 const messages: Record<string, string> = {
+  player_offline:
+    "Bağlantın henüz yenilenmedi. Birkaç saniye sonra yeniden hazır olabilirsin.",
   auth_required: "Kimliğin doğrulanamadı. Lütfen yeniden bağlan.",
   invalid_name: "İsmin 2–24 karakter arasında olmalı.",
   room_not_found: "Bu kodla bir oda bulunamadı. Kodu kontrol et.",

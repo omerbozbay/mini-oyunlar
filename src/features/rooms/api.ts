@@ -1,6 +1,6 @@
 import { ensureIdentity, supabase } from "../../lib/supabase";
 import { playerName, roomCode } from "../../lib/validation";
-import type { Room, Player, RoomSnapshot } from "./types";
+import type { RoomSnapshot } from "./types";
 import type { GameId } from "../../games/types";
 
 export async function rpc<T>(
@@ -28,22 +28,7 @@ export async function currentRoom(): Promise<string | null> {
 }
 
 export async function fetchRoom(code: string): Promise<RoomSnapshot | null> {
-  if (!supabase) return null;
-  const { data: room, error } = await supabase
-    .from("rooms")
-    .select("*")
-    .eq("code", code)
-    .maybeSingle();
-  if (error) throw error;
-  if (!room || room.status === "closed") return null;
-  const { data: players, error: playersError } = await supabase
-    .from("room_players")
-    .select("*")
-    .eq("room_id", room.id)
-    .eq("active", true)
-    .order("joined_at");
-  if (playersError) throw playersError;
-  return { room: room as Room, players: players as Player[] };
+  return rpc<RoomSnapshot | null>("get_room_snapshot", { p_code: code });
 }
 
 export const setReady = (roomId: string, ready: boolean) =>

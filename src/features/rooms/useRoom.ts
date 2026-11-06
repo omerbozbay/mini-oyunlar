@@ -3,12 +3,15 @@ import { ensureIdentity, supabase } from "../../lib/supabase";
 import { errorMessage } from "../../lib/validation";
 import { fetchRoom, heartbeat } from "./api";
 import type { RoomSnapshot } from "./types";
+import { HEARTBEAT_INTERVAL_MS, playerPresence, serverClock } from "./presence";
 
 export function useRoom(code: string) {
   const [snapshot, setSnapshot] = useState<RoomSnapshot | null>(null);
   const [userId, setUserId] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [serverNow, setServerNow] = useState(Number.NaN);
+  const clockRef = useRef<((time: number) => number) | null>(null);
   const [connection, setConnection] = useState<
     "connecting" | "live" | "retrying"
   >("connecting");
@@ -29,6 +32,10 @@ export function useRoom(code: string) {
         const next = await fetchRoom(code);
         if (next) subscribedRoomId = next.room.id;
         if (active) {
+          clockRef.current = next
+            ? serverClock(next.server_time, performance.now())
+            : null;
+          setServerNow(clockRef.current?.(performance.now()) ?? Number.NaN);
           setSnapshot(next);
           setError("");
         }
@@ -42,6 +49,8 @@ export function useRoom(code: string) {
     reloadRef.current = reload;
     setLoading(true);
     setSnapshot(null);
+    clockRef.current = null;
+    setServerNow(Number.NaN);
     setError("");
     setConnection("connecting");
     void (async () => {
@@ -107,12 +116,21 @@ export function useRoom(code: string) {
       }
     })();
     const onVisible = () => {
-      if (document.visibilityState === "visible") void reload();
+      if (document.visibilityState === "visible") {
+        setServerNow(clockRef.current?.(performance.now()) ?? Number.NaN);
+        void reload();
+      }
     };
+    // Veri/Realtime olayı gelmese ve ağ kesilse de lease süresi ekranda dolar.
+    const clockTimer = setInterval(() => {
+      if (active)
+        setServerNow(clockRef.current?.(performance.now()) ?? Number.NaN);
+    }, 1000);
     window.addEventListener("online", onVisible);
     document.addEventListener("visibilitychange", onVisible);
     return () => {
       active = false;
+      clearInterval(clockTimer);
       if (poll) clearInterval(poll);
       if (channel) void supabase?.removeChannel(channel);
       window.removeEventListener("online", onVisible);
@@ -123,21 +141,39 @@ export function useRoom(code: string) {
   const roomId = snapshot?.room.id;
   useEffect(() => {
     if (!roomId) return;
+    let active = true;
+    let busy = false;
     const beat = () => {
-      void heartbeat(roomId).catch(() => setConnection("retrying"));
+      if (busy || !active) return;
+      busy = true;
+      void heartbeat(roomId)
+        .then(() => {
+          if (active) void reloadRef.current();
+        })
+        .catch(() => {
+          if (active) setConnection("retrying");
+        })
+        .finally(() => {
+          busy = false;
+        });
     };
     beat();
-    const timer = setInterval(beat, 25000);
+    const timer = setInterval(beat, HEARTBEAT_INTERVAL_MS);
     const visible = () => {
       if (document.visibilityState === "visible") beat();
     };
     document.addEventListener("visibilitychange", visible);
+    window.addEventListener("online", beat);
     return () => {
+      active = false;
       clearInterval(timer);
       document.removeEventListener("visibilitychange", visible);
+      window.removeEventListener("online", beat);
     };
   }, [roomId]);
 
   const reload = useCallback(() => reloadRef.current(), []);
-  return { snapshot, userId, loading, error, connection, reload };
+  const players =
+    snapshot?.players.map((player) => playerPresence(player, serverNow)) ?? [];
+  return { snapshot, players, userId, loading, error, connection, reload };
 }

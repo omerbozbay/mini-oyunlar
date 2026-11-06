@@ -1,5 +1,5 @@
 import { PGlite } from "@electric-sql/pglite";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 const users = [
@@ -38,14 +38,12 @@ beforeAll(async () => {
     grant execute on function auth.uid() to authenticated, anon;`);
   for (const user of users)
     await db.query("insert into auth.users values($1)", [user]);
-  const migration = readFileSync(
-    new URL(
-      "../supabase/migrations/202611060001_room_foundation.sql",
-      import.meta.url,
-    ),
-    "utf8",
-  );
-  await db.exec(migration);
+  const migrations = new URL("../supabase/migrations/", import.meta.url);
+  for (const file of readdirSync(migrations)
+    .filter((file) => file.endsWith(".sql"))
+    .sort()) {
+    await db.exec(readFileSync(new URL(file, migrations), "utf8"));
+  }
 }, 30000);
 
 beforeEach(async () => {
@@ -189,5 +187,85 @@ describe("oda RPC ve RLS güvenliği", () => {
         scalar("select public.create_room($1)", [name]),
       ).rejects.toThrow("invalid_name");
     }
+  });
+
+  it("oda görüntüsünü sunucu saatiyle ve mevcut RLS ile sunar", async () => {
+    const { code, id } = await room();
+    const snapshot = await scalar<{
+      server_time: string;
+      players: unknown[];
+      room: { id: string };
+    }>("select public.get_room_snapshot($1)", [code]);
+    expect(snapshot.room.id).toBe(id);
+    expect(snapshot.players).toHaveLength(1);
+    expect(Number.isFinite(Date.parse(snapshot.server_time))).toBe(true);
+    await asUser(2);
+    expect(
+      await scalar("select public.get_room_snapshot($1)", [code]),
+    ).toBeNull();
+    await db.exec("reset role; set role anon");
+    await expect(
+      scalar("select public.get_room_snapshot($1)", [code]),
+    ).rejects.toThrow("permission denied");
+  });
+
+  it("heartbeat süresi dolan oyuncuyu silmez, hazır durumunu temizler ve kapasiteyi korur", async () => {
+    const { code, id } = await room();
+    await asUser(1);
+    await scalar("select public.join_room($1,'Ömer')", [code]);
+    await db.query("select public.set_ready($1,true)", [id]);
+    await db.exec("reset role");
+    await db.query(
+      "update public.room_players set last_seen=statement_timestamp()-interval '80 seconds' where user_id=$1",
+      [users[1]],
+    );
+    await asUser(0);
+    await db.query("select public.heartbeat($1)", [id]);
+    const result = await db.query<{ ready: boolean; active: boolean }>(
+      "select ready,active from public.room_players where user_id=$1",
+      [users[1]],
+    );
+    expect(result.rows[0]).toEqual({ ready: false, active: true });
+    await asUser(2);
+    await expect(
+      scalar("select public.join_room($1,'Üçüncü')", [code]),
+    ).rejects.toThrow("room_full");
+  });
+
+  it("çevrimdışı oyuncu hazır olamaz; heartbeat sonrası yeniden hazır olmalıdır", async () => {
+    const { code, id } = await room();
+    await db.query("select public.set_ready($1,true)", [id]);
+    await db.exec("reset role");
+    await db.query(
+      "update public.room_players set last_seen=statement_timestamp()-interval '80 seconds' where room_id=$1",
+      [id],
+    );
+    await asUser(0);
+    await expect(
+      db.query("select public.set_ready($1,true)", [id]),
+    ).rejects.toThrow("player_offline");
+    await db.query("select public.heartbeat($1)", [id]);
+    expect(await scalar("select ready from public.room_players")).toBe(false);
+    expect(await scalar("select public.current_room()")).toBe(code);
+    await db.query("select public.set_ready($1,true)", [id]);
+    expect(await scalar("select ready from public.room_players")).toBe(true);
+  });
+
+  it("aynı kimlikle yeniden katılma eski hazır durumunu geri getirmez", async () => {
+    const { code, id } = await room();
+    await db.query("select public.set_ready($1,true)", [id]);
+    await db.exec("reset role");
+    await db.query(
+      "update public.room_players set last_seen=statement_timestamp()-interval '80 seconds' where room_id=$1",
+      [id],
+    );
+    await asUser(0);
+    await scalar("select public.join_room($1,'İpek')", [code]);
+    expect(await scalar("select ready from public.room_players")).toBe(false);
+    expect(
+      await scalar(
+        "select count(*)::int from public.room_players where active",
+      ),
+    ).toBe(1);
   });
 });

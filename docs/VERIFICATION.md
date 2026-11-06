@@ -1,7 +1,7 @@
 # Doğrulama raporu — 6 Kasım 2026
 
 - `npm run build`: TypeScript kontrolü ve Vite üretim derlemesi başarılı.
-- `npm test`: 3 dosyada 16 test başarılı. PostgreSQL migration/RLS/RPC, giriş kuralları ve sayfa render durumları kapsanıyor.
+- `npm test`: 5 dosyada 28 test başarılı. PostgreSQL migration/RLS/RPC, giriş kuralları, sayfa render durumları ve bağlantı yaşam döngüsü kapsanıyor.
 - `npm audit --omit=dev`: üretim bağımlılıklarında bilinen açık bildirilmedi.
 - Yerel HTTP: `/` ve `/oda/AF1234` adresleri 200 döndü.
 - Git kontrolü: `.env.local`, `node_modules`, `dist` ve `.qa` dışlandı. Commit'e giren dosyalarda gerçek anahtarla eşleşme bulunmadı.
@@ -37,3 +37,13 @@ Kullanıcı Dashboard'da Anonymous Sign-Ins ayarını açtı ve migration'ı uyg
 Tarayıcı otomasyon sunucusuna erişilemedi. Gerçek iPhone Safari/Android Chrome görselleri, dokunmatik kullanım, yatay taşma, dialog odağı, sayfa yenileme ve arka plan/ağ kesintisi davranışları tarayıcıda doğrulanmadı. Sunucu tarafı render testleri bunların yerine geçmez. [Manuel test planı](TESTING.md) kullanılmalıdır.
 
 Netlify hesabında yayın yapılmadı; yapılandırma hazırlandı. Dört mini oyunun motorları kapsam gereği geliştirilmedi.
+
+## Bağlantı durumu düzeltmesi
+
+İlk mekanizma son görülmeyi telefonun `Date.now()` saatiyle karşılaştırıyor ve hazır rozetini bu sonuca göre kapatmıyordu. Artık oda görüntüsü sunucu zamanıyla alınır, monoton istemci sayacıyla saniyede bir ilerletilir. Görünüm/CSS korunmuş, çevrimdışı etiket ve hazır hesaplaması düzeltilmiştir.
+
+Kullanıcı `202611060002_presence_lease.sql` dosyasını SQL Editor'de çalıştırdı ve başarı bildirdi. Ardından yeni RPC gerçek Supabase üzerinde doğrulandı. Bu migration bu çalışma tarafından uzaktan DDL erişimiyle çalıştırılmadı.
+
+Yeni 12 otomatik regresyon testi: 70 saniye sınırı, yerel saat farkı, bozuk/eksik zaman, tüm ağ istekleri başarısızken sürenin dolması, WebSocket sonrası geri dönüş, timer/abonelik temizliği, online olayında hemen heartbeat, snapshot RLS, eski hazır bayrağı temizliği, kapasite korunması, çevrimdışı hazır olma engeli ve aynı kimlikle tekrar katılma. Hook testleri Happy DOM ve sahte zamanlayıcıyla React üzerinde çalışır; gerçek telefon tarayıcısının yerine geçmez.
+
+Gerçek Supabase üzerinde ek 14 kontrol geçti. Bir test oyuncusunun heartbeat'i 72 saniye durduruldu; diğer oyuncu heartbeat göndermeye devam etti. Süresi dolan oyuncu üye kaldı, hazır olma ve oyun başlatma reddedildi, eski hazır bayrağı temizlendi ve UPDATE gerçek WebSocket'ten alındı. Üçüncü kimlik oda dolu hatası aldı. Aynı kimlik yeniden heartbeat gönderince çevrimiçi/hazır değil durumuna döndü, açıkça yeniden hazır olabildi. `current_room` üyeliği korudu; açık ayrılma oyuncuyu çıkardı. Sonunda test üyelikleri kapatıldı. Anonim test hesapları ve kapalı oda geçmişi sunucuda kalabilir.
