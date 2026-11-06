@@ -77,7 +77,12 @@ export function useRoom(code: string) {
         if (!active) return;
         // Üyelik RLS ile denetlenir; kanal adı veya kod yetki sağlamaz.
         channel = supabase
-          .channel(`room:${code}:${id}`)
+          // Kanalın açılmasını değil PostgreSQL aboneliğinin hazır olmasını bekle.
+          .channel(`room:${code}:${id}`, {
+            config: {
+              postgres_changes_options: { wait: true, timeout: 15000 },
+            },
+          })
           .on(
             "postgres_changes",
             {

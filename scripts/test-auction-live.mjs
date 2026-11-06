@@ -119,10 +119,12 @@ try {
   await new Promise((resolve, reject) => {
     const timeout = setTimeout(
       () => reject(Error("Realtime zaman aşımı")),
-      12000,
+      25000,
     );
     channel = clients[0]
-      .channel("auction-integration:" + g.id)
+      .channel("auction-integration:" + g.id, {
+        config: { postgres_changes_options: { wait: true, timeout: 15000 } },
+      })
       .on(
         "postgres_changes",
         {
@@ -133,13 +135,13 @@ try {
         },
         () => eventResolve(true),
       )
-      .subscribe((status) => {
+      .subscribe((status, error) => {
         if (status === "SUBSCRIBED") {
           clearTimeout(timeout);
           resolve();
         } else if (status === "CHANNEL_ERROR" || status === "TIMED_OUT") {
           clearTimeout(timeout);
-          reject(Error(status));
+          reject(error ?? Error(status));
         }
       });
   });

@@ -39,6 +39,8 @@ Beşer ürünün görsel koleksiyonları yan yana gösterilir. “Ben kazandım�
 
 `start_game`, `select_auction_theme` ve `auction_action` JWT'den oyuncu kimliğini alır. İstemciden bütçe, ürün, kazanan veya sıra kabul edilmez. Mutasyonlar önce oda, sonra maç satırını kilitler. Teklif/pas için beklenen maç sürümü doğrulanır; aynı eski sürümle yarışan iki hamleden yalnız biri uygulanabilir. Oylar ve rövanş onayları birbirinden bağımsız olduğundan eşzamanlı iki oyuncunun onayları sürüm çakışmasıyla kaybolmaz.
 
+Realtime kanalı `postgres_changes_options.wait: true` ile açılır; “Canlı bağlantı açık” gösterilmeden önce veritabanı aboneliği onayı beklenir. Yalnız WebSocket kanalına katılmak, değişiklik akışının hazır olduğu anlamına gelmez. İlk canlı testte görülen başlangıç yarışını bu bekleme giderdi; bağlantı kesildiğinde mevcut sorgu yedeği çalışmaya devam eder. SDK davranışı için [Supabase Realtime kaynak kodu](https://github.com/supabase/supabase-js/blob/master/packages/core/realtime-js/src/RealtimeChannel.ts).
+
 Her eylem bir UUID taşır. Aynı kullanıcı/maç/UUID ve aynı içerikle tekrar çağrı etkisiz başarılı sonuç verir; farklı içerik aynı UUID'yi kullanamaz. Ağ sonucu belirsiz olduğunda arayüz aynı UUID ile yeniden deneme sunar. Sunucunun açık SQL reddinde durum yenilenir. Böylece kayıp cevap bütçeyi iki kez düşürmez.
 
 Oyun/tema değiştirme maç açıkken DB trigger'ıyla engellenir. Oda kapasitesi ve tek aktif oda kısıtları değiştirilmemiştir. Bağlantı göstergesi güvenlik otoritesi değildir; RPC'ler server `last_seen` değerlerini ayrıca doğrular.
