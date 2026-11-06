@@ -16,6 +16,21 @@ export function roomCode(value: string): string {
 }
 
 const messages: Record<string, string> = {
+  invalid_theme: "Geçerli bir tema seç.",
+  game_in_progress: "Oyun oturumu açıkken tema veya oyun değiştirilemez.",
+  game_not_current: "Bu maç artık güncel değil. Odanın son durumunu yenile.",
+  stale_version: "Oyun ilerlemiş. Güncel durum yüklendi; sıranı kontrol et.",
+  not_your_turn: "Şimdi diğer oyuncunun sırası.",
+  players_offline: "Oyun duraklatıldı. İki oyuncu da çevrimiçi olmalı.",
+  cannot_pass_first: "İlk teklif verilmeden pas geçilemez.",
+  invalid_bid: "Teklif en az 1 TL artmalı ve gösterilen üst sınırı aşmamalı.",
+  collection_full: "Beş ürününü tamamladın.",
+  invalid_phase: "Bu işlem oyunun şu anki aşamasında yapılamaz.",
+  already_voted: "Tercihin zaten kaydedildi. Diğer oyuncuyu bekleyelim.",
+  invalid_vote:
+    "Yalnız bu maçtaki oyunculardan birini veya beraberliği seçebilirsin.",
+  request_conflict:
+    "İstek kimliği başka bir hamlede kullanılmış. Güncel durumu yenile.",
   player_offline:
     "Bağlantın henüz yenilenmedi. Birkaç saniye sonra yeniden hazır olabilirsin.",
   auth_required: "Kimliğin doğrulanamadı. Lütfen yeniden bağlan.",

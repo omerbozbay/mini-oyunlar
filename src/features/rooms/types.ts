@@ -1,4 +1,5 @@
 import type { GameId } from "../../games/types";
+import type { AuctionSession } from "../../games/auction/types";
 
 export interface Room {
   id: string;
@@ -7,6 +8,8 @@ export interface Room {
   selected_game: GameId;
   status: "lobby" | "closed";
   revision: number;
+  auction_theme?: string;
+  current_game_id?: string | null;
 }
 
 export interface Player {
@@ -23,4 +26,5 @@ export interface RoomSnapshot {
   room: Room;
   players: Player[];
   server_time: string;
+  game?: AuctionSession | null;
 }

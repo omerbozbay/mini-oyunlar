@@ -2,7 +2,7 @@
 
 İki kişinin farklı telefonlardan aynı lobide buluşması için Türkçe, mobil öncelikli bir platform. React, Vite, TypeScript, Tailwind CSS, React Router, Lucide ve Supabase kullanır. Netlify üzerinde statik olarak yayınlanabilir. Ücretli servis veya yapay zekâ API'si kullanmaz; servislerin ücretsiz plan limitleri geçerlidir.
 
-**Bu sürüm:** anonim kimlik, oda oluşturma/katılma, iki kişilik lobi, hazır olma, oyun seçimi, bağlantı durumu ve oturum kurtarma. Dört oyun geliştirme aşamasındadır; kartlarda açıkça **Yakında** yazar. Oyun başlatma sunucuda da engellenir.
+**Bu sürüm:** anonim kimlik, iki kişilik lobi ve **oynanabilir Açık Artırma**. Dokuz tema, tema başına 16 ürün, sunucuda rastgele seçilen 10 ürün, bütçe/sıra doğrulaması, gizli oylama ve rövanş içerir. Diğer üç oyun **Yakında** olarak işaretlidir. [Açık Artırma kurulum ve kullanım belgesi](docs/AUCTION.md).
 
 ## Yerelde çalıştırma
 
@@ -31,11 +31,11 @@ Supabase Dashboard → Project Settings → API Keys bölümünden **publishable
 
 1. `mini-oyunlar` Supabase projesini açın.
 2. Authentication → Sign In / Providers bölümünde **Anonymous Sign-Ins** seçeneğini etkinleştirin. Kullanıcıdan e-posta veya şifre istenmez.
-3. SQL Editor → New query açın. Yeni kurulumda önce [oda migration'ının](supabase/migrations/202611060001_room_foundation.sql), sonra [bağlantı migration'ının](supabase/migrations/202611060002_presence_lease.sql) **tamamını** sırasıyla birer kez çalıştırın. İlk dosyayı daha önce uyguladıysanız yalnız `202611060002_presence_lease.sql` dosyasını çalıştırın. Transaction hatada geri alınır; başarılı migration'ı ikinci kez çalıştırmayın.
-4. `rooms` ve `room_players` tablolarında RLS'nin açık olduğunu kontrol edin. Migration her ikisini `supabase_realtime` publication'ına ekler. Replication/Realtime ayarlarında iki tabloyu da doğrulayın. Supabase'in standart publication'ı yoksa önce panelden etkinleştirin, ardından aşağıdaki komutu yalnız henüz eklenmemiş tablolar için çalıştırın:
+3. SQL Editor → New query açın. Yeni kurulumda `supabase/migrations` içindeki **001 → 002 → 003 → 004** dosyalarının tamamını sırasıyla birer kez çalıştırın. Oda ve heartbeat zaten çalışıyorsa yalnız [003 katalog](supabase/migrations/202611060003_auction_catalog.sql), ardından [004 oyun motoru](supabase/migrations/202611060004_auction_engine.sql) gerekir. Başarılı migration'ı ikinci kez çalıştırmayın.
+4. `rooms`, `room_players` ve `game_sessions` tablolarında RLS'nin açık olduğunu kontrol edin. Migration'lar bunları `supabase_realtime` publication'ına ekler. Replication/Realtime ayarlarında üçünü de doğrulayın. Supabase'in standart publication'ı yoksa önce panelden etkinleştirin, ardından aşağıdaki komutu yalnız henüz eklenmemiş tablolar için çalıştırın:
 
    ```sql
-   alter publication supabase_realtime add table public.rooms, public.room_players;
+   alter publication supabase_realtime add table public.rooms, public.room_players, public.game_sessions;
    ```
 
 5. Authentication → URL Configuration içindeki Site URL'yi Netlify adresinizle ayarlayın. İlk yerel geliştirme için `http://localhost:5173` kullanabilirsiniz. Bu sürüm e-posta yönlendirmesi kullanmaz.
@@ -47,11 +47,11 @@ Anonim Auth için Supabase'in yerleşik hız sınırlarını koruyun. Turnstile/
 
 ## Kullanım
 
-İsminizi yazıp oda açın. Oluşan altı karakterli kodu arkadaşınıza gönderin. Arkadaşınız farklı bir tarayıcıdan/telefondan kendi ismiyle katılsın. Her oyuncu kendi **Ben hazırım** butonunu kullanır. Oyun seçimini oda sahibi yapar; değişiklik iki oyuncunun hazır durumunu sıfırlar. Oyunlar henüz başlatılamaz.
+İsminizi yazıp oda açın. Oluşan altı karakterli kodu arkadaşınıza gönderin. Arkadaşınız farklı bir tarayıcıdan/telefondan kendi ismiyle katılsın. Oda sahibi Açık Artırma'yı ve temayı seçer; her oyuncu **Ben hazırım** butonunu kullanır, ardından sahibi **Oyunu başlat** der. Oyun/tema seçimini değiştirmek iki hazır durumunu sıfırlar. Maç başlayınca tema değiştirilemez. Teklifler sırayla, bütçe rezervi korunarak verilir. Sonuçtaki gizli oylamanın ardından rövanş veya lobiye dönüş seçilebilir.
 
 Sayfayı yenilemek üyeliği silmez; URL'den aynı odaya dönülebilir. Ana sayfada **Mevcut odana dön** bağlantısı da çıkar. Tarayıcı depolaması silinir veya farklı tarayıcı kullanılırsa eski anonim kimlik geri alınamaz. Aynı tarayıcı profili içindeki sekmeler aynı oyuncuyu temsil eder; iki kişilik test için iki ayrı profil/gizli pencere kullanın.
 
-Bağlantı kesildiğinde veya sekme kapandığında üyelik korunur. 25 saniyelik heartbeat ve son heartbeat'ten itibaren 70 saniyelik zaman aşımı kullanılır. Gösterge sunucunun saatine göre hesaplanır ve veri gelmese bile saniyede bir yenilenir; telefonun tarih/saat ayarına bağlı değildir. Süresi dolan oyuncu **Çevrimdışı** ve hazır değil sayılır. Aktif oyuncuların heartbeat'i sunucuda eski hazır bayraklarını temizler; yeniden bağlanan oyuncu yeniden hazır olmalıdır. `set_ready` ve `start_game` de sunucudaki süreyi doğrular.
+Bağlantı kesildiğinde veya sekme kapandığında üyelik korunur. 25 saniyelik heartbeat ve son heartbeat'ten itibaren 70 saniyelik zaman aşımı kullanılır. Gösterge sunucunun saatine göre hesaplanır ve veri gelmese bile saniyede bir yenilenir; telefonun tarih/saat ayarına bağlı değildir. Süresi dolan oyuncu **Çevrimdışı** ve hazır değil sayılır. Aktif oyuncuların heartbeat'i sunucuda eski hazır bayraklarını temizler; lobide yeniden bağlanan oyuncu yeniden hazır olmalıdır. Başlamış maçta ise bağlantı geri geldiğinde aynı durum ve sıra üzerinden devam edilir. `set_ready` ve `start_game` de sunucudaki süreyi doğrular.
 
 Realtime güncellemeleri iki tarayıcıya aktarılır; kesintide 15 saniyelik sorgu yedeği çalışır. Ağ geri geldiğinde ve görünür sekmeye dönüldüğünde hemen heartbeat denenir. Sekme kapanışında güvenilmez unload isteğiyle üyelik silinmez. Arka planda telefon tarayıcısı zamanlayıcıları durdurabildiğinden çevrimiçi göstergesi yaklaşık bilgidir. Çevrimdışı üye iki kişilik kapasitede yer tutmaya devam eder. Odadan ayrılmak açık bir işlemdir; sahip ayrılırsa kalan oyuncu sahip olur, son oyuncu ayrılırsa oda kapanır.
 
@@ -65,6 +65,8 @@ npm run preview
 ```
 
 Testler PGlite içinde gerçek PostgreSQL SQL/RLS/RPC kodunu ve giriş doğrulamasını çalıştırır. Supabase WebSocket ağı, gerçek Auth JWT doğrulaması, çok bağlantılı eşzamanlı kilit yarışları ve iPhone/Android tarayıcıları yerel birim testleriyle doğrulanmış sayılmaz. [İki cihaz kontrol listesi](docs/TESTING.md) dağıtımdan sonra uygulanmalıdır.
+
+Migration'lar uygulandıktan sonra `npm run test:auction:live` gerçek Supabase üzerinde ayrı anonim test kimlikleriyle tam maç, aynı anda teklif, idempotency, WebSocket, 72 saniyelik kopma/dönüş, gizli oy, rövanş ve lobiye dönüş kontrolü yapar. En az yaklaşık iki dakika sürer. Test sonunda üyelikler kapatılır; anonim test hesapları ve oda geçmişi kalabilir. Kimlik tokenları dosyaya/çıktıya yazılmaz.
 
 ## Netlify
 
@@ -91,6 +93,6 @@ docs/ARCHITECTURE.md      Gelecek oyunlar, gizli durum ve eşzamanlılık
 docs/TESTING.md           Gerçek iki cihaz için test adımları
 ```
 
-Yeni oyun ekleme ve güvenlik sınırları için [mimari belgesini](docs/ARCHITECTURE.md) okuyun. Gelecek oyunlar için gereksiz boş tablolar oluşturulmamıştır; ilk migration yalnız `rooms` ve `room_players` içerir.
+Yeni oyun ekleme ve güvenlik sınırları için [mimari belgesini](docs/ARCHITECTURE.md) okuyun. İlk iki migration oda altyapısıdır; 003/004 Açık Artırma kataloğunu ve maç motorunu ekler. [Yerel görsellerin kaynak/lisans bilgisi](docs/ASSETS.md).
 
 Supabase resmi kaynakları: [Anonim giriş](https://supabase.com/docs/guides/auth/auth-anonymous), [RLS](https://supabase.com/docs/guides/database/postgres/row-level-security), [Postgres Changes](https://supabase.com/docs/guides/realtime/postgres-changes).

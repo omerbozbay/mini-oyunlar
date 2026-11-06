@@ -28,6 +28,7 @@ describe("sayfa kabuğu ve kurulum durumları", () => {
     ])
       expect(html).toContain(title);
     expect(html.match(/soon-tag/g)).toHaveLength(4);
+    expect(html).toContain("Oynamaya hazır");
     expect(html).toContain(".env.local");
     expect(html).toContain('id="player-name"');
     expect(html).toContain('disabled=""');

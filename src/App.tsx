@@ -16,6 +16,7 @@ import {
   Crown,
   DoorOpen,
   Gamepad2,
+  Gavel,
   Heart,
   LoaderCircle,
   LockKeyhole,
@@ -41,6 +42,8 @@ import {
   setReady,
 } from "./features/rooms/api";
 import { useRoom } from "./features/rooms/useRoom";
+import { AuctionBoard, ThemePicker } from "./games/auction/Auction";
+import { selectTheme, startAuction } from "./games/auction/api";
 
 function savedName() {
   try {
@@ -115,8 +118,9 @@ export default function App() {
             <li>
               <b>Lobide buluşun, hazır olun.</b>
               <p>
-                Oda sahibi oyun seçebilir. Dört mini oyun geliştirme aşamasında;
-                bu sürümde oda ve lobi kullanılabilir.
+                Oda sahibi Açık Artırma'yı ve dokuz temadan birini seçsin.
+                İkiniz de hazır olunca 20 TL bütçeyle yarışın. Diğer üç oyun
+                yakında.
               </p>
             </li>
           </ol>
@@ -337,7 +341,7 @@ function Home() {
             </h2>
           </div>
           <span className="count-tag">
-            <Gamepad2 size={16} /> 4 oyun yolda
+            <Gamepad2 size={16} /> 1 oyun hazır · 3 oyun yolda
           </span>
         </div>
         <div className="games-grid">
@@ -350,7 +354,9 @@ function Home() {
             >
               <div className="art-container">
                 <GameArt game={game.id} />
-                <span className="soon-tag">Yakında</span>
+                <span className="soon-tag">
+                  {game.status === "available" ? "Oynamaya hazır" : "Yakında"}
+                </span>
               </div>
               <div className="game-card-content">
                 <span className="game-category">{game.category}</span>
@@ -399,7 +405,9 @@ function GameModal({
         <GameArt game={game.id} />
       </div>
       <p className="notice setup">
-        Geliştirme aşamasında · Henüz oynanabilir değil
+        {game.status === "available"
+          ? "Oynamaya hazır · Bir oda oluştur, arkadaşını davet et."
+          : "Geliştirme aşamasında · Henüz oynanabilir değil"}
       </p>
       <p>{game.description}</p>
       <ul className="rules-list">
@@ -525,7 +533,7 @@ function Lobby({ code }: { code: string }) {
           <LogOut size={17} /> Odadan ayrıl
         </button>
       </div>
-      <div className="lobby-layout">
+      <div className={`lobby-layout ${snapshot.game ? "playing-auction" : ""}`}>
         <aside className="room-panel">
           <span className="small muted">ARKADAŞINA BU KODU GÖNDER</span>
           <div className="room-code">{room.code}</div>
@@ -594,7 +602,7 @@ function Lobby({ code }: { code: string }) {
           )}
           <button
             className={`primary-button w-full ${me?.ready ? "ready-button" : ""}`}
-            disabled={busy || !me?.online}
+            disabled={busy || !me?.online || !!snapshot.game}
             onClick={() => {
               void act(() => setReady(room.id, !me?.ready));
             }}
@@ -604,7 +612,11 @@ function Lobby({ code }: { code: string }) {
             ) : (
               <>
                 <Check size={18} />
-                {me?.ready ? "Hazırım · Vazgeç" : "Ben hazırım!"}
+                {snapshot.game
+                  ? "Oyun oturumu açık"
+                  : me?.ready
+                    ? "Hazırım · Vazgeç"
+                    : "Ben hazırım!"}
               </>
             )}
           </button>
@@ -620,81 +632,123 @@ function Lobby({ code }: { code: string }) {
                 : "Yeniden bağlanıyor · Durum kontrol ediliyor"}
           </div>
         </aside>
-        <div className="lobby-games">
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow muted">SIRADAKİ EĞLENCE</span>
-              <h2>Bir oyun seçelim.</h2>
-            </div>
-            <span className="count-tag">
-              {host ? "Seçim sende" : "Oda sahibi seçiyor"}
-            </span>
-          </div>
-          <div className="lobby-game-grid">
-            {games.map((item) => (
-              <article
-                className={`lobby-game ${item.color} ${item.id === room.selected_game ? "selected-game" : ""}`}
-                key={item.id}
-              >
-                <GameArt game={item.id} />
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>Yakında</p>
-                  <div className="lobby-game-buttons">
-                    <button
-                      className="small-button"
-                      disabled={!host || busy || item.id === room.selected_game}
-                      onClick={() => {
-                        void act(() => selectGame(room.id, item.id));
-                      }}
-                    >
-                      {item.id === room.selected_game ? (
-                        <>
-                          <Check size={14} /> Seçili
-                        </>
-                      ) : (
-                        "Seç"
-                      )}
-                    </button>
-                    <button
-                      className="icon-button"
-                      aria-label={`${item.title} kuralları`}
-                      onClick={() => setSelected(item)}
-                    >
-                      <CircleHelp size={18} />
-                    </button>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="launch-panel">
-            <div>
-              <Sparkles size={22} />
+        {snapshot.game ? (
+          <AuctionBoard
+            key={snapshot.game.id}
+            session={snapshot.game}
+            userId={userId}
+            players={players}
+            reload={reload}
+          />
+        ) : (
+          <div className="lobby-games">
+            <div className="section-heading">
               <div>
-                <h3>{game.title}</h3>
-                <p>
-                  {bothReady
-                    ? "İkiniz de hazırsınız! Oyun motoru henüz geliştirme aşamasında."
-                    : "İki oyuncu da hazır olduğunda burada buluşacağız."}
-                </p>
+                <span className="eyebrow muted">SIRADAKİ EĞLENCE</span>
+                <h2>Bir oyun seçelim.</h2>
               </div>
+              <span className="count-tag">
+                {host ? "Seçim sende" : "Oda sahibi seçiyor"}
+              </span>
             </div>
-            <button
-              className="primary-button"
-              disabled
-              title="Bu sürümde oyun motorları henüz bulunmuyor."
-            >
-              <LockKeyhole size={17} /> Oyun yakında
-            </button>
-            <p className="small muted">
-              {host
-                ? "Oyunu yalnızca oda sahibi başlatabilecek."
-                : "Oyunu oda sahibi başlatabilecek."}{" "}
-              Bu sürümde oda ve hazır olma sistemi kullanılabilir.
-            </p>
+            <div className="lobby-game-grid">
+              {games.map((item) => (
+                <article
+                  className={`lobby-game ${item.color} ${item.id === room.selected_game ? "selected-game" : ""}`}
+                  key={item.id}
+                >
+                  <GameArt game={item.id} />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>
+                      {item.status === "available"
+                        ? "Oynamaya hazır"
+                        : "Yakında"}
+                    </p>
+                    <div className="lobby-game-buttons">
+                      <button
+                        className="small-button"
+                        disabled={
+                          !host || busy || item.id === room.selected_game
+                        }
+                        onClick={() => {
+                          void act(() => selectGame(room.id, item.id));
+                        }}
+                      >
+                        {item.id === room.selected_game ? (
+                          <>
+                            <Check size={14} /> Seçili
+                          </>
+                        ) : (
+                          "Seç"
+                        )}
+                      </button>
+                      <button
+                        className="icon-button"
+                        aria-label={`${item.title} kuralları`}
+                        onClick={() => setSelected(item)}
+                      >
+                        <CircleHelp size={18} />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            {room.selected_game === "auction" && (
+              <ThemePicker
+                selected={room.auction_theme ?? "pizza"}
+                host={host}
+                disabled={busy}
+                onSelect={(theme) => {
+                  void act(() => selectTheme(room.id, theme));
+                }}
+              />
+            )}
+            <div className="launch-panel">
+              <div>
+                <Sparkles size={22} />
+                <div>
+                  <h3>{game.title}</h3>
+                  <p>
+                    {bothReady
+                      ? game.status === "available"
+                        ? "İkiniz de hazırsınız! İlk ürün sizi bekliyor."
+                        : "Bu oyun henüz geliştirme aşamasında."
+                      : "İki oyuncu da hazır olduğunda burada buluşacağız."}
+                  </p>
+                </div>
+              </div>
+              <button
+                className="primary-button"
+                disabled={
+                  busy || !host || !bothReady || game.status !== "available"
+                }
+                onClick={() => {
+                  void act(() => startAuction(room.id));
+                }}
+              >
+                {game.status === "available" ? (
+                  <>
+                    <Gavel size={17} /> Oyunu başlat
+                  </>
+                ) : (
+                  <>
+                    <LockKeyhole size={17} /> Oyun yakında
+                  </>
+                )}
+              </button>
+              <p className="small muted">
+                {host
+                  ? "Oyunu yalnızca oda sahibi başlatabilecek."
+                  : "Oyunu oda sahibi başlatabilecek."}{" "}
+                {game.status === "available"
+                  ? "Tema değiştiğinde ikiniz de yeniden hazır olmalısınız."
+                  : "Diğer oyunlar geliştirme aşamasında."}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {(error || actionError) && (
         <p className="notice error" role="alert">

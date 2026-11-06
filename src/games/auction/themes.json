@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "pizza",
+    "title": "En İyi Pizzayı Yap",
+    "subtitle": "Fırından çıkacak şaheseri sen tasarla.",
+    "color": "#f6dfcf",
+    "items": [
+      {
+        "id": "pizza-1",
+        "name": "Mozzarella",
+        "description": "Uzayan, yumuşacık İtalyan peyniri.",
+        "image": "/auction/pizza-1.svg",
+        "kind": "cheese"
+      },
+      {
+        "id": "pizza-2",
+        "name": "Domates",
+        "description": "Güneşte olgunlaşmış sulu dilimler.",
+        "image": "/auction/pizza-2.svg",
+        "kind": "tomato"
+      },
+      {
+        "id": "pizza-3",
+        "name": "Fesleğen",
+        "description": "Taptaze yapraklarla mis gibi aroma.",
+        "image": "/auction/pizza-3.svg",
+        "kind": "greens"
+      },
+      {
+        "id": "pizza-4",
+        "name": "Sucuk",
+        "description": "Baharatlı, kızarmış ince dilimler.",
+        "image": "/auction/pizza-4.svg",
+        "kind": "meat"
+      },
+      {
+        "id": "pizza-5",
+        "name": "Mantar",
+        "description": "Toprak kokulu, narin kültür mantarı.",
+        "image": "/auction/pizza-5.svg",
+        "kind": "mushroom"
+      },
+      {
+        "id": "pizza-6",
+        "name": "Siyah zeytin",
+        "description": "Akdeniz'den tuzlu bir dokunuş.",
+        "image": "/auction/pizza-6.svg",
+        "kind": "olive"
+      },
+      {
+        "id": "pizza-7",
+        "name": "Kırmızı biber",
+        "description": "Tatlı ve çıtır köz biber.",
+        "image": "/auction/pizza-7.svg",
+        "kind": "pepper"
+      },
+      {
+        "id": "pizza-8",
+        "name": "Ananas",
+        "description": "Tatlı-tuzlu sevenlere tropik sürpriz.",
+        "image": "/auction/pizza-8.svg",
+        "kind": "pineapple"
+      },
+      {
+        "id": "pizza-9",
+        "name": "Parmesan",
+        "description": "Olgunlaştırılmış, yoğun lezzet.",
+        "image": "/auction/pizza-9.svg",
+        "kind": "cheese"
+      },
+      {
+        "id": "pizza-10",
+        "name": "Roka",
+        "description": "Hafif acı, taptaze yeşillik.",
+        "image": "/auction/pizza-10.svg",
+        "kind": "greens"
+      },
+      {
+        "id": "pizza-11",
+        "name": "Karamelize soğan",
+        "description": "Ağır ateşte tatlanmış soğan.",
+        "image": "/auction/pizza-11.svg",
+        "kind": "onion"
+      },
+      {
+        "id": "pizza-12",
+        "name": "Acı sos",
+        "description": "Cesur damaklara ateşli dokunuş.",
+        "image": "/auction/pizza-12.svg",
+        "kind": "sauce"
+      },
+      {
+        "id": "pizza-13",
+        "name": "Tavuk",
+        "description": "Izgarada pişmiş yumuşak parçalar.",
+        "image": "/auction/pizza-13.svg",
+        "kind": "meat"
+      },
+      {
+        "id": "pizza-14",
+        "name": "Mısır",
+        "description": "Tatlı sarı tanelerle renk kat.",
+        "image": "/auction/pizza-14.svg",
+        "kind": "corn"
+      },
+      {
+        "id": "pizza-15",
+        "name": "Ton balığı",
+        "description": "Denizden gelen doyurucu lezzet.",
+        "image": "/auction/pizza-15.svg",
+        "kind": "fish"
+      },
+      {
+        "id": "pizza-16",
+        "name": "Trüf yağı",
+        "description": "Birkaç damlayla gurme bir final.",
+        "image": "/auction/pizza-16.svg",
+        "kind": "sauce"
+      }
+    ]
+  },
+  {
+    "id": "burger",
+    "title": "En İyi Hamburgeri Yap",
+    "subtitle": "İki ekmek arasına büyük fikirler sığdır.",
+    "color": "#f3e2be",
+    "items": [
+      {
+        "id": "burger-1",
+        "name": "Dana köfte",
+        "description": "Sulu, kalın ve ızgara izli.",
+        "image": "/auction/burger-1.svg",
+        "kind": "meat"
+      },
+      {
+        "id": "burger-2",
+        "name": "Cheddar",
+        "description": "Sıcakta eriyen altın renkli peynir.",
+        "image": "/auction/burger-2.svg",
+        "kind": "cheese"
+      },
+      {
+        "id": "burger-3",
+        "name": "Marul",
+        "description": "Her ısırığa çıtır ferahlık.",
+        "image": "/auction/burger-3.svg",
+        "kind": "greens"
+      },
+      {
+        "id": "burger-4",
+        "name": "Domates dilimi",
+        "description": "Taze ve sulu bir katman.",
+        "image": "/auction/burger-4.svg",
+        "kind": "tomato"
+      },
+      {
+        "id": "burger-5",
+        "name": "Turşu",
+        "description": "Ekşi ve gevrek kornişon.",
+        "image": "/auction/burger-5.svg",
+        "kind": "pickle"
+      },
+      {
+        "id": "burger-6",
+        "name": "Çıtır soğan",
+        "description": "Altın renkli kızarmış halkalar.",
+        "image": "/auction/burger-6.svg",
+        "kind": "onion"
+      },
+      {
+        "id": "burger-7",
+        "name": "Barbekü sos",
+        "description": "İsli, tatlı ve yoğun.",
+        "image": "/auction/burger-7.svg",
+        "kind": "sauce"
+      },
+      {
+        "id": "burger-8",
+        "name": "Acılı mayonez",
+        "description": "Kremalı lezzete küçük bir ateş.",
+        "image": "/auction/burger-8.svg",
+        "kind": "sauce"
+      },
+      {
+        "id": "burger-9",
+        "name": "Brioche ekmek",
+        "description": "Yumuşacık tereyağlı ekmek.",
+        "image": "/auction/burger-9.svg",
+        "kind": "bread"
+      },
+      {
+        "id": "burger-10",
+        "name": "Avokado",
+        "description": "İpeksi ve doyurucu yeşil katman.",
+        "image": "/auction/burger-10.svg",
+        "kind": "avocado"
+      },
+      {
+        "id": "burger-11",
+        "name": "Yumurta",
+        "description": "Akışkan sarısıyla farklı bir dokunuş.",
+        "image": "/auction/burger-11.svg",
+        "kind": "egg"
+      },
+      {
+        "id": "burger-12",
+        "name": "Pastırma",
+        "description": "Çemen kokulu ince et dilimleri.",
+        "image": "/auction/burger-12.svg",
+        "kind": "meat"
+      },
+      {
+        "id": "burger-13",
+        "name": "Mantar sote",
+        "description": "Tereyağında çevrilmiş mantarlar.",
+        "image": "/auction/burger-13.svg",
+        "kind": "mushroom"
+      },
+      {
+        "id": "burger-14",
+        "name": "Jalapeno",
+        "description": "Acı sevenlere yeşil biber.",
+        "image": "/auction/burger-14.svg",
+        "kind": "pepper"
+      },
+      {
+        "id": "burger-15",
+        "name": "Mozzarella çubuğu",
+        "description": "Çıtır dış, uzayan peynir.",
+        "image": "/auction/burger-15.svg",
+        "kind": "cheese"
+      },
+      {
+        "id": "burger-16",
+        "name": "Hardal",
+        "description": "Keskin, canlı ve sarı.",
+        "image": "/auction/burger-16.svg",
+        "kind": "sauce"
+      }
+    ]
+  },
+  {
+    "id": "cake",
+    "title": "En Güzel Pastayı Hazırla",
+    "subtitle": "Kutlamaya yakışır tatlı bir hayal kur.",
+    "color": "#f4dfe9",
+    "items": [
+      {
+        "id": "cake-1",
+        "name": "Çilek",
+        "description": "Parlak kırmızı, mis kokulu meyve.",
+        "image": "/auction/cake-1.svg",
+        "kind": "berry"
+      },
+      {
+        "id": "cake-2",
+        "name": "Bitter çikolata",
+        "description": "Yoğun kakaolu zarif lezzet.",
+        "image": "/auction/cake-2.svg",
+        "kind": "chocolate"
+      },
+      {
+        "id": "cake-3",
+        "name": "Vanilyalı krema",
+        "description": "Hafif ve bulut gibi yumuşak.",
+        "image": "/auction/cake-3.svg",
+        "kind": "cream"
+      },
+      {
+        "id": "cake-4",
+        "name": "Frambuaz",
+        "description": "Mayhoş küçük kırmızı taneler.",
+        "image": "/auction/cake-4.svg",
+        "kind": "berry"
+      },
+      {
+        "id": "cake-5",
+        "name": "Beyaz çikolata",
+        "description": "Sütlü ve tatlı bir katman.",
+        "image": "/auction/cake-5.svg",
+        "kind": "chocolate"
+      },
+      {
+        "id": "cake-6",
+        "name": "Muz",
+        "description": "Yumuşak dokulu meyve dilimleri.",
+        "image": "/auction/cake-6.svg",
+        "kind": "banana"
+      },
+      {
+        "id": "cake-7",
+        "name": "Antep fıstığı",
+        "description": "Yeşil, çıtır ve özel.",
+        "image": "/auction/cake-7.svg",
+        "kind": "nut"
+      },
+      {
+        "id": "cake-8",
+        "name": "Karamel",
+        "description": "Altın renkli akışkan mutluluk.",
+        "image": "/auction/cake-8.svg",
+        "kind": "honey"
+      },
+      {
+        "id": "cake-9",
+        "name": "Yaban mersini",
+        "description": "Minik mor lezzet topları.",
+        "image": "/auction/cake-9.svg",
+        "kind": "berry"
+      },
+      {
+        "id": "cake-10",
+        "name": "Hindistan cevizi",
+        "description": "Tropik kokulu beyaz dokunuş.",
+        "image": "/auction/cake-10.svg",
+        "kind": "coconut"
+      },
+      {
+        "id": "cake-11",
+        "name": "Limon kreması",
+        "description": "Ferah ve hafif ekşi dolgu.",
+        "image": "/auction/cake-11.svg",
+        "kind": "cream"
+      },
+      {
+        "id": "cake-12",
+        "name": "Kakaolu pandispanya",
+        "description": "Yumuşak çikolatalı taban.",
+        "image": "/auction/cake-12.svg",
+        "kind": "cake"
+      },
+      {
+        "id": "cake-13",
+        "name": "Şeker çiçekler",
+        "description": "Pastana renkli bir bahçe ekle.",
+        "image": "/auction/cake-13.svg",
+        "kind": "flower"
+      },
+      {
+        "id": "cake-14",
+        "name": "Bisküvi kırığı",
+        "description": "Her lokmada çıtır sürpriz.",
+        "image": "/auction/cake-14.svg",
+        "kind": "cookie"
+      },
+      {
+        "id": "cake-15",
+        "name": "Kiraz",
+        "description": "Kutlamanın parlak kırmızı tacı.",
+        "image": "/auction/cake-15.svg",
+        "kind": "cherry"
+      },
+      {
+        "id": "cake-16",
+        "name": "Yenilebilir inci",
+        "description": "Işıltılı, küçük ve zarif süsler.",
+        "image": "/auction/cake-16.svg",
+        "kind": "pearls"
+      }
+    ]
+  },
+  {
+    "id": "breakfast",
+    "title": "En İyi Kahvaltı Sofrasını Kur",
+    "subtitle": "Uzun pazar sabahlarının sofrasını kur.",
+    "color": "#f7edce",
+    "items": [
+      {
+        "id": "breakfast-1",
+        "name": "Simit",
+        "description": "Susamlı, çıtır ve sıcacık.",
+        "image": "/auction/breakfast-1.svg",
+        "kind": "bread"
+      },
+      {
+        "id": "breakfast-2",
+        "name": "Beyaz peynir",
+        "description": "Klasik kahvaltının vazgeçilmezi.",
+        "image": "/auction/breakfast-2.svg",
+        "kind": "cheese"
+      },
+      {
+        "id": "breakfast-3",
+        "name": "Bal kaymak",
+        "description": "Tatlı ve ipeksi ikili.",
+        "image": "/auction/breakfast-3.svg",
+        "kind": "honey"
+      },
+      {
+        "id": "breakfast-4",
+        "name": "Menemen",
+        "description": "Domates, biber ve yumurta uyumu.",
+        "image": "/auction/breakfast-4.svg",
+        "kind": "egg"
+      },
+      {
+        "id": "breakfast-5",
+        "name": "Siyah zeytin",
+        "description": "Küçük bir Ege esintisi.",
+        "image": "/auction/breakfast-5.svg",
+        "kind": "olive"
+      },
+      {
+        "id": "breakfast-6",
+        "name": "Çilek reçeli",
+        "description": "Ev yapımı meyveli mutluluk.",
+        "image": "/auction/breakfast-6.svg",
+        "kind": "berry"
+      },
+      {
+        "id": "breakfast-7",
+        "name": "Sucuklu yumurta",
+        "description": "Tavadan yükselen nefis koku.",
+        "image": "/auction/breakfast-7.svg",
+        "kind": "egg"
+      },
+      {
+        "id": "breakfast-8",
+        "name": "Taze domates",
+        "description": "Bahçeden sofraya kırmızı dilimler.",
+        "image": "/auction/breakfast-8.svg",
+        "kind": "tomato"
+      },
+      {
+        "id": "breakfast-9",
+        "name": "Salatalık",
+        "description": "Ferah ve gevrek yeşil dilimler.",
+        "image": "/auction/breakfast-9.svg",
+        "kind": "pickle"
+      },
+      {
+        "id": "breakfast-10",
+        "name": "Gözleme",
+        "description": "İncecik hamurda sıcacık iç.",
+        "image": "/auction/breakfast-10.svg",
+        "kind": "bread"
+      },
+      {
+        "id": "breakfast-11",
+        "name": "Çay",
+        "description": "İnce belli bardakta demli çay.",
+        "image": "/auction/breakfast-11.svg",
+        "kind": "tea"
+      },
+      {
+        "id": "breakfast-12",
+        "name": "Portakal suyu",
+        "description": "Taze sıkılmış güneş enerjisi.",
+        "image": "/auction/breakfast-12.svg",
+        "kind": "orange"
+      },
+      {
+        "id": "breakfast-13",
+        "name": "Pankek",
+        "description": "Yumuşacık mini kahvaltı kuleleri.",
+        "image": "/auction/breakfast-13.svg",
+        "kind": "cake"
+      },
+      {
+        "id": "breakfast-14",
+        "name": "Avokado ezmesi",
+        "description": "Modern sofraya kremsi yeşillik.",
+        "image": "/auction/breakfast-14.svg",
+        "kind": "avocado"
+      },
+      {
+        "id": "breakfast-15",
+        "name": "Ceviz",
+        "description": "Çıtır ve doyurucu bir eşlikçi.",
+        "image": "/auction/breakfast-15.svg",
+        "kind": "nut"
+      },
+      {
+        "id": "breakfast-16",
+        "name": "Kruvasan",
+        "description": "Kat kat tereyağlı Fransız dokunuşu.",
+        "image": "/auction/breakfast-16.svg",
+        "kind": "bread"
+      }
+    ]
+  },
+  {
+    "id": "pasta",
+    "title": "En İyi Makarnayı Yap",
+    "subtitle": "Soslar ve malzemelerle kendi klasiğini yarat.",
+    "color": "#e8ecd6",
+    "items": [
+      {
+        "id": "pasta-1",
+        "name": "Domates sosu",
+        "description": "Kısık ateşte pişmiş klasik sos.",
+        "image": "/auction/pasta-1.svg",
+        "kind": "tomato"
+      },
+      {
+        "id": "pasta-2",
+        "name": "Pesto",
+        "description": "Fesleğenle yemyeşil bir lezzet.",
+        "image": "/auction/pasta-2.svg",
+        "kind": "greens"
+      },
+      {
+        "id": "pasta-3",
+        "name": "Parmesan",
+        "description": "Üzerine serpiştirilecek yoğun aroma.",
+        "image": "/auction/pasta-3.svg",
+        "kind": "cheese"
+      },
+      {
+        "id": "pasta-4",
+        "name": "Krema",
+        "description": "İpeksi ve pürüzsüz bir sos tabanı.",
+        "image": "/auction/pasta-4.svg",
+        "kind": "cream"
+      },
+      {
+        "id": "pasta-5",
+        "name": "Karides",
+        "description": "Denizden gelen zarif lokmalar.",
+        "image": "/auction/pasta-5.svg",
+        "kind": "shrimp"
+      },
+      {
+        "id": "pasta-6",
+        "name": "Mantar",
+        "description": "Sosa derinlik katan yumuşak doku.",
+        "image": "/auction/pasta-6.svg",
+        "kind": "mushroom"
+      },
+      {
+        "id": "pasta-7",
+        "name": "Izgara tavuk",
+        "description": "Doyurucu ve hafif protein.",
+        "image": "/auction/pasta-7.svg",
+        "kind": "meat"
+      },
+      {
+        "id": "pasta-8",
+        "name": "Sarımsak",
+        "description": "Azıyla bile kocaman aroma.",
+        "image": "/auction/pasta-8.svg",
+        "kind": "garlic"
+      },
+      {
+        "id": "pasta-9",
+        "name": "Ispanak",
+        "description": "Taze, yeşil ve hafif.",
+        "image": "/auction/pasta-9.svg",
+        "kind": "greens"
+      },
+      {
+        "id": "pasta-10",
+        "name": "Kurutulmuş domates",
+        "description": "Güneşte yoğunlaşmış lezzet.",
+        "image": "/auction/pasta-10.svg",
+        "kind": "tomato"
+      },
+      {
+        "id": "pasta-11",
+        "name": "Zeytinyağı",
+        "description": "Akdeniz'in altın damlaları.",
+        "image": "/auction/pasta-11.svg",
+        "kind": "sauce"
+      },
+      {
+        "id": "pasta-12",
+        "name": "Fesleğen",
+        "description": "Sona eklenen mis kokulu yapraklar.",
+        "image": "/auction/pasta-12.svg",
+        "kind": "greens"
+      },
+      {
+        "id": "pasta-13",
+        "name": "Somon",
+        "description": "Yumuşak ve zengin balık dilimleri.",
+        "image": "/auction/pasta-13.svg",
+        "kind": "fish"
+      },
+      {
+        "id": "pasta-14",
+        "name": "Acı pul biber",
+        "description": "Sosa sıcak bir hareket kat.",
+        "image": "/auction/pasta-14.svg",
+        "kind": "pepper"
+      },
+      {
+        "id": "pasta-15",
+        "name": "Burrata",
+        "description": "İçi kremalı yumuşak peynir.",
+        "image": "/auction/pasta-15.svg",
+        "kind": "cheese"
+      },
+      {
+        "id": "pasta-16",
+        "name": "Çam fıstığı",
+        "description": "Minik, çıtır ve aromatik.",
+        "image": "/auction/pasta-16.svg",
+        "kind": "nut"
+      }
+    ]
+  },
+  {
+    "id": "dessert",
+    "title": "En Güzel Tatlı Tabağını Hazırla",
+    "subtitle": "Bir tabakta beş küçük mutluluk biriktir.",
+    "color": "#eaddf2",
+    "items": [
+      {
+        "id": "dessert-1",
+        "name": "Brownie",
+        "description": "İçi nemli, yoğun çikolatalı küp.",
+        "image": "/auction/dessert-1.svg",
+        "kind": "chocolate"
+      },
+      {
+        "id": "dessert-2",
+        "name": "Makaron",
+        "description": "Renkli, narin bademli lokmalar.",
+        "image": "/auction/dessert-2.svg",
+        "kind": "cookie"
+      },
+      {
+        "id": "dessert-3",
+        "name": "Çilek",
+        "description": "Tatlılara meyveli ferahlık.",
+        "image": "/auction/dessert-3.svg",
+        "kind": "berry"
+      },
+      {
+        "id": "dessert-4",
+        "name": "Vanilyalı dondurma",
+        "description": "Serin ve kremalı bir top.",
+        "image": "/auction/dessert-4.svg",
+        "kind": "cream"
+      },
+      {
+        "id": "dessert-5",
+        "name": "Profiterol",
+        "description": "Çikolata soslu minik hamur topları.",
+        "image": "/auction/dessert-5.svg",
+        "kind": "cake"
+      },
+      {
+        "id": "dessert-6",
+        "name": "Baklava",
+        "description": "Fıstıklı, şerbetli ince katlar.",
+        "image": "/auction/dessert-6.svg",
+        "kind": "cake"
+      },
+      {
+        "id": "dessert-7",
+        "name": "Cheesecake",
+        "description": "Kremamsı, hafif ekşi dilim.",
+        "image": "/auction/dessert-7.svg",
+        "kind": "cake"
+      },
+      {
+        "id": "dessert-8",
+        "name": "Çikolata sos",
+        "description": "Tabağını çizgilerle süsle.",
+        "image": "/auction/dessert-8.svg",
+        "kind": "sauce"
+      },
+      {
+        "id": "dessert-9",
+        "name": "Fındık",
+        "description": "Kavrulmuş çıtır eşlikçi.",
+        "image": "/auction/dessert-9.svg",
+        "kind": "nut"
+      },
+      {
+        "id": "dessert-10",
+        "name": "Limon sorbe",
+        "description": "Tertemiz ve serinletici aroma.",
+        "image": "/auction/dessert-10.svg",
+        "kind": "orange"
+      },
+      {
+        "id": "dessert-11",
+        "name": "Waffle",
+        "description": "Kare kare tatlı bir taban.",
+        "image": "/auction/dessert-11.svg",
+        "kind": "cookie"
+      },
+      {
+        "id": "dessert-12",
+        "name": "Muz dilimleri",
+        "description": "Yumuşak ve doğal tatlılık.",
+        "image": "/auction/dessert-12.svg",
+        "kind": "banana"
+      },
+      {
+        "id": "dessert-13",
+        "name": "Karamel sos",
+        "description": "Akışkan altın renkli dokunuş.",
+        "image": "/auction/dessert-13.svg",
+        "kind": "honey"
+      },
+      {
+        "id": "dessert-14",
+        "name": "Nane",
+        "description": "Tatlı tabağında ferah bir yaprak.",
+        "image": "/auction/dessert-14.svg",
+        "kind": "greens"
+      },
+      {
+        "id": "dessert-15",
+        "name": "Tiramisu",
+        "description": "Kahve kokulu İtalyan klasiği.",
+        "image": "/auction/dessert-15.svg",
+        "kind": "cake"
+      },
+      {
+        "id": "dessert-16",
+        "name": "Pamuk şeker",
+        "description": "Bulut gibi hafif ve pembe.",
+        "image": "/auction/dessert-16.svg",
+        "kind": "cream"
+      }
+    ]
+  },
+  {
+    "id": "animals",
+    "title": "En Güçlü Hayvan Ordusunu Kur",
+    "subtitle": "Beş farklı güç, tek hayali takım.",
+    "color": "#deecdf",
+    "items": [
+      {
+        "id": "animals-1",
+        "name": "Aslan",
+        "description": "Cesur lider, güçlü bir kükreme.",
+        "image": "/auction/animals-1.svg",
+        "kind": "lion"
+      },
+      {
+        "id": "animals-2",
+        "name": "Fil",
+        "description": "Dev gövde, sarsılmaz savunma.",
+        "image": "/auction/animals-2.svg",
+        "kind": "elephant"
+      },
+      {
+        "id": "animals-3",
+        "name": "Kurt",
+        "description": "Takım çalışmasının hızlı ustası.",
+        "image": "/auction/animals-3.svg",
+        "kind": "wolf"
+      },
+      {
+        "id": "animals-4",
+        "name": "Kartal",
+        "description": "Gökyüzünden keskin gözlem.",
+        "image": "/auction/animals-4.svg",
+        "kind": "eagle"
+      },
+      {
+        "id": "animals-5",
+        "name": "Kaplan",
+        "description": "Sessiz, çevik ve çok güçlü.",
+        "image": "/auction/animals-5.svg",
+        "kind": "tiger"
+      },
+      {
+        "id": "animals-6",
+        "name": "Ayı",
+        "description": "Kalın kürk ve dev pençeler.",
+        "image": "/auction/animals-6.svg",
+        "kind": "bear"
+      },
+      {
+        "id": "animals-7",
+        "name": "Gergedan",
+        "description": "Zırh gibi deri, kararlı hücum.",
+        "image": "/auction/animals-7.svg",
+        "kind": "rhino"
+      },
+      {
+        "id": "animals-8",
+        "name": "Goril",
+        "description": "Kuvvet ve zekâ bir arada.",
+        "image": "/auction/animals-8.svg",
+        "kind": "gorilla"
+      },
+      {
+        "id": "animals-9",
+        "name": "Timsah",
+        "description": "Suda bekleyen sabırlı avcı.",
+        "image": "/auction/animals-9.svg",
+        "kind": "croc"
+      },
+      {
+        "id": "animals-10",
+        "name": "Tilki",
+        "description": "Kurnaz planların küçük ustası.",
+        "image": "/auction/animals-10.svg",
+        "kind": "fox"
+      },
+      {
+        "id": "animals-11",
+        "name": "Bizon",
+        "description": "Sürünün dayanıklı koruyucusu.",
+        "image": "/auction/animals-11.svg",
+        "kind": "bison"
+      },
+      {
+        "id": "animals-12",
+        "name": "At",
+        "description": "Uzak yolların hızlı yol arkadaşı.",
+        "image": "/auction/animals-12.svg",
+        "kind": "horse"
+      },
+      {
+        "id": "animals-13",
+        "name": "Baykuş",
+        "description": "Gecenin sessiz gözcüsü.",
+        "image": "/auction/animals-13.svg",
+        "kind": "owl"
+      },
+      {
+        "id": "animals-14",
+        "name": "Köpekbalığı",
+        "description": "Okyanusun keskin yüzücüsü.",
+        "image": "/auction/animals-14.svg",
+        "kind": "shark"
+      },
+      {
+        "id": "animals-15",
+        "name": "Kobra",
+        "description": "Küçük gövdede büyük caydırıcılık.",
+        "image": "/auction/animals-15.svg",
+        "kind": "cobra"
+      },
+      {
+        "id": "animals-16",
+        "name": "Ejderha",
+        "description": "Hayal gücünden gelen efsanevi güç.",
+        "image": "/auction/animals-16.svg",
+        "kind": "dragon"
+      }
+    ]
+  },
+  {
+    "id": "holiday",
+    "title": "Hayalindeki Tatili Planla",
+    "subtitle": "Beş deneyimle unutulmaz bir kaçamak tasarla.",
+    "color": "#dcebf2",
+    "items": [
+      {
+        "id": "holiday-1",
+        "name": "Beyaz kumlu plaj",
+        "description": "Dalgalar, şezlong ve uzun bir gün.",
+        "image": "/auction/holiday-1.svg",
+        "kind": "beach"
+      },
+      {
+        "id": "holiday-2",
+        "name": "Dağ evi",
+        "description": "Sessizlik ve çam kokulu sabahlar.",
+        "image": "/auction/holiday-2.svg",
+        "kind": "cabin"
+      },
+      {
+        "id": "holiday-3",
+        "name": "Balon turu",
+        "description": "Gündoğumunda gökyüzüne yüksel.",
+        "image": "/auction/holiday-3.svg",
+        "kind": "balloon"
+      },
+      {
+        "id": "holiday-4",
+        "name": "Ada kaçamağı",
+        "description": "Kalabalıktan uzakta küçük bir cennet.",
+        "image": "/auction/holiday-4.svg",
+        "kind": "island"
+      },
+      {
+        "id": "holiday-5",
+        "name": "Safari",
+        "description": "Vahşi doğaya saygılı bir keşif.",
+        "image": "/auction/holiday-5.svg",
+        "kind": "safari"
+      },
+      {
+        "id": "holiday-6",
+        "name": "Şehir gezisi",
+        "description": "Sokaklar, meydanlar ve yeni hikâyeler.",
+        "image": "/auction/holiday-6.svg",
+        "kind": "city"
+      },
+      {
+        "id": "holiday-7",
+        "name": "Tren yolculuğu",
+        "description": "Pencereden akan manzaralar.",
+        "image": "/auction/holiday-7.svg",
+        "kind": "train"
+      },
+      {
+        "id": "holiday-8",
+        "name": "Yelken turu",
+        "description": "Rüzgârla koydan koya yolculuk.",
+        "image": "/auction/holiday-8.svg",
+        "kind": "ship"
+      },
+      {
+        "id": "holiday-9",
+        "name": "Yıldızlı kamp",
+        "description": "Gökyüzünün altında bir gece.",
+        "image": "/auction/holiday-9.svg",
+        "kind": "tent"
+      },
+      {
+        "id": "holiday-10",
+        "name": "Kayak",
+        "description": "Bembeyaz pistlerde özgürlük.",
+        "image": "/auction/holiday-10.svg",
+        "kind": "ski"
+      },
+      {
+        "id": "holiday-11",
+        "name": "Kuzey ışıkları",
+        "description": "Gökyüzünde renkli bir dans.",
+        "image": "/auction/holiday-11.svg",
+        "kind": "aurora"
+      },
+      {
+        "id": "holiday-12",
+        "name": "Dalış",
+        "description": "Mavi dünyanın sessiz misafiri ol.",
+        "image": "/auction/holiday-12.svg",
+        "kind": "scuba"
+      },
+      {
+        "id": "holiday-13",
+        "name": "Müze günü",
+        "description": "Sanatla ve tarihle dolu saatler.",
+        "image": "/auction/holiday-13.svg",
+        "kind": "museum"
+      },
+      {
+        "id": "holiday-14",
+        "name": "Spa molası",
+        "description": "Dinlenmeye ayrılmış özel bir gün.",
+        "image": "/auction/holiday-14.svg",
+        "kind": "spa"
+      },
+      {
+        "id": "holiday-15",
+        "name": "Şelale yürüyüşü",
+        "description": "Yeşilin içinde serin bir rota.",
+        "image": "/auction/holiday-15.svg",
+        "kind": "waterfall"
+      },
+      {
+        "id": "holiday-16",
+        "name": "Zirve yürüyüşü",
+        "description": "Manzaranın en yüksek noktasına çık.",
+        "image": "/auction/holiday-16.svg",
+        "kind": "mountain"
+      }
+    ]
+  },
+  {
+    "id": "home",
+    "title": "Hayalindeki Evi Tasarla",
+    "subtitle": "Beş parçayla tam sana göre bir yaşam alanı.",
+    "color": "#e9e2f0",
+    "items": [
+      {
+        "id": "home-1",
+        "name": "Kocaman kanepe",
+        "description": "Uzun sohbetlere yumuşak bir yer.",
+        "image": "/auction/home-1.svg",
+        "kind": "sofa"
+      },
+      {
+        "id": "home-2",
+        "name": "Okuma lambası",
+        "description": "Kitap köşene sıcak bir ışık.",
+        "image": "/auction/home-2.svg",
+        "kind": "lamp"
+      },
+      {
+        "id": "home-3",
+        "name": "Duvar kitaplığı",
+        "description": "Hikâyelerine kat kat yer aç.",
+        "image": "/auction/home-3.svg",
+        "kind": "bookshelf"
+      },
+      {
+        "id": "home-4",
+        "name": "Küvet",
+        "description": "Günün sonunda sakin bir mola.",
+        "image": "/auction/home-4.svg",
+        "kind": "bathtub"
+      },
+      {
+        "id": "home-5",
+        "name": "Piyano",
+        "description": "Evin ritmini kendin belirle.",
+        "image": "/auction/home-5.svg",
+        "kind": "piano"
+      },
+      {
+        "id": "home-6",
+        "name": "Rahat yatak",
+        "description": "Dinlendirici uykunun merkezi.",
+        "image": "/auction/home-6.svg",
+        "kind": "bed"
+      },
+      {
+        "id": "home-7",
+        "name": "Çalışma masası",
+        "description": "Yeni fikirler için ferah bir köşe.",
+        "image": "/auction/home-7.svg",
+        "kind": "desk"
+      },
+      {
+        "id": "home-8",
+        "name": "Şömine",
+        "description": "Kış akşamlarına çıtırdayan sıcaklık.",
+        "image": "/auction/home-8.svg",
+        "kind": "fireplace"
+      },
+      {
+        "id": "home-9",
+        "name": "İç mekân bahçesi",
+        "description": "Her mevsim yemyeşil bir nefes.",
+        "image": "/auction/home-9.svg",
+        "kind": "plant"
+      },
+      {
+        "id": "home-10",
+        "name": "Yumuşak halı",
+        "description": "Çıplak ayaklara sıcak bir karşılama.",
+        "image": "/auction/home-10.svg",
+        "kind": "rug"
+      },
+      {
+        "id": "home-11",
+        "name": "Boy aynası",
+        "description": "Işığı çoğaltan zarif bir parça.",
+        "image": "/auction/home-11.svg",
+        "kind": "mirror"
+      },
+      {
+        "id": "home-12",
+        "name": "Manzaralı teras",
+        "description": "Açık havada uzun akşamlar.",
+        "image": "/auction/home-12.svg",
+        "kind": "terrace"
+      },
+      {
+        "id": "home-13",
+        "name": "Ada mutfak",
+        "description": "Birlikte yemek yapmaya davet.",
+        "image": "/auction/home-13.svg",
+        "kind": "kitchen"
+      },
+      {
+        "id": "home-14",
+        "name": "Ev sineması",
+        "description": "Patlamış mısırla film geceleri.",
+        "image": "/auction/home-14.svg",
+        "kind": "cinema"
+      },
+      {
+        "id": "home-15",
+        "name": "Sallanan koltuk",
+        "description": "Yavaşlamak için küçük bir bahane.",
+        "image": "/auction/home-15.svg",
+        "kind": "chair"
+      },
+      {
+        "id": "home-16",
+        "name": "Mini havuz",
+        "description": "Evde küçük bir tatil köşesi.",
+        "image": "/auction/home-16.svg",
+        "kind": "pool"
+      }
+    ]
+  }
+]

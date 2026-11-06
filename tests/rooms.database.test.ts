@@ -123,7 +123,7 @@ describe("oda RPC ve RLS güvenliği", () => {
       await scalar("select count(*)::int from public.room_players where ready"),
     ).toBe(0);
   });
-  it("başlatmayı sahip ve iki hazır kişiyle sınırlar; eksik motoru başlatmaz", async () => {
+  it("başlatmayı sahip ve iki hazır kişiyle sınırlar; geliştirilmemiş oyunları başlatmaz", async () => {
     const { id, code } = await room();
     await expect(
       db.query("select public.start_game($1)", [id]),
@@ -135,6 +135,10 @@ describe("oda RPC ve RLS güvenliği", () => {
     await expect(
       db.query("select public.start_game($1)", [id]),
     ).rejects.toThrow("host_only");
+    await asUser(0);
+    await db.query("select public.select_game($1,'chain')", [id]);
+    await asUser(1);
+    await db.query("select public.set_ready($1,true)", [id]);
     await asUser(0);
     await db.query("select public.set_ready($1,true)", [id]);
     await expect(

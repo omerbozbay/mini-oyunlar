@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "assets:auction": "node scripts/build-auction-assets.mjs",
+    "test:auction:live": "node scripts/test-auction-live.mjs",
     "dev": "vite --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && vite build",

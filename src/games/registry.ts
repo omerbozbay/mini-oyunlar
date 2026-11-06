@@ -8,7 +8,7 @@ export const games: GameDefinition[] = [
     description: "Bütçeni iyi kullan, en güzel kombinasyonu sen kur.",
     emoji: "🍕",
     color: "peach",
-    status: "coming-soon",
+    status: "available",
     rules: [
       "20 TL bütçe, 10 ürün ve bolca tatlı rekabet.",
       "Sırayla teklif ver veya pas geç. Her oyuncu 5 ürün toplar.",

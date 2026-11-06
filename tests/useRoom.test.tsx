@@ -185,4 +185,27 @@ describe("lobi bağlantı yaşam döngüsü", () => {
     });
     expect(mocks.heartbeat).toHaveBeenCalledTimes(beats + 1);
   });
+  it("sorgu sürerken gelen Realtime güncellemesini düşürmez", async () => {
+    await mount();
+    const old = snapshot();
+    let resolve!: (value: RoomSnapshot) => void;
+    const delayed = new Promise<RoomSnapshot>((done) => {
+      resolve = done;
+    });
+    mocks.fetchRoom.mockImplementationOnce(() => delayed);
+    let request!: Promise<void>;
+    await act(async () => {
+      request = current.reload();
+    });
+    guestReady = false;
+    await act(async () => {
+      mocks.callbacks[1]();
+    });
+    await act(async () => {
+      resolve(old);
+      await request;
+    });
+    expect(current.players[1].ready).toBe(false);
+    expect(mocks.fetchRoom.mock.results.at(-1)?.value).not.toBe(delayed);
+  });
 });

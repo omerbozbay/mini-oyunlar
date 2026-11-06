@@ -24,9 +24,16 @@ export function useRoom(code: string) {
       | undefined;
     let poll: ReturnType<typeof setInterval> | undefined;
     let busy = false;
+    let refreshAgain = false;
     let subscribedRoomId = "";
     const reload = async () => {
-      if (busy || !active) return;
+      if (!active) return;
+      if (busy) {
+        // Sorgu sürerken gelen teklif/Realtime olayını kaybetme. Sonrasında
+        // tek bir güncel görüntü daha al; eski fiyat ekranda takılı kalmasın.
+        refreshAgain = true;
+        return;
+      }
       busy = true;
       try {
         const next = await fetchRoom(code);
@@ -44,6 +51,10 @@ export function useRoom(code: string) {
       } finally {
         busy = false;
         if (active) setLoading(false);
+        if (active && refreshAgain) {
+          refreshAgain = false;
+          void reload();
+        }
       }
     };
     reloadRef.current = reload;
@@ -85,6 +96,18 @@ export function useRoom(code: string) {
               event: "*",
               schema: "public",
               table: "room_players",
+              filter: `room_id=eq.${subscribedRoomId || "00000000-0000-0000-0000-000000000000"}`,
+            },
+            () => {
+              void reload();
+            },
+          )
+          .on(
+            "postgres_changes",
+            {
+              event: "*",
+              schema: "public",
+              table: "game_sessions",
               filter: `room_id=eq.${subscribedRoomId || "00000000-0000-0000-0000-000000000000"}`,
             },
             () => {

@@ -16,7 +16,7 @@ Odalar bağlantı koptu diye silinmez. Açık ayrılmada üyelik `active=false` 
 
 Heartbeat aynı oda satırını kilitler, süresi dolmuş üyelerin yalnız hazır bayrağını temizler ve çağıranın JWT kimliğine ait `last_seen` değerini yeniler. UPDATE'ler mevcut RLS korumalı Realtime aboneliğiyle yayılır. Süresi dolmuş bir kayda tekrar yazıldığında BEFORE UPDATE trigger'ı eski hazır durumunu geri taşımaz; böylece `join_room` tekrar katılma yolu da güvenlidir. `set_ready(true)` güncel heartbeat ister; başlatma iki güncel ve hazır üyeyi ayrıca sunucuda doğrular. İstemci hesaplaması yetkilendirme yerine geçmez.
 
-`start_game` RPC'si üyelik, sahiplik, iki hazır ve yakın zamanda bağlı oyuncuyu doğrular, ardından `game_not_available` döndürür. Oyun motoru olmadığı halde skor, oturum veya sonuç uydurmaz. Arayüzde başlatma düğmesi bu nedenle kapalıdır.
+`start_game` RPC'si üyelik, sahiplik, iki hazır ve yakın zamanda bağlı oyuncuyu doğrular. Açık Artırma için sunucuda maç açar; diğer üç oyun `game_not_available` döndürür. `rooms.current_game_id` mevcut maçı işaret eder; oda durumunu değiştirmeden mevcut heartbeat ve oturum kurtarma akışı korunur. [Açık Artırma motorunun ayrıntıları](AUCTION.md).
 
 ## Oyun modülü ekleme sözleşmesi
 
@@ -24,9 +24,9 @@ Heartbeat aynı oda satırını kilitler, süresi dolmuş üyelerin yalnız haz�
 
 Bir oyunu available yapmak tek başına yeterli değildir. Yeni migration, sunucu eylem doğrulaması, oyun görünümü ve entegrasyon testleri birlikte eklenmelidir. İstemci registry'si güvenlik otoritesi değildir; sunucu kendi izin verilen oyun listesini doğrular.
 
-## Gelecek veritabanı tasarımı (henüz oluşturulmadı)
+## Oyun verileri ve gelecekte genişletme
 
-- `game_sessions`: oda FK'si, oyun türü, durum, sürüm, görünür JSON durumu ve sunucunun hesapladığı sonuç. Üyelere yalnız SELECT; durum değişiklikleri RPC ile.
+- `game_sessions` Açık Artırma için oluşturulmuştur: oda FK'si, tema, evre, sürüm, görünür JSON durumu ve sunucunun hesapladığı sonuç. Üyelere yalnız SELECT; durum değişiklikleri RPC ile. `private.auction_requests` idempotency, `private.auction_votes` gizli tercih, `private.auction_catalog` sunucu ürün havuzudur. Tümünde RLS açık ve private tablolarda istemci grant'i yoktur.
 - `game_actions`: oturum FK'si, oyuncu FK'si, artan sıra/sürüm, benzersiz istemci istek kimliği ve **yalnız yayınlanması güvenli** eylem/sonuç. Tekrarlanan ağ isteklerine idempotency sağlar. Kullanıcının girdiği gizli sayı veya kelime bu açık günlüğe yazılmaz.
 - `private.game_secrets`: oturum + sahip kimliği + gizli veri. API'ye expose edilmez; tablo RLS'si açık ve istemci grant/policy'si yoktur. Sadece güvenli sunucu fonksiyonları okur. Kelimeleri yalnız hashlemek yeterli değildir; küçük kelime/sayı uzayı tahmin edilebilir.
 
@@ -36,7 +36,7 @@ Gizli hazırlık değerleri yalnız kontrollü RPC ile gönderilir. Rakibe ilk h
 
 ## Kurallardaki uygulama kararları
 
-Açık Artırma'da açılış teklifinin minimum fiyatı, iki oyuncunun teklif vermeden pas geçmesi ve beş ürün sınırına ulaşan oyuncunun kalan ihalelerdeki davranışı motor geliştirilmeden önce kesinleştirilmelidir. Bütçe rezervi minimum kalan ürün fiyatına göre sunucuda korunur.
+Açık Artırma'da minimum açılış 1 TL, ilk teklif öncesi pas yasağı ve beş ürün sonrası rakibe 1 TL'den otomatik tahsis uygulanır. Bütçe rezervi sunucuda korunur. Artıramayan oyuncuya otomatik pas uygulanır. Oylama tamamlanana kadar tercih yayınlanmaz. Rövanş iki oyuncunun onayını ister.
 
 Sayı Dedektifi'nde aynı turda beraberlik için ilk oyuncunun bulduğu turda ikinci oyuncuya eşit tahmin hakkı verilmeli; sonuç tur tamamlanana kadar kesinleştirilmemelidir. 'Doğru rakam sayısı' konumdan bağımsız rakam eşleşmesi olarak ele alınabilir; ek konum ipucu istenirse kural ayrıca belirlenmelidir.
 

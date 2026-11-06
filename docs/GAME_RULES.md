@@ -1,6 +1,6 @@
 ﻿# Oyun Kuralları
 
-Dört oyun bu sürümde geliştirme aşamasındadır. Aşağıdaki kurallar gelecekteki oyun motorlarının ürün sözleşmesidir.
+Açık Artırma oynanabilir olarak geliştirilmiştir; diğer üç oyun geliştirme aşamasındadır. Sunucu kurulumu ve ayrıntılı kurallar için [Açık Artırma belgesi](AUCTION.md).
 
 ### OYUN 1 — AÇIK ARTIRMA
 
@@ -41,6 +41,10 @@ Oyun temaları:
 - Hayalindeki ev
 
 Her temanın kendine özgü ürünleri, açıklamaları ve kaliteli görselleri olacak.
+
+Oynanabilir sürümde dokuz havuzun her birinde 16 ürün vardır. Sunucu her maçta bunlardan 10 farklı ürün seçip sırasını sabitler. Açılış 1 TL'dir; ilk teklif öncesi pas geçilemez. Üst sınır `bütçe - (4 - alınan ürün sayısı)` olarak hesaplanır. Rakip mevcut teklifi artıramıyorsa ürün otomatik olarak son teklif sahibine verilir. Beş ürünü tamamlayan oyuncu sonraki ürünlere girmez; kalanlar diğer oyuncuya 1'er TL'den otomatik tahsis edilir.
+
+İlk açılış oyuncusu rastgele, sonraki ürünlerde dönüşümlüdür. İki oyuncu çevrimiçi değilse oyun durur; aynı kimlikle geri gelindiğinde aynı maç devam eder. On ürün dağıtıldığında oylar gizli olarak alınır. İki oyuncu aynı gerçek kazanan kimliğini seçerse o kazanır; diğer bütün durumlar beraberliktir. Rövanş iki tarafın onayıyla aynı temada yeni ürün seçimiyle başlar. Tema maç ortasında değiştirilemez.
 
 ### OYUN 2 — KELİME ZİNCİRİ
 
