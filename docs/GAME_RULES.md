@@ -1,6 +1,6 @@
 ﻿# Oyun Kuralları
 
-Açık Artırma oynanabilir olarak geliştirilmiştir; diğer üç oyun geliştirme aşamasındadır. Sunucu kurulumu ve ayrıntılı kurallar için [Açık Artırma belgesi](AUCTION.md).
+Dört oyun da oynanabilir olarak geliştirilmiştir. Kurulum ve ayrıntılı kurallar: [Açık Artırma](AUCTION.md) · [Kelime Zinciri, Sayı Dedektifi ve Kelime Avı](PUZZLES.md).
 
 ### OYUN 1 — AÇIK ARTIRMA
 
@@ -67,6 +67,8 @@ Süre sınırı yoktur.
 
 İlk tamamlayan kazanır.
 
+İki zincir kilitlenmeden tahmin başlayamaz. Her kelime 2–40 Türkçe harftir; anlam kontrolü oyunculara aittir. Büyük/küçük harf, Türkçe I/İ, NFC ve kenar boşlukları normalleştirilir. Aynı anda son kelime bulunursa sunucunun kabul ettiği ilk tamamlanma kazanır. İki zincir yalnız oyun sonunda tamamen açılır. Haklar sınırsızdır; görünür geçmiş son 50 kaydı ve toplam sayacı tutar.
+
 ### OYUN 3 — SAYI DEDEKTİFİ
 
 İki oyuncu dört haneli gizli sayı belirler.
@@ -84,6 +86,8 @@ Tahminler kayıt altında tutulur.
 İlk bulan kazanır.
 
 İki oyuncu aynı turda bulursa beraberlik olur.
+
+Dört doğru rakam, sayı farklı sıradaysa kazandırmaz; tam eşitlik gerekir. Konum ipucu verilmez. Başlangıç oyuncusu rastgeledir. Turun ilk oyuncusu doğru bulursa rakibinin aynı turdaki son tahmini beklenir. İki gizli sayı ancak tur sonucu kesinleşince açılır. Tahmin ve süre sınırı yoktur; geçmişin tamamı korunur.
 
 ### OYUN 4 — KELİME AVI
 
@@ -106,3 +110,7 @@ Tekrarlanan harfler Wordle mantığıyla değerlendirilir.
 Daha az tahminde bulan kazanır.
 
 Eşit sayıda tahminle bulan oyuncular berabere kalır.
+
+Harf modunu oda sahibi maç başlamadan seçer. İki hazırlık tamamlanmadan tahmin yapılamaz. Tekrarlı harflerde önce yeşiller, ardından kalan harf sayıları tüketilerek sarılar hesaplanır. Sözlük API'si yoktur; yalnız uzunluk ve Türkçe harf doğrulanır. Bir oyuncu bulduğunda veya altı hakkı bittiğinde diğer oyuncunun sonucu beklenir. Yalnız biri bulursa o kazanır, ikisi de bulamazsa beraberliktir. Cevaplar iki oyuncu da bitirince açılır. Türkçe ekran ve fiziksel klavye desteklenir.
+
+Üç oyunda da iki oyuncu çevrimiçi değilse ilerleme durur; aynı kimlikle geri dönüldüğünde aynı maç devam eder. Rövanş iki tarafın onayıyla temiz hazırlık açar. Lobiye dönüş üyelikleri koruyup lobi hazır durumlarını sıfırlar. Yeni maç eski isteklerden etkilenmez.

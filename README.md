@@ -2,7 +2,7 @@
 
 İki kişinin farklı telefonlardan aynı lobide buluşması için Türkçe, mobil öncelikli bir platform. React, Vite, TypeScript, Tailwind CSS, React Router, Lucide ve Supabase kullanır. Netlify üzerinde statik olarak yayınlanabilir. Ücretli servis veya yapay zekâ API'si kullanmaz; servislerin ücretsiz plan limitleri geçerlidir.
 
-**Bu sürüm:** anonim kimlik, iki kişilik lobi ve **oynanabilir Açık Artırma**. Dokuz tema, tema başına 16 ürün, sunucuda rastgele seçilen 10 ürün, bütçe/sıra doğrulaması, gizli oylama ve rövanş içerir. Diğer üç oyun **Yakında** olarak işaretlidir. [Açık Artırma kurulum ve kullanım belgesi](docs/AUCTION.md).
+**Bu sürüm:** anonim kimlik, iki kişilik lobi ve **dört oynanabilir oyun**: Açık Artırma, Kelime Zinciri, Sayı Dedektifi ve Kelime Avı. Sunucuda doğrulanan kurallar, gizli cevaplar, bağlantıda duraklama ve iki tarafın onayıyla rövanş içerir. [Açık Artırma](docs/AUCTION.md) · [Üç bulmaca oyunu](docs/PUZZLES.md).
 
 ## Yerelde çalıştırma
 
@@ -31,7 +31,7 @@ Supabase Dashboard → Project Settings → API Keys bölümünden **publishable
 
 1. `mini-oyunlar` Supabase projesini açın.
 2. Authentication → Sign In / Providers bölümünde **Anonymous Sign-Ins** seçeneğini etkinleştirin. Kullanıcıdan e-posta veya şifre istenmez.
-3. SQL Editor → New query açın. Yeni kurulumda `supabase/migrations` içindeki **001 → 002 → 003 → 004** dosyalarının tamamını sırasıyla birer kez çalıştırın. Oda ve heartbeat zaten çalışıyorsa yalnız [003 katalog](supabase/migrations/202611060003_auction_catalog.sql), ardından [004 oyun motoru](supabase/migrations/202611060004_auction_engine.sql) gerekir. Başarılı migration'ı ikinci kez çalıştırmayın.
+3. SQL Editor → New query açın. Yeni kurulumda `supabase/migrations` içindeki **001 → 002 → 003 → 004 → 005 → 006 → 007** dosyalarının tamamını sırasıyla birer kez çalıştırın. Açık Artırma zaten çalışıyorsa yalnız **005 Zincir, 006 Dedektif ve 007 Kelime Avı** dosyaları gerekir. Başarılı migration'ı ikinci kez çalıştırmayın. [Yeni oyunların kurulum ayrıntıları](docs/PUZZLES.md).
 4. `rooms`, `room_players` ve `game_sessions` tablolarında RLS'nin açık olduğunu kontrol edin. Migration'lar bunları `supabase_realtime` publication'ına ekler. Replication/Realtime ayarlarında üçünü de doğrulayın. Supabase'in standart publication'ı yoksa önce panelden etkinleştirin, ardından aşağıdaki komutu yalnız henüz eklenmemiş tablolar için çalıştırın:
 
    ```sql
@@ -47,7 +47,7 @@ Anonim Auth için Supabase'in yerleşik hız sınırlarını koruyun. Turnstile/
 
 ## Kullanım
 
-İsminizi yazıp oda açın. Oluşan altı karakterli kodu arkadaşınıza gönderin. Arkadaşınız farklı bir tarayıcıdan/telefondan kendi ismiyle katılsın. Oda sahibi Açık Artırma'yı ve temayı seçer; her oyuncu **Ben hazırım** butonunu kullanır, ardından sahibi **Oyunu başlat** der. Oyun/tema seçimini değiştirmek iki hazır durumunu sıfırlar. Maç başlayınca tema değiştirilemez. Teklifler sırayla, bütçe rezervi korunarak verilir. Sonuçtaki gizli oylamanın ardından rövanş veya lobiye dönüş seçilebilir.
+İsminizi yazıp oda açın. Oluşan altı karakterli kodu arkadaşınıza gönderin. Arkadaşınız farklı bir tarayıcıdan/telefondan kendi ismiyle katılsın. Oda sahibi oyunu, Açık Artırma'da temayı veya Kelime Avı'nda harf modunu seçer. Her oyuncu **Ben hazırım** butonunu kullanır; ardından sahibi **Oyunu başlat** der. Seçim değiştirmek iki hazır durumunu sıfırlar. Maç başlayınca seçim değiştirilemez. Bulmaca oyunlarında herkes kendi gizli cevabını hazırlayıp kilitler; iki hazırlık da tamamlanınca tahmin başlar. Sonuçtan rövanş veya lobiye dönüş seçilebilir.
 
 Sayfayı yenilemek üyeliği silmez; URL'den aynı odaya dönülebilir. Ana sayfada **Mevcut odana dön** bağlantısı da çıkar. Tarayıcı depolaması silinir veya farklı tarayıcı kullanılırsa eski anonim kimlik geri alınamaz. Aynı tarayıcı profili içindeki sekmeler aynı oyuncuyu temsil eder; iki kişilik test için iki ayrı profil/gizli pencere kullanın.
 
@@ -67,6 +67,8 @@ npm run preview
 Testler PGlite içinde gerçek PostgreSQL SQL/RLS/RPC kodunu ve giriş doğrulamasını çalıştırır. Supabase WebSocket ağı, gerçek Auth JWT doğrulaması, çok bağlantılı eşzamanlı kilit yarışları ve iPhone/Android tarayıcıları yerel birim testleriyle doğrulanmış sayılmaz. [İki cihaz kontrol listesi](docs/TESTING.md) dağıtımdan sonra uygulanmalıdır.
 
 Migration'lar uygulandıktan sonra `npm run test:auction:live` gerçek Supabase üzerinde ayrı anonim test kimlikleriyle tam maç, aynı anda teklif, idempotency, WebSocket, 72 saniyelik kopma/dönüş, gizli oy, rövanş ve lobiye dönüş kontrolü yapar. En az yaklaşık iki dakika sürer. Test sonunda üyelikler kapatılır; anonim test hesapları ve oda geçmişi kalabilir. Kimlik tokenları dosyaya/çıktıya yazılmaz.
+
+`npm run test:puzzles:live` üç yeni oyun için gizli cevap/Realtime, iki oyunculu tahmin, aynı anda son kelime, tur adaleti, tekrar harfler, 5/6 harf modları, altı hak sınırı, oturum geri yükleme, 72 saniyelik bağlantı kesintisi, rövanş ve lobiye dönüş kontrollerini çalıştırır. Bu da gerçek Supabase'e bağlanır ve anonim test verisi oluşturur.
 
 ## Netlify
 

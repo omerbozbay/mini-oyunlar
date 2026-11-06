@@ -16,7 +16,7 @@ Odalar bağlantı koptu diye silinmez. Açık ayrılmada üyelik `active=false` 
 
 Heartbeat aynı oda satırını kilitler, süresi dolmuş üyelerin yalnız hazır bayrağını temizler ve çağıranın JWT kimliğine ait `last_seen` değerini yeniler. UPDATE'ler mevcut RLS korumalı Realtime aboneliğiyle yayılır. Süresi dolmuş bir kayda tekrar yazıldığında BEFORE UPDATE trigger'ı eski hazır durumunu geri taşımaz; böylece `join_room` tekrar katılma yolu da güvenlidir. `set_ready(true)` güncel heartbeat ister; başlatma iki güncel ve hazır üyeyi ayrıca sunucuda doğrular. İstemci hesaplaması yetkilendirme yerine geçmez.
 
-`start_game` RPC'si üyelik, sahiplik, iki hazır ve yakın zamanda bağlı oyuncuyu doğrular. Açık Artırma için sunucuda maç açar; diğer üç oyun `game_not_available` döndürür. `rooms.current_game_id` mevcut maçı işaret eder; oda durumunu değiştirmeden mevcut heartbeat ve oturum kurtarma akışı korunur. [Açık Artırma motorunun ayrıntıları](AUCTION.md).
+`start_game` RPC'si üyelik, sahiplik, iki hazır ve yakın zamanda bağlı oyuncuyu doğrular ve seçilen dört oyundan birini başlatır. `rooms.current_game_id` mevcut maçı işaret eder; oda durumunu değiştirmeden mevcut heartbeat ve oturum kurtarma akışı korunur. Açık Artırma bidding, diğerleri preparing evresinde açılır. [Açık Artırma](AUCTION.md) · [Üç gizli cevap motoru](PUZZLES.md).
 
 ## Oyun modülü ekleme sözleşmesi
 
@@ -28,7 +28,7 @@ Bir oyunu available yapmak tek başına yeterli değildir. Yeni migration, sunuc
 
 - `game_sessions` Açık Artırma için oluşturulmuştur: oda FK'si, tema, evre, sürüm, görünür JSON durumu ve sunucunun hesapladığı sonuç. Üyelere yalnız SELECT; durum değişiklikleri RPC ile. `private.auction_requests` idempotency, `private.auction_votes` gizli tercih, `private.auction_catalog` sunucu ürün havuzudur. Tümünde RLS açık ve private tablolarda istemci grant'i yoktur.
 - `game_actions`: oturum FK'si, oyuncu FK'si, artan sıra/sürüm, benzersiz istemci istek kimliği ve **yalnız yayınlanması güvenli** eylem/sonuç. Tekrarlanan ağ isteklerine idempotency sağlar. Kullanıcının girdiği gizli sayı veya kelime bu açık günlüğe yazılmaz.
-- `private.game_secrets`: oturum + sahip kimliği + gizli veri. API'ye expose edilmez; tablo RLS'si açık ve istemci grant/policy'si yoktur. Sadece güvenli sunucu fonksiyonları okur. Kelimeleri yalnız hashlemek yeterli değildir; küçük kelime/sayı uzayı tahmin edilebilir.
+- `private.puzzle_secrets`: oturum + sahip kimliği + gizli JSON cevap. Üç bulmaca için oluşturulmuştur. API'ye expose edilmez; RLS açık ve istemci grant/policy'si yoktur. Yalnız `my_game_secret` kendi cevabını döndürür; diğer oyuncu için kimlik parametresi yoktur. Kelimeleri yalnız hashlemek yeterli değildir; küçük kelime/sayı uzayı tahmin edilebilir. `private.puzzle_requests` güvenli idempotency kaydını tutar.
 
 `submit_action(session_id, expected_version, request_id, action)` RPC'si JWT kimliğini alır, oturumu kilitler, üyeliği/sırayı/oyun evresini/girdi biçimini doğrular. `expected_version` eskiyse reddeder; tekrarlanan request_id aynı sonucu döndürür. Bakiyeyi, ürünü, ilerlemeyi, tahmin değerlendirmesini ve kazananı aynı transaction'da sunucu hesaplar. İstemciden skor/kazanan/sıra/bakiye kabul edilmez. Gizli veri hata metinlerine veya loglara konmaz.
 
@@ -38,9 +38,11 @@ Gizli hazırlık değerleri yalnız kontrollü RPC ile gönderilir. Rakibe ilk h
 
 Açık Artırma'da minimum açılış 1 TL, ilk teklif öncesi pas yasağı ve beş ürün sonrası rakibe 1 TL'den otomatik tahsis uygulanır. Bütçe rezervi sunucuda korunur. Artıramayan oyuncuya otomatik pas uygulanır. Oylama tamamlanana kadar tercih yayınlanmaz. Rövanş iki oyuncunun onayını ister.
 
-Sayı Dedektifi'nde aynı turda beraberlik için ilk oyuncunun bulduğu turda ikinci oyuncuya eşit tahmin hakkı verilmeli; sonuç tur tamamlanana kadar kesinleştirilmemelidir. 'Doğru rakam sayısı' konumdan bağımsız rakam eşleşmesi olarak ele alınabilir; ek konum ipucu istenirse kural ayrıca belirlenmelidir.
+Sayı Dedektifi'nde ilk oyuncunun bulduğu turda ikinci oyuncuya eşit tahmin hakkı verilir; sonuç tur tamamlanana kadar kesinleştirilmez. Doğru rakam sayısı konumdan bağımsızdır; yalnız sayı tam eşitse çözülür.
 
-Kelime Avı'nda uzunluk iki oyuncu için eşit seçilmelidir. İki oyuncu da altı hakta bulamazsa sonuç kuralı ayrıca kesinleştirilmeli; öneri beraberliktir. Sözlük ve özel isim kabul politikası henüz seçilmedi. Türkçe normalizasyon `normalize('NFC').toLocaleUpperCase('tr-TR')` kullanmalı, tekrar harf değerlendirmesi önce yeşillerin tüketilip kalan çoklu harf sayılarının sarılara dağıtıldığı iki geçişli algoritmayla yapılmalıdır.
+Kelime Avı'nda 5/6 harf modu iki oyuncu için eşittir. İki oyuncu da altı hakta bulamazsa beraberliktir. Harici sözlük doğrulaması yoktur; anlamlı kelime seçimi hazırlayan kişiye aittir. Türkçe normalizasyon istemcide NFC + `toLocaleUpperCase('tr-TR')`, sunucuda NFC + açık Türkçe harf dönüşüm tablosuyla yapılır; DB locale'ine güvenilmez. Tekrar harfler önce yeşil, sonra kalan sayıya göre sarı olarak sunucuda değerlendirilir.
+
+`puzzle_action` ortak kimlik, kilit, üyelik, evre, çevrimiçi durum ve UUID tekrar doğrulamasını yapar; hazırlık/tahmin/sonuç hesapları oyun bazlı private fonksiyonlara yönlendirilir. Zincir ve Kelime Avı'nda oyuncu başına revizyon bağımsız hamlelere izin verir. Dedektif'te ek maç sürümü ve sıra kontrolü vardır. Public state hiçbir hamlede gizli cevabı erken içermez. Sonuç kesinleştiğinde iki cevap public `reveals` alanına taşınır. Açık Artırma yalnız kendi türünü kabul eden bir sarmalayıcıyla korunmuştur.
 
 ## Kontrol sınırı
 

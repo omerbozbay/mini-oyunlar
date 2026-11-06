@@ -31,10 +31,7 @@ describe("Türkçe girişler ve sürüm kapsamı", () => {
     expect(new Set(games.map((game) => game.id)).size).toBe(4);
     expect(
       games.every(
-        (game) =>
-          game.status ===
-            (game.id === "auction" ? "available" : "coming-soon") &&
-          game.rules.length > 0,
+        (game) => game.status === "available" && game.rules.length > 0,
       ),
     ).toBe(true);
   });

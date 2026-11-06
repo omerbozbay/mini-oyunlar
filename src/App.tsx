@@ -40,10 +40,12 @@ import {
   leaveRoom,
   selectGame,
   setReady,
+  rpc,
 } from "./features/rooms/api";
 import { useRoom } from "./features/rooms/useRoom";
 import { AuctionBoard, ThemePicker } from "./games/auction/Auction";
 import { selectTheme, startAuction } from "./games/auction/api";
+import { PuzzleBoard } from "./games/puzzles/PuzzleBoard";
 
 function savedName() {
   try {
@@ -118,9 +120,8 @@ export default function App() {
             <li>
               <b>Lobide buluşun, hazır olun.</b>
               <p>
-                Oda sahibi Açık Artırma'yı ve dokuz temadan birini seçsin.
-                İkiniz de hazır olunca 20 TL bütçeyle yarışın. Diğer üç oyun
-                yakında.
+                Oda sahibi dört oyundan birini seçsin. İkiniz de hazır olun;
+                bütçenizle yarışın veya birbirinize gizli bulmacalar hazırlayın.
               </p>
             </li>
           </ol>
@@ -341,7 +342,7 @@ function Home() {
             </h2>
           </div>
           <span className="count-tag">
-            <Gamepad2 size={16} /> 1 oyun hazır · 3 oyun yolda
+            <Gamepad2 size={16} /> 4 oyun hazır
           </span>
         </div>
         <div className="games-grid">
@@ -632,7 +633,15 @@ function Lobby({ code }: { code: string }) {
                 : "Yeniden bağlanıyor · Durum kontrol ediliyor"}
           </div>
         </aside>
-        {snapshot.game ? (
+        {snapshot.game && snapshot.game.game !== "auction" ? (
+          <PuzzleBoard
+            key={snapshot.game.id}
+            session={snapshot.game}
+            userId={userId}
+            players={players}
+            reload={reload}
+          />
+        ) : snapshot.game?.game === "auction" ? (
           <AuctionBoard
             key={snapshot.game.id}
             session={snapshot.game}
@@ -705,6 +714,40 @@ function Lobby({ code }: { code: string }) {
                 }}
               />
             )}
+            {room.selected_game === "wordhunt" && (
+              <section
+                className="word-length-picker"
+                aria-label="Kelime Avı harf modu"
+              >
+                <div>
+                  <h3>Kaç harfle oynayalım?</h3>
+                  <p>
+                    İki oyuncu aynı uzunlukta oynar. Değişiklik hazır
+                    durumlarını sıfırlar.
+                  </p>
+                </div>
+                <div role="group" aria-label="Harf sayısı">
+                  {([5, 6] as const).map((length) => (
+                    <button
+                      className="outline-button"
+                      aria-pressed={(room.word_length ?? 5) === length}
+                      key={length}
+                      disabled={!host || busy}
+                      onClick={() => {
+                        void act(() =>
+                          rpc("select_word_length", {
+                            p_room_id: room.id,
+                            p_length: length,
+                          }),
+                        );
+                      }}
+                    >
+                      {length} harf
+                    </button>
+                  ))}
+                </div>
+              </section>
+            )}
             <div className="launch-panel">
               <div>
                 <Sparkles size={22} />
@@ -713,7 +756,9 @@ function Lobby({ code }: { code: string }) {
                   <p>
                     {bothReady
                       ? game.status === "available"
-                        ? "İkiniz de hazırsınız! İlk ürün sizi bekliyor."
+                        ? room.selected_game === "auction"
+                          ? "İkiniz de hazırsınız! İlk ürün sizi bekliyor."
+                          : "İkiniz de hazırsınız! Gizli bulmacanızı hazırlama zamanı."
                         : "Bu oyun henüz geliştirme aşamasında."
                       : "İki oyuncu da hazır olduğunda burada buluşacağız."}
                   </p>

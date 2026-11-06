@@ -16,6 +16,16 @@ export function roomCode(value: string): string {
 }
 
 const messages: Record<string, string> = {
+  invalid_length: "Kelime uzunluğu 5 veya 6 harf olmalı.",
+  guess_limit:
+    "Altı tahmin hakkını tamamladın. Arkadaşının sonucunu bekleyelim.",
+  invalid_number:
+    "Sayı dört farklı rakamdan oluşmalı ve ilk rakam sıfır olmamalı.",
+  invalid_chain:
+    "Tam beş kelime yazmalısın; her kelime en az iki Türkçe harf içermeli.",
+  invalid_word: "Kelimenin uzunluğunu ve Türkçe harflerini kontrol et.",
+  secret_locked: "Cevabın kilitlendi; bu maçta değiştirilemez.",
+  player_finished: "Tahminlerini tamamladın. Arkadaşının sonucunu bekleyelim.",
   invalid_theme: "Geçerli bir tema seç.",
   game_in_progress: "Oyun oturumu açıkken tema veya oyun değiştirilemez.",
   game_not_current: "Bu maç artık güncel değil. Odanın son durumunu yenile.",

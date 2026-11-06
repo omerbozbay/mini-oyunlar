@@ -1,5 +1,6 @@
 import { rpc } from "../../features/rooms/api";
 import type { AuctionSession } from "./types";
+import { requestId } from "../../lib/requestId";
 export const selectTheme = (roomId: string, theme: string) =>
   rpc("select_auction_theme", { p_room_id: roomId, p_theme: theme });
 export const startAuction = (roomId: string) =>
@@ -11,17 +12,6 @@ export interface AuctionCommand {
   p_action: string;
   p_amount: number | null;
   p_choice: string | null;
-}
-function requestId(): string {
-  if (typeof crypto.randomUUID === "function") return crypto.randomUUID();
-  // Telefonda HTTP yerel ağ önizlemesinde randomUUID bulunmayabilir.
-  const bytes = crypto.getRandomValues(new Uint8Array(16));
-  bytes[6] = (bytes[6] & 15) | 64;
-  bytes[8] = (bytes[8] & 63) | 128;
-  const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join(
-    "",
-  );
-  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 export function command(
   session: AuctionSession,

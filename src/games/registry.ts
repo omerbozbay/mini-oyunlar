@@ -22,7 +22,7 @@ export const games: GameDefinition[] = [
     description: "Bir kelime diğerini çağırır. Bakalım aklından ne geçiyor?",
     emoji: "🔗",
     color: "lavender",
-    status: "coming-soon",
+    status: "available",
     rules: [
       "Birbiriniz için beş kelimelik zincirler hazırlayın.",
       "İlk kelime açık; diğerlerinde ilk harf ve uzunluk ipucu var.",
@@ -36,7 +36,7 @@ export const games: GameDefinition[] = [
     description: "İpuçlarını birleştir, gizli sayının peşine düş.",
     emoji: "🔎",
     color: "mint",
-    status: "coming-soon",
+    status: "available",
     rules: [
       "Tekrarsız, ilk rakamı sıfır olmayan dört haneli sayı belirleyin.",
       "Sırayla tahmin edin ve doğru rakam sayısını takip edin.",
@@ -50,7 +50,7 @@ export const games: GameDefinition[] = [
     description: "Altı tahmin, renkli ipuçları. O kelimeyi bulabilir misin?",
     emoji: "🌿",
     color: "butter",
-    status: "coming-soon",
+    status: "available",
     rules: [
       "Birbiriniz için 5 veya 6 harfli Türkçe kelime seçin.",
       "Yeşil: doğru konum. Sarı: başka konum. Gri: bulunmayan veya fazla harf.",

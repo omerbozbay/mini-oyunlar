@@ -1,7 +1,7 @@
 # Doğrulama raporu — 6 Kasım 2026
 
 - `npm run build`: TypeScript kontrolü ve Vite üretim derlemesi başarılı.
-- `npm test`: Açık Artırma eklenmesiyle 8 dosyada 57 test başarılı. PostgreSQL migration/RLS/RPC, giriş kuralları, sayfa render durumları, bağlantı yaşam döngüsü, oyun motoru, katalog ve oyun arayüzü kapsanıyor.
+- `npm test`: Dört oyunla birlikte **14 dosyada 103 test** başarılı. PostgreSQL migration/RLS/RPC, giriş kuralları, sayfa render durumları, bağlantı yaşam döngüsü, dört oyun motoru, katalog ve oyun arayüzleri kapsanıyor.
 - `npm audit --omit=dev`: üretim bağımlılıklarında bilinen açık bildirilmedi.
 - Yerel HTTP: `/` ve `/oda/AF1234` adresleri 200 döndü.
 - Git kontrolü: `.env.local`, `node_modules`, `dist` ve `.qa` dışlandı. Commit'e giren dosyalarda gerçek anahtarla eşleşme bulunmadı.
@@ -36,7 +36,7 @@ Kullanıcı Dashboard'da Anonymous Sign-Ins ayarını açtı ve migration'ı uyg
 
 Tarayıcı otomasyon sunucusuna erişilemedi. Gerçek iPhone Safari/Android Chrome görselleri, dokunmatik kullanım, yatay taşma, dialog odağı, sayfa yenileme ve arka plan/ağ kesintisi davranışları tarayıcıda doğrulanmadı. Sunucu tarafı render testleri bunların yerine geçmez. [Manuel test planı](TESTING.md) kullanılmalıdır.
 
-Netlify hesabında yayın yapılmadı; yapılandırma hazırlandı. Açık Artırma motoru geliştirildi; diğer üç oyun henüz geliştirilmedi. Aşağıdaki ilk sürüm kayıtlarında geçen `game_not_available` kontrolü o sürüme aittir; yeni sürümde yalnız geliştirilmemiş oyunlar için geçerlidir.
+Netlify hesabında yayın yapılmadı; yapılandırma hazırlandı. Dört oyun motoru geliştirildi. İlk sürüm kayıtlarında geçen `game_not_available` kontrolleri o sürümlerin tarihsel sonuçlarıdır; güncel dört oyun da başlatılabilir.
 
 ## Bağlantı durumu düzeltmesi
 
@@ -59,3 +59,22 @@ Kullanıcı 003/004 migration'larını SQL Editor'de uyguladığını bildirdi. 
 İkinci oyuncunun heartbeat'i 72 saniye durdurulduğunda sunucu teklifleri `players_offline` ile reddetti. Heartbeat geri geldiğinde aynı maç sürdü. On ürün beşer dağıtıldı; bütçe toplamları doğru kaldı. İlk oy gizli kaldı, iki aynı UUID aynı kazananı üretti. Tek rövanş onayı yetmedi; ikinci onaydan sonra aynı temada yeni bütçe ve rastgele ürünlerle maç açıldı. İkinci maçta iki farklı kazanan tercihi beraberlik oldu. Lobiye dönüş iki üyeliği korudu ve hazır durumlarını sıfırladı. Test sonunda üyelikler açık ayrılmayla kapatıldı; anonim Auth test hesapları ve kapalı maç/oda geçmişi kalabilir.
 
 İlk canlı deneme kanal açıldıktan hemen sonra yapılan teklifin WebSocket olayını alamadı. SDK'nın `SUBSCRIBED` bildirimi varsayılan olarak PostgreSQL değişiklik aboneliğinden önce gelebiliyor. Uygulamaya ve canlı teste `postgres_changes_options.wait: true` eklendi; gerçek abonelik onayını bekleyen sonraki tam test geçti. Bu istemci düzeltmesi ek SQL gerektirmiyor. Düzeltmeden sonra 57 otomatik test, TypeScript ve üretim derlemesi yeniden geçti. Gerçek iPhone/Android görsel kontrolleri hâlâ ayrıca yapılmalıdır.
+
+## Üç bulmaca oyununun eklenmesi
+
+İstenen sırayla Kelime Zinciri geliştirilip 7 sunucu + 4 arayüz kontrolüyle doğrulandı. Ardından Sayı Dedektifi eklendi; ilk iki oyun ve arayüzler birlikte 21 testten geçti. Son olarak Kelime Avı, Türkçe klavye ve ortak lobi bağlantısı tamamlandı. Son tam koşuda **103 otomatik test**, TypeScript kontrolü ve üretim derlemesi başarılı; üretim bağımlılığı denetimi bilinen açık bildirmedi.
+
+Kullanıcı 005, 006 ve 007 migration'larını SQL Editor'de uyguladığını bildirdi. Yeni RPC'ler gerçek Supabase üzerinde doğrulandı; bu çalışma uzaktan DDL yetkisi kullanarak migration uygulamadı. `npm run test:puzzles:live` **31 kontrolle** başarılı tamamlandı:
+
+- Gizli cevaplar tek hazırlıkta, ortak maç görüntüsünde ve erken WebSocket mesajlarında açılmadı. Kendi cevap RPC'si çalıştı; rakip ve üçüncü kimlik bu cevabı okuyamadı. Public maç RLS'si üçüncü kimliği dışladı.
+- Yanlış zincir tahmini ipucu açmadı. İki oyuncunun aynı eski global sürümde bağımsız tahminleri kabul edildi; aynı UUID tekrarında ilerleme yinelenmedi. Aynı kimliği yeni istemciye yüklemek maç ve ilerlemeyi korudu.
+- İkinci oyuncunun heartbeat'i 72 saniye durduruldu; ilerleme sunucuda reddedildi. Geri dönüşte aynı maç sürdü.
+- Zincir sonunda cevaplar açıldı, rövanş temiz hazırlık başlattı. Eski maç isteği yeni maçı etkileyemedi. İki oyuncunun son cevabı aynı anda gönderdiği gerçek yarışta yalnız ilk kabul edilen tamamlanma kazandı. Lobiye dönüş iki üyeliği korudu.
+- Sayı Dedektifi'nde `4321`/`1234` gibi dört rakam eşleşmesi tam sayı farklıyken kazandırmadı; sıra dışı hamle reddedildi. İlk bulan diğer oyuncunun aynı turdaki son hakkını korudu; aynı turda iki bulma beraberlik verdi. Rövanş temiz sayı hazırlığı açtı.
+- Kelime Avı'nda 5/6 modları, YORGAN/KALECİ değerlendirmesi, tekrar harfler, ilk bitirenin diğerini beklemesi ve az tahminle kazanma doğrulandı. İki oyuncu altı hakta bulamayınca beraberlik oluştu; yedinci tahmin reddedildi. Rövanş modu koruyup geçmişi sildi.
+
+Ardından `npm run test:auction:live` **19 kontrolle tekrar geçti**: yeni migration'lar sonrasında mevcut Açık Artırma'nın eşzamanlı teklif, idempotency, WebSocket, 72 saniyelik duraklama/dönüş, gizli oy, iki tam maç, rövanş ve lobiye dönüş davranışı korundu. Böylece son doğrulamada toplam **50 gerçek Supabase kontrolü** geçti.
+
+React DOM testleri Türkçe ekran ve fiziksel klavyeyi, Sil/Enter, 29 harfi, altı harf sayacını, renkli harf kutularının erişilebilir etiketlerini, bekleme/çevrimdışı durumlarını, aynı UUID ile ağ hatası tekrarını ve dört oyunun lobi üzerinden doğru bileşene yönlenmesini doğruladı. Yerel testler 55 yanlış zincir tahmini ve altıdan fazla sayı tahminiyle bu iki oyunun sınırsız hakkını da doğruladı.
+
+Tarayıcı otomasyon sunucusu yine erişilemez durumdaydı. Happy DOM ve sunucu tarafı render testleri gerçek iPhone/Android görüntüsü, dokunmatik kullanım veya yatay taşma kontrolünün yerine geçmez. Bu görsel QA ve Netlify yayını ayrıca yapılmalıdır. Canlı testler yalnız kendi yeni test odalarını kullandı, sonunda üyelikleri kapattı; anonim test kullanıcıları ve kapanmış maç geçmişi kalabilir. Tokenlar Git'e veya test çıktısına yazılmadı.
