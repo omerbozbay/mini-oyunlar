@@ -78,6 +78,8 @@ Repository: `https://github.com/omerbozbay/mini-oyunlar`, branch: `main`.
 
 Netlify'da **Import an existing project** ile repository'yi seçin. Build command `npm run build`, publish directory `dist`. `netlify.toml` bu değerleri ve SPA yönlendirmesini içerir. Ortam değişkenlerine `VITE_SUPABASE_URL` ve `VITE_SUPABASE_PUBLISHABLE_KEY` ekleyip yeniden deploy edin. Anahtar kaynak repo'ya yüklenmez; tarayıcı paketinde publishable anahtarın bulunması normaldir. Yetkilendirme RLS ile yapılır.
 
+**Oda butonu pasifse:** bilgisayardaki `.env.local` Git/Netlify'a aktarılmaz. Netlify → Project configuration → Environment variables altında bu iki değişkeni ekleyin. Scope **Builds**, deploy context **Production** (veya tüm context'ler) içermelidir. URL `https://` ile başlamalı; anahtar yerelde kullandığınız publishable anahtar olmalıdır. Kaydettikten sonra Deploys → Trigger deploy → Deploy site ile yeni derleme başlatın; yalnız sayfayı yenilemek eski derlemeye değişken eklemez. Sürükle-bırak dağıtımında `.env.local` bulunan bilgisayarda `npm run build` çalıştırıp yeni `dist` klasörünü yükleyin. Mikrofon için `Permissions-Policy` aynı siteye izin verir; kullanıcı mikrofon izni yine gereklidir.
+
 Netlify adresini iki telefonda açın. `/oda/ABC123` gibi adresleri yenilemek SPA yönlendirmesi sayesinde 404 üretmez. Bu çalışma Netlify hesabına otomatik dağıtım yapmaz.
 
 ## Dosya yapısı

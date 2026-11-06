@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { MemoryRouter } from "react-router-dom";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("../src/lib/supabase", () => ({
   configured: false,
@@ -8,6 +8,7 @@ vi.mock("../src/lib/supabase", () => ({
   ensureIdentity: vi.fn(),
 }));
 import App from "../src/App";
+afterEach(() => vi.unstubAllEnvs());
 
 function page(path: string) {
   return renderToStaticMarkup(
@@ -18,19 +19,29 @@ function page(path: string) {
 }
 
 describe("sayfa kabuğu ve kurulum durumları", () => {
-  it("ana sayfa dört oyunu ve eksik bağlantı açıklamasını render eder", () => {
+  it("ana sayfa beş oyunu ve eksik bağlantı açıklamasını render eder", () => {
     const html = page("/");
     for (const title of [
       "Açık Artırma",
       "Kelime Zinciri",
       "Sayı Dedektifi",
       "Kelime Avı",
+      "Tersine Konuş!",
     ])
       expect(html).toContain(title);
     expect(html.match(/soon-tag/g)).toHaveLength(5);
     expect(html).toContain("Oynamaya hazır");
     expect(html).toContain(".env.local");
     expect(html).toContain('id="player-name"');
+    expect(html).toContain('disabled=""');
+  });
+  it("yayında eksik bağlantı için Netlify derleme ayarlarına yönlendirir", () => {
+    vi.stubEnv("DEV", false);
+    const html = page("/");
+    expect(html).toContain("VITE_SUPABASE_URL");
+    expect(html).toContain("VITE_SUPABASE_PUBLISHABLE_KEY");
+    expect(html).toContain("Netlify");
+    expect(html).not.toContain(".env.local");
     expect(html).toContain('disabled=""');
   });
   it("geçersiz oda kodunda boş ekran yerine kurtarma mesajı gösterir", () => {

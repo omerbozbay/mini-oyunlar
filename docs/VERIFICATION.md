@@ -2,7 +2,7 @@
 
 ## Güncel: Tersine Konuş!
 
-- Beş oyunla birlikte **21 dosyada 154 otomatik test** geçti. Yeni testler PCM çok kanal/örnekleme hızı, izin hataları, 10 saniye sınırı, geç gelen izin sonucu, arka plan iptali, bozuk dosya/oynatma kurtarması, tek dinleme, tek tahmin, rol/puan/altı tur/beraberlik, arayüz ve Storage RLS/temizlik akışını kapsıyor.
+- Beş oyunla birlikte **21 dosyada 155 otomatik test** geçti. Yeni testler PCM çok kanal/örnekleme hızı, izin hataları, 10 saniye sınırı, geç gelen izin sonucu, arka plan iptali, bozuk dosya/oynatma kurtarması, tek dinleme, tek tahmin, rol/puan/altı tur/beraberlik, arayüz ve Storage RLS/temizlik akışını kapsıyor.
 - TypeScript ve üretim derlemesi geçti. `npm audit --omit=dev`: bilinen açık yok.
 - Kullanıcı **008 reverse_audio** migration'ını uyguladığını bildirdi. Sonrasında gerçek Supabase'de **40 sesli oyun kontrolü** geçti: private Storage yükleme/indirme, yetkisiz erişim, gizli kelimenin ortak veri/Realtime'da açılmaması, dinleme hakkının yenilemede korunması, altı tur/üçer rol, doğru puanlama, idempotency, eski tur koruması, rövanş ve gerçek 72 saniyelik heartbeat kesintisi/dönüş.
 - Mevcut oyunların gerçek Supabase regresyonu yeniden çalıştırıldı: Açık Artırma **19**, üç bulmaca **31** kontrol geçti. Güncel canlı toplam **90** kontrol.
@@ -12,6 +12,8 @@
 - `.env.local` ve yerel test çıktıları Git dışında tutulur. Netlify deploy bu çalışma tarafından başlatılmadı; main push bağlı Netlify projesinin otomatik build'ini tetikleyebilir.
 
 ## Önceki sürümlerin doğrulama kayıtları
+
+Netlify yayını sonrasında eksik build ortam değişkenlerinde butonun kapalı kaldığı ekran görüntüsüyle bildirildi. Yayın hata mesajı Netlify değişkenleri/yeni derlemeye yönlendirilecek şekilde düzeltildi. Ayrıca eski `microphone=()` başlığı sesli oyun için `microphone=(self)` oldu. 155 test ve üretim derlemesi yeniden geçti. Kullanıcının Netlify proje ayarlarına erişilmedi; iki VITE değişkeni Netlify'da Builds/Production kapsamıyla kaydedilip yeni deploy başlatılmalı. Canlı site URL'si verilmediği için gerçek dağıtım başlıkları bu aşamada doğrulanmadı.
 
 - `npm run build`: TypeScript kontrolü ve Vite üretim derlemesi başarılı.
 - `npm test`: Dört oyunla birlikte **14 dosyada 103 test** başarılı. PostgreSQL migration/RLS/RPC, giriş kuralları, sayfa render durumları, bağlantı yaşam döngüsü, dört oyun motoru, katalog ve oyun arayüzleri kapsanıyor.

@@ -324,8 +324,19 @@ function Home() {
             )}
             {!configured && (
               <p className="notice setup">
-                Oda bağlantısı için <code>.env.local</code> dosyasını doldurup
-                geliştirme sunucusunu yeniden başlatın.
+                {import.meta.env.DEV ? (
+                  <>
+                    Oda bağlantısı için <code>.env.local</code> dosyasını
+                    doldurup geliştirme sunucusunu yeniden başlatın.
+                  </>
+                ) : (
+                  <>
+                    Oda bağlantısı yapılandırılmamış. Netlify ortam
+                    değişkenlerine <code>VITE_SUPABASE_URL</code> ve{" "}
+                    <code>VITE_SUPABASE_PUBLISHABLE_KEY</code> ekleyip siteyi
+                    yeniden derleyin.
+                  </>
+                )}
               </p>
             )}
           </form>
