@@ -8,7 +8,7 @@
 - Gerçek Supabase'de güncel Açık Artırma testi **37 kontrolden geçti**: iki oyuncu, WebSocket, üçüncü kimliğin RLS ile engellenmesi, aynı sürümde eşzamanlı teklif, UUID tekrar koruması, yenileme, 72 saniye bağlantı kesintisi/dönüş, 7–3 koleksiyon, hediye sahipliği, para iadesi olmaması, onay sıfırlama, oy gizliliği, rövanş ve lobi.
 - Üçüncü canlı maç yeni yemek temasında başladı. İlk ürüne 20 TL verilip bir bütçe sıfırlandı. Kalan dokuz ürün ayrı ayrı gösterilip ücretsiz kendine/karşıya dağıtıldı; sonuç 7–3, parası kalan oyuncunun bütçesi hâlâ 20 TL. Tekrarlanan ücretsiz seçim ürünü iki kez eklemedi; bütçesi biten oyuncu dağıtımı yönetemedi.
 - Tarayıcı otomasyon sunucusuna erişilemedi. Fiziksel iPhone/Android, dokunmatik kullanım ve gerçek tarayıcı görsel QA yapılmadı; React etkileşim testleri ve dosya görsellerinin incelemesi bunların yerine geçirilmedi.
-- Netlify hedefi `https://mini-oyunlar.netlify.app/`. Push öncesi HTTP 200, Supabase build değişkenleri ve aynı siteye mikrofon izni doğrulandı; önceki JavaScript sürümü henüz yayındaydı. Push sonrası yeni paket ve 10 atlas dosyasının HTTP üzerinden kontrolü ayrıca raporlanır.
+- GitHub özellik commit'i `8c4dc54` main'e gönderildi. `https://mini-oyunlar.netlify.app/` üzerinde yeni `index-BwkF-2TR.js` paketi HTTP 200 ile doğrulandı; ücretsiz dağıtım ekranı/katalog işaretleri ve Supabase build değişkenleri mevcut. 10 WebP atlasının tamamı HTTP 200 ve geçerli RIFF/WEBP içeriğiyle yayımlandı. Mikrofon başlığı aynı siteye izin veriyor. Bu HTTP/paket doğrulamasıdır; tarayıcıda uçtan uca tıklama veya fiziksel telefon testi değildir.
 
 ## 6 Kasım 2026 — önceki sürüm
 
