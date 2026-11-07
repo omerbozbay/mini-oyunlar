@@ -50,7 +50,13 @@ const messages: Record<string, string> = {
   players_offline: "Oyun duraklatıldı. İki oyuncu da çevrimiçi olmalı.",
   cannot_pass_first: "İlk teklif verilmeden pas geçilemez.",
   invalid_bid: "Teklif en az 1 TL artmalı ve gösterilen üst sınırı aşmamalı.",
-  collection_full: "Beş ürününü tamamladın.",
+  item_not_owned: "Yalnız kendi koleksiyonundaki bir ürünü hediye edebilirsin.",
+  allocation_required:
+    "Bir oyuncunun bütçesi bitti. Parası kalan oyuncu ücretsiz dağıtım yapmalı.",
+  allocation_unavailable:
+    "Ücretsiz dağıtım yalnız bir oyuncunun bütçesi bittikten sonra açılır.",
+  invalid_recipient:
+    "Ürünü yalnız kendine veya bu maçtaki arkadaşına verebilirsin.",
   invalid_phase: "Bu işlem oyunun şu anki aşamasında yapılamaz.",
   already_voted: "Tercihin zaten kaydedildi. Diğer oyuncuyu bekleyelim.",
   invalid_vote:

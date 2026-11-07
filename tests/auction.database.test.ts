@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { beforeAll, beforeEach, afterAll, it, expect, describe } from "vitest";
 import type { AuctionSession } from "../src/games/auction/types";
 import themes from "../src/games/auction/themes.json";
-import {installStorageSchema} from './helpers/storage-db';
+import { installStorageSchema } from "./helpers/storage-db";
 const ids = [
   "00000000-0000-4000-8000-000000000001",
   "00000000-0000-4000-8000-000000000002",
@@ -46,19 +46,56 @@ async function act(
     choice,
   ]);
 }
-async function finish() {
+async function finish(confirm = true) {
   let g = await game();
   let guard = 0;
   while (g.phase === "bidding") {
-    if (++guard > 30) throw Error("Dağıtım kilitlendi");
+    if (++guard > 50) throw Error("Dağıtım kilitlendi");
+    if (g.state.players.some((p) => p.budget === 0)) {
+      const chooser =
+        g.state.players.find((p) => p.budget > 0)?.id ?? g.state.turn_id!;
+      await act(g, "allocate", null, chooser, ids.indexOf(chooser));
+      g = await game();
+      continue;
+    }
+    const canOpen =
+      g.state.players.find((p) => p.id === g.state.turn_id)!.budget > 0;
     await act(
       g,
-      g.state.current_bid === 0 ? "bid" : "pass",
-      g.state.current_bid === 0 ? 1 : null,
+      g.state.current_bid === 0 && canOpen ? "bid" : "pass",
+      g.state.current_bid === 0 && canOpen ? 1 : null,
     );
     g = await game();
   }
+  if (confirm && g.phase === "arranging") {
+    await act(g, "confirm", null, null, 0);
+    await act(await game(), "confirm", null, null, 1);
+    g = await game();
+  }
   return g;
+}
+async function gift(
+  g: AuctionSession,
+  actor: number,
+  item: string,
+  request = randomUUID(),
+) {
+  await user(actor);
+  await db.query("select auction_gift($1,$2,$3,$4)", [
+    g.id,
+    g.version,
+    request,
+    item,
+  ]);
+}
+async function winProduct(actor: number, price = 1) {
+  let g = await game();
+  if (g.state.turn_id !== ids[actor]) {
+    await act(g, "bid", 1);
+    g = await game();
+  }
+  await act(g, "bid", Math.max(price, g.state.current_bid + 1));
+  await act(await game(), "pass");
 }
 beforeAll(async () => {
   db = new PGlite();
@@ -90,6 +127,117 @@ afterAll(async () => {
   await db?.close();
 });
 describe("Açık Artırma PostgreSQL motoru", () => {
+  it("yediye üç ürün dağılımına ve tüm on ürünün görünmesine izin verir", async () => {
+    for (let i = 0; i < 10; i++) {
+      const g = await game();
+      expect(g.phase).toBe("bidding");
+      expect(g.state.index).toBe(i);
+      await winProduct(i < 7 ? 0 : 1);
+    }
+    const g = await game();
+    expect(g.phase).toBe("arranging");
+    expect(g.state.players.map((p) => p.items.length)).toEqual([7, 3]);
+    expect(g.state.players.every((p) => p.budget >= 0)).toBe(true);
+  });
+  it("birinin parası bitince diğeri her ürünü ücretsiz kendine veya karşıya verir; bütçesi azalmaz", async () => {
+    await winProduct(0, 20);
+    for (let i = 1; i < 10; i++) {
+      let g = await game();
+      expect(g.phase).toBe("bidding");
+      expect(g.state.index).toBe(i);
+      await expect(act(g, "bid", 1, null, 1)).rejects.toThrow(
+        "allocation_required",
+      );
+      await expect(act(g, "allocate", null, ids[0], 0)).rejects.toThrow(
+        "not_your_turn",
+      );
+      const key = randomUUID(),
+        receiver = ids[i < 7 ? 0 : 1];
+      await act(g, "allocate", null, receiver, 1, key);
+      await act(g, "allocate", null, receiver, 1, key);
+      expect((await game()).state.players.map((p) => p.budget)).toEqual([
+        0, 20,
+      ]);
+    }
+    const g = await game();
+    expect(g.phase).toBe("arranging");
+    expect(g.state.players.map((p) => p.items.length)).toEqual([7, 3]);
+    expect(
+      g.state.players.flatMap((p) => p.items).filter((i) => i.free),
+    ).toHaveLength(9);
+    expect(g.state.skipped ?? []).toHaveLength(0);
+  });
+  it("iki bütçe varken ücretsiz dağıtım yapılamaz ve ilk pas ürünü atlamaz", async () => {
+    const g = await game();
+    await expect(act(g, "allocate", null, ids[0], 0)).rejects.toThrow(
+      "allocation_unavailable",
+    );
+    await expect(act(g, "pass")).rejects.toThrow("cannot_pass_first");
+    expect((await game()).state.index).toBe(0);
+  });
+  it("yalnız sahip ürünü hediye eder, para iadesi veya çift ürün oluşmaz ve aynı istek tekrarı etkisizdir", async () => {
+    await winProduct(0);
+    const g = await game(),
+      item = g.state.players[0].items[0],
+      key = randomUUID();
+    await expect(gift(g, 1, item.id)).rejects.toThrow("item_not_owned");
+    await expect(gift(g, 2, item.id)).rejects.toThrow("not_a_member");
+    await gift(g, 0, item.id, key);
+    await gift(g, 0, item.id, key);
+    const next = await game();
+    expect(next.state.players[0].items).toHaveLength(0);
+    expect(next.state.players[1].items).toHaveLength(1);
+    expect(next.state.players.map((p) => p.budget)).toEqual(
+      g.state.players.map((p) => p.budget),
+    );
+    expect(next.state.players[1].items[0].paid_by).toBe(ids[0]);
+    expect(next.state.turn_id).toBe(g.state.turn_id);
+    expect(next.state.index).toBe(g.state.index);
+    await expect(gift(g, 0, item.id)).rejects.toThrow("stale_version");
+    await expect(gift(g, 0, "other", key)).rejects.toThrow("request_conflict");
+  });
+  it("koleksiyon onayı iki oyuncuyu bekler; hediye onayları sıfırlar ve oylamadan sonra hediye verilemez", async () => {
+    let g = await finish(false);
+    await act(g, "confirm", null, null, 0);
+    g = await game();
+    expect(g.phase).toBe("arranging");
+    await gift(g, 0, g.state.players[0].items[0].id);
+    g = await game();
+    expect(g.state.arrange_ready).toEqual([]);
+    await expect(act(g, "vote", null, null, 0)).rejects.toThrow(
+      "invalid_phase",
+    );
+    await act(g, "confirm", null, null, 0);
+    await act(await game(), "confirm", null, null, 1);
+    g = await game();
+    expect(g.phase).toBe("voting");
+    await expect(gift(g, 1, g.state.players[1].items[0].id)).rejects.toThrow(
+      "invalid_phase",
+    );
+  });
+  it("çevrimdışı oyuncu varken hediye verilemez; eski maç yeni koleksiyonu değiştiremez", async () => {
+    await winProduct(0);
+    const g = await game();
+    await db.exec("reset role");
+    await db.query(
+      "update room_players set last_seen=now()-interval '80 seconds' where user_id=$1",
+      [ids[1]],
+    );
+    await expect(gift(g, 0, g.state.players[0].items[0].id)).rejects.toThrow(
+      "players_offline",
+    );
+    await user(1);
+    await db.query("select heartbeat($1)", [roomid]);
+    let next = await finish();
+    await act(next, "vote", null, null, 0);
+    await act(await game(), "vote", null, null, 1);
+    next = await game();
+    await act(next, "rematch", null, null, 0);
+    await act(await game(), "rematch", null, null, 1);
+    await expect(gift(g, 0, g.state.players[0].items[0].id)).rejects.toThrow(
+      "game_not_current",
+    );
+  });
   it("sunucuda on farklı ürünü, iki bütçeyi ve rastgele başlangıç sırasını sabitler", async () => {
     const g = await game();
     expect(g.state.products).toHaveLength(10);
@@ -98,14 +246,15 @@ describe("Açık Artırma PostgreSQL motoru", () => {
     expect(ids.slice(0, 2)).toContain(g.state.turn_id);
     expect((await game()).state.products).toEqual(g.state.products);
   });
-  it("ilk pası, sıra dışı işlemi, yetersiz bütçeyi ve geçersiz teklifleri reddeder", async () => {
+  it("ilk pası, sıra dışı işlemi ve geçersiz teklifleri reddeder", async () => {
     const g = await game();
-    await expect(act(g, "pass")).rejects.toThrow("cannot_pass_first");
     await expect(
       act(g, "bid", 1, null, 1 - ids.indexOf(g.state.turn_id!)),
     ).rejects.toThrow("not_your_turn");
-    for (const bid of [0, -1, 17, 100, null])
+    for (const bid of [0, -1, 21, 100, null])
       await expect(act(g, "bid", bid)).rejects.toThrow("invalid_bid");
+    await expect(act(g, "pass")).rejects.toThrow("cannot_pass_first");
+    expect((await game()).state.index).toBe(0);
   });
   it("teklif sırasını değiştirir, eski sürümü reddeder, pasla tek ürün verir", async () => {
     let g = await game();
@@ -133,31 +282,31 @@ describe("Açık Artırma PostgreSQL motoru", () => {
       act(g, "bid", 2, null, ids.indexOf(g.state.turn_id!), request),
     ).rejects.toThrow("request_conflict");
   });
-  it("16 TL maksimum teklif kabul edilir, rakip artıramazsa güvenle tahsis edilir", async () => {
+  it("20 TL bütçenin tamamına teklif verir; rakibin pası yalnız mevcut ürünü tahsis eder", async () => {
     const g = await game();
-    await act(g, "bid", 16);
+    await act(g, "bid", 20);
+    expect((await game()).state.index).toBe(0);
+    await act(await game(), "pass");
     const n = await game();
     expect(n.state.index).toBe(1);
     expect(n.state.players.find((p) => p.id === g.state.turn_id)?.budget).toBe(
-      4,
+      0,
     );
     expect(
       n.state.players.find((p) => p.id === g.state.turn_id)?.items[0].price,
-    ).toBe(16);
+    ).toBe(20);
   });
-  it("on ürünü eksiksiz beşer dağıtır, otomatik ürün başına 1 TL alır", async () => {
+  it("on ürün tek tek sonuçlanır; otomatik dağıtım veya bütçe rezervi olmaz", async () => {
     const g = await finish();
     expect(g.phase).toBe("voting");
     expect(g.state.index).toBe(10);
     expect(g.state.players.map((p) => p.items.length)).toEqual([5, 5]);
     const items = g.state.players.flatMap((p) => p.items);
     expect(new Set(items.map((p) => p.id)).size).toBe(10);
-    expect(items.some((p) => p.automatic)).toBe(true);
+    expect(items.some((p) => p.automatic)).toBe(false);
     for (const p of g.state.players) {
       expect(p.budget).toBeGreaterThanOrEqual(0);
       expect(p.budget).toBe(20 - p.items.reduce((n, i) => n + i.price, 0));
-      for (const item of p.items.filter((i) => i.automatic))
-        expect(item.price).toBe(1);
     }
   });
   it.each([
@@ -256,7 +405,7 @@ describe("Açık Artırma PostgreSQL motoru", () => {
       await scalar("select phase from game_sessions where id=$1", [g.id]),
     ).toBe("abandoned");
   });
-  it("bir oyuncu ilk beş ürünü alınca kalan beşini rakibe otomatik verir", async () => {
+  it("bir oyuncu on ürünü de alabilir; beşten sonra da sonraki ürün gösterilir", async () => {
     let g = await game();
     while (g.phase === "bidding") {
       const actor = ids.indexOf(g.state.turn_id!);
@@ -264,14 +413,14 @@ describe("Açık Artırma PostgreSQL motoru", () => {
       else if (actor === 0) await act(g, "bid", g.state.current_bid + 1);
       else await act(g, "pass");
       g = await game();
+      if (g.state.index === 5) expect(g.phase).toBe("bidding");
     }
-    expect(g.state.players[0].items).toHaveLength(5);
-    expect(
-      g.state.players[1].items.every((p) => p.automatic && p.price === 1),
-    ).toBe(true);
-    expect(g.state.players[1].budget).toBe(15);
+    expect(g.state.players[0].items).toHaveLength(10);
+    expect(g.state.players[1].items).toHaveLength(0);
+    expect(g.state.players[1].budget).toBe(20);
+    expect(g.phase).toBe("arranging");
   });
-  it("dokuz temada farklı bütçe stratejileriyle hiçbir maç kilitlenmez", async () => {
+  it("tüm temalarda farklı bütçe stratejileriyle hiçbir maç kilitlenmez", async () => {
     let seed = 41;
     const random = () => {
       seed = (seed * 16807) % 2147483647;
@@ -299,14 +448,29 @@ describe("Açık Artırma PostgreSQL motoru", () => {
       let steps = 0;
       while (g.phase === "bidding") {
         expect(++steps).toBeLessThan(80);
-        const p = g.state.players.find((p) => p.id === g.state.turn_id)!;
-        const max = p.budget - (4 - p.items.length);
-        expect(max).toBeGreaterThan(g.state.current_bid);
-        for (const player of g.state.players) {
-          expect(player.budget).toBeGreaterThanOrEqual(5 - player.items.length);
-          expect(player.items.length).toBeLessThanOrEqual(5);
+        if (g.state.players.some((p) => p.budget === 0)) {
+          const chooser =
+            g.state.players.find((p) => p.budget > 0)?.id ?? g.state.turn_id!;
+          await act(
+            g,
+            "allocate",
+            null,
+            random() < 0.5 ? ids[0] : ids[1],
+            ids.indexOf(chooser),
+          );
+          g = await game();
+          continue;
         }
-        if (g.state.current_bid > 0 && random() < 0.4) await act(g, "pass");
+        const p = g.state.players.find((p) => p.id === g.state.turn_id)!;
+        const max = p.budget;
+        for (const player of g.state.players) {
+          expect(player.budget).toBeGreaterThanOrEqual(0);
+        }
+        if (
+          max <= g.state.current_bid ||
+          (g.state.current_bid > 0 && random() < 0.4)
+        )
+          await act(g, "pass");
         else
           await act(
             g,
@@ -317,12 +481,18 @@ describe("Açık Artırma PostgreSQL motoru", () => {
           );
         g = await game();
       }
-      expect(g.state.players.map((p) => p.items.length)).toEqual([5, 5]);
+      expect(g.phase).toBe("arranging");
+      await act(g, "confirm", null, null, 0);
+      await act(await game(), "confirm", null, null, 1);
+      g = await game();
       expect(
         g.state.products.every((p) => p.id.startsWith(theme.id + "-")),
       ).toBe(true);
       expect(
-        new Set(g.state.players.flatMap((p) => p.items.map((i) => i.id))).size,
+        new Set([
+          ...g.state.players.flatMap((p) => p.items.map((i) => i.id)),
+          ...(g.state.skipped ?? []).map((p) => p.id),
+        ]).size,
       ).toBe(10);
     }
   }, 15000);

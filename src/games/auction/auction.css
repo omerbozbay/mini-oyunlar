@@ -1,6 +1,90 @@
 .theme-picker {
   margin-top: 28px;
 }
+.product-photo {
+  overflow: hidden;
+  display: block;
+}
+.allocation-panel {
+  text-align: center;
+}
+.allocation-panel h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.allocation-panel p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 10px 0 18px;
+  color: #a28cae;
+}
+.allocation-panel > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gift-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  padding: 9px 10px;
+  border-radius: 9px;
+  border: 1px solid #dacde9;
+  background: #f4eefb;
+  color: #8261ad;
+  font-size: 11px;
+  min-height: 38px;
+  cursor: pointer;
+}
+.gift-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.auction-arranging {
+  padding: 24px;
+  margin: 22px 0;
+  background: #faf5fe;
+  border: 1px solid #e5d8f1;
+  border-radius: 18px;
+  text-align: center;
+}
+.auction-arranging h2 {
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+.auction-arranging p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #9883a7;
+  margin-bottom: 15px;
+}
+.auction-arranging .small {
+  margin: 12px 0 0;
+}
+.auction-skipped {
+  padding: 15px;
+  margin-top: 15px;
+  background: #f7f3f9;
+  border-radius: 11px;
+  color: #a090ad;
+  font-size: 12px;
+}
+.auction-skipped summary {
+  cursor: pointer;
+}
+.auction-skipped > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 13px;
+}
+.auction-skipped span {
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
 .theme-picker .section-heading h2 {
   font-size: 22px;
 }
@@ -35,7 +119,7 @@
   border-color: #a18bd9;
   background: #faf7ff;
 }
-.theme-card > img,
+.theme-card > :is(img, .product-photo),
 .theme-card > .product-fallback {
   width: 61px;
   height: 61px;
@@ -57,7 +141,7 @@
   color: #a197a7;
   margin-top: 4px;
 }
-.theme-card > svg {
+.theme-card > svg:not(.product-photo) {
   color: #8c70cc;
   width: 15px;
 }
@@ -194,7 +278,7 @@
   position: relative;
   min-width: 0;
 }
-.stage-image > img,
+.stage-image > :is(img, .product-photo),
 .stage-image > .product-fallback {
   display: block;
   width: 100%;
@@ -384,7 +468,7 @@
   align-items: center;
   min-width: 0;
 }
-.won-product img,
+.won-product :is(img, .product-photo),
 .won-product .product-fallback {
   width: 44px;
   height: 44px;
@@ -439,7 +523,7 @@
 .collection-finished .won-product:first-child {
   grid-column: 1/-1;
 }
-.collection-finished .won-product img,
+.collection-finished .won-product :is(img, .product-photo),
 .collection-finished .won-product .product-fallback {
   width: 100%;
   height: auto;
@@ -447,7 +531,7 @@
   object-fit: cover;
   border-radius: 0;
 }
-.collection-finished .won-product:first-child img {
+.collection-finished .won-product:first-child :is(img, .product-photo) {
   aspect-ratio: 1.8;
 }
 .collection-finished .won-product > div {
@@ -535,7 +619,7 @@
   .bid-panel {
     padding: 15px;
   }
-  .theme-card > img {
+  .theme-card > :is(img, .product-photo) {
     width: 45px;
     height: 55px;
     object-fit: cover;
@@ -563,13 +647,13 @@
     gap: 8px;
     position: relative;
   }
-  .theme-card > img {
+  .theme-card > :is(img, .product-photo) {
     width: 100%;
     height: auto;
     aspect-ratio: 1.7;
     object-fit: cover;
   }
-  .theme-card > svg {
+  .theme-card > svg:not(.product-photo) {
     position: absolute;
     top: 14px;
     right: 14px;
@@ -662,7 +746,7 @@
   .collection-finished .collection-grid {
     grid-template-columns: 1fr;
   }
-  .collection-finished .won-product img {
+  .collection-finished .won-product :is(img, .product-photo) {
     aspect-ratio: 1.5;
   }
   .collection-finished .won-product p {
@@ -674,7 +758,7 @@
   .won-product b {
     font-size: 9px;
   }
-  .won-product img {
+  .won-product :is(img, .product-photo) {
     width: 35px;
     height: 35px;
   }
@@ -696,7 +780,7 @@
   .auction-stage {
     grid-template-columns: 1fr;
   }
-  .stage-image > img {
+  .stage-image > :is(img, .product-photo) {
     max-height: 215px;
     object-fit: cover;
   }

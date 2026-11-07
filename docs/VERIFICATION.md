@@ -1,6 +1,18 @@
-# Doğrulama raporu — 6 Kasım 2026
+# Doğrulama raporu
 
-## Güncel: Tersine Konuş!
+## 7 Kasım 2026 — Açık Artırma genişlemesi
+
+- **21 dosyada 165 otomatik test**, TypeScript ve üretim derlemesi geçti. Mevcut beş oyunun PostgreSQL, RLS, arayüz ve ses testleri korunur.
+- 17 tema/312 seçenek; sekiz yeni temada 20'şer seçenek, pizza ve tatlıda 20'şer seçenek var. Her maç yine rastgele 10 ürün içerir. 10 yerel WebP atlası 200 fotoğraf hissi veren kartı taşır; toplam yaklaşık 2,84 MB. Diğer 112 etkin kart mevcut SVG'lerdir. Görseller tek tek incelendi; yeni süper kahraman görselleri portre yerine sembolik nesnelerdir. Tarifler ve kaynaklar ASSETS.md içinde.
+- Kullanıcı 009 ve 010'u uyguladığını bildirdi. Ardından ürünün alınmadan geçilmemesini ve bir oyuncunun bütçesi bittiğinde diğerinden de para kesilmemesini netleştirdi; uygulanmış dosyaları değiştirmeden **011** eklendi. Kullanıcı 011'i de uyguladığını bildirdi.
+- Gerçek Supabase'de güncel Açık Artırma testi **37 kontrolden geçti**: iki oyuncu, WebSocket, üçüncü kimliğin RLS ile engellenmesi, aynı sürümde eşzamanlı teklif, UUID tekrar koruması, yenileme, 72 saniye bağlantı kesintisi/dönüş, 7–3 koleksiyon, hediye sahipliği, para iadesi olmaması, onay sıfırlama, oy gizliliği, rövanş ve lobi.
+- Üçüncü canlı maç yeni yemek temasında başladı. İlk ürüne 20 TL verilip bir bütçe sıfırlandı. Kalan dokuz ürün ayrı ayrı gösterilip ücretsiz kendine/karşıya dağıtıldı; sonuç 7–3, parası kalan oyuncunun bütçesi hâlâ 20 TL. Tekrarlanan ücretsiz seçim ürünü iki kez eklemedi; bütçesi biten oyuncu dağıtımı yönetemedi.
+- Tarayıcı otomasyon sunucusuna erişilemedi. Fiziksel iPhone/Android, dokunmatik kullanım ve gerçek tarayıcı görsel QA yapılmadı; React etkileşim testleri ve dosya görsellerinin incelemesi bunların yerine geçirilmedi.
+- Netlify hedefi `https://mini-oyunlar.netlify.app/`. Push öncesi HTTP 200, Supabase build değişkenleri ve aynı siteye mikrofon izni doğrulandı; önceki JavaScript sürümü henüz yayındaydı. Push sonrası yeni paket ve 10 atlas dosyasının HTTP üzerinden kontrolü ayrıca raporlanır.
+
+## 6 Kasım 2026 — önceki sürüm
+
+## Tersine Konuş!
 
 - Beş oyunla birlikte **21 dosyada 155 otomatik test** geçti. Yeni testler PCM çok kanal/örnekleme hızı, izin hataları, 10 saniye sınırı, geç gelen izin sonucu, arka plan iptali, bozuk dosya/oynatma kurtarması, tek dinleme, tek tahmin, rol/puan/altı tur/beraberlik, arayüz ve Storage RLS/temizlik akışını kapsıyor.
 - TypeScript ve üretim derlemesi geçti. `npm audit --omit=dev`: bilinen açık yok.

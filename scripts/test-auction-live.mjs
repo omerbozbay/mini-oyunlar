@@ -42,16 +42,35 @@ async function action(g, kind, amount = null, choice = null, who) {
     params(g, kind, amount, choice),
   );
 }
-async function finish() {
+async function finish(confirm = true, split = false) {
   let g = (await snapshot()).game;
   let steps = 0;
   while (g.phase === "bidding") {
-    if (++steps > 40) throw Error("Maç kilitlendi");
-    await action(
-      g,
-      g.state.current_bid === 0 ? "bid" : "pass",
-      g.state.current_bid === 0 ? 1 : null,
-    );
+    if (++steps > 60) throw Error("Maç kilitlendi");
+    const current = g.state.players.find((p) => p.id === g.state.turn_id);
+    const target = identities[g.state.index < 7 ? 0 : 1];
+    if (g.state.players.some((p) => p.budget === 0)) {
+      const chooser =
+        g.state.players.find((p) => p.budget > 0)?.id ?? g.state.turn_id;
+      await action(
+        g,
+        "allocate",
+        null,
+        split ? target : chooser,
+        identities.indexOf(chooser),
+      );
+      g = (await snapshot()).game;
+      continue;
+    }
+    const bid = split
+      ? current.id === target || g.state.current_bid === 0
+      : g.state.current_bid === 0;
+    await action(g, bid ? "bid" : "pass", bid ? g.state.current_bid + 1 : null);
+    g = (await snapshot()).game;
+  }
+  if (confirm && g.phase === "arranging") {
+    await action(g, "confirm", null, null, 0);
+    await action((await snapshot()).game, "confirm", null, null, 1);
     g = (await snapshot()).game;
   }
   return g;
@@ -202,10 +221,13 @@ try {
     (await snapshot()).game.id === sessionid,
     "Yeniden bağlantı aynı maç ve sırayı korudu",
   );
-  g = await finish();
+  g = await finish(false, true);
   check(
-    g.phase === "voting" && g.state.players.every((p) => p.items.length === 5),
-    "On ürün dağıtıldı, iki oyuncu beşer ürün topladı",
+    g.phase === "arranging" &&
+      g.state.index === 10 &&
+      g.state.players[0].items.length === 7 &&
+      g.state.players[1].items.length === 3,
+    "On ürün tek tek görüldü, yediye üç koleksiyon oluştu",
   );
   check(
     g.state.players.every(
@@ -213,7 +235,48 @@ try {
         p.budget === 20 - p.items.reduce((sum, i) => sum + i.price, 0) &&
         p.budget >= 0,
     ),
-    "Bütçe toplamları ve rezerv korundu",
+    "Bütçe toplamları doğru ve ürün rezervi yok",
+  );
+  await action(g, "confirm", null, null, 0);
+  g = (await snapshot()).game;
+  const balances = g.state.players.map((p) => p.budget);
+  const gift = {
+    p_session_id: g.id,
+    p_version: g.version,
+    p_request_id: randomUUID(),
+    p_item_id: g.state.players[0].items[0].id,
+  };
+  const giftDenied = await clients[1].rpc("auction_gift", gift);
+  check(
+    giftDenied.error?.message.includes("item_not_owned"),
+    "Rakibin ürünü hediye edilemedi",
+  );
+  await rpc(clients[0], "auction_gift", gift);
+  await rpc(clients[0], "auction_gift", gift);
+  g = (await snapshot()).game;
+  check(
+    g.state.players[0].items.length === 6 &&
+      g.state.players[1].items.length === 4 &&
+      JSON.stringify(g.state.players.map((p) => p.budget)) ===
+        JSON.stringify(balances),
+    "Hediye bir kez aktarıldı, bütçeler değişmedi",
+  );
+  check(
+    g.state.arrange_ready.length === 0,
+    "Hediye önceki koleksiyon onayını sıfırladı",
+  );
+  await action(g, "confirm", null, null, 0);
+  await action((await snapshot()).game, "confirm", null, null, 1);
+  g = (await snapshot()).game;
+  const late = await clients[0].rpc("auction_gift", {
+    ...gift,
+    p_request_id: randomUUID(),
+    p_version: g.version,
+    p_item_id: g.state.players[0].items[0].id,
+  });
+  check(
+    g.phase === "voting" && late.error?.message.includes("invalid_phase"),
+    "İki onaydan sonra oylama açıldı ve hediye kilitlendi",
   );
   await action(g, "vote", null, identities[0], 0);
   g = (await snapshot()).game;
@@ -259,6 +322,76 @@ try {
       s.players.length === 2 &&
       s.players.every((p) => !p.ready),
     "Lobiye dönüş üyeliği koruyup hazır durumlarını sıfırladı",
+  );
+  await rpc(clients[0], "select_auction_theme", {
+    p_room_id: roomid,
+    p_theme: "meals",
+  });
+  for (const c of clients.slice(0, 2))
+    await rpc(c, "set_ready", { p_room_id: roomid, p_ready: true });
+  await rpc(clients[0], "start_game", { p_room_id: roomid });
+  g = (await snapshot()).game;
+  check(
+    g.theme === "meals" &&
+      g.state.products.length === 10 &&
+      g.state.products.every(
+        (p) =>
+          p.image.endsWith("meals.webp") &&
+          p.image_cell >= 0 &&
+          p.image_cell < 20,
+      ),
+    "Yeni yemek temasında on farklı fotoğraf kartı seçildi",
+  );
+  if (g.state.turn_id !== identities[0]) {
+    await action(g, "bid", 1);
+    g = (await snapshot()).game;
+  }
+  await action(g, "bid", 20);
+  await action((await snapshot()).game, "pass");
+  g = (await snapshot()).game;
+  check(
+    g.state.index === 1 &&
+      g.phase === "bidding" &&
+      g.state.players[0].budget === 0,
+    "İlk ürün 20 TL’ye alındı; kalan dokuz ürün atlanmadı",
+  );
+  const poor = await clients[0].rpc(
+    "auction_action",
+    params(g, "allocate", null, identities[0]),
+  );
+  check(
+    poor.error?.message.includes("not_your_turn"),
+    "Bütçesi biten oyuncu dağıtımı yönetemedi",
+  );
+  const stateVersion = g.version;
+  const firstFree = params(g, "allocate", null, identities[0]);
+  await rpc(clients[1], "auction_action", firstFree);
+  await rpc(clients[1], "auction_action", firstFree);
+  g = (await snapshot()).game;
+  check(
+    g.state.index === 2 && g.version === stateVersion + 1,
+    "Ücretsiz seçim aynı UUID ile yalnız bir kez uygulandı",
+  );
+  for (let index = 2; index < 10; index++) {
+    check(
+      g.state.index === index && g.phase === "bidding",
+      `Kalan ürün ${index + 1} ayrı gösterildi`,
+    );
+    await action(g, "allocate", null, identities[index < 7 ? 0 : 1], 1);
+    g = (await snapshot()).game;
+  }
+  check(
+    g.phase === "arranging" &&
+      g.state.players[0].items.length === 7 &&
+      g.state.players[1].items.length === 3 &&
+      g.state.players[1].budget === 20,
+    "Ücretsiz kendine/karşıya dağıtım 7–3 bitti, parası kalandan hiç para kesilmedi",
+  );
+  check(
+    g.state.players
+      .flatMap((p) => p.items)
+      .filter((p) => p.free && p.price === 0).length === 9,
+    "Dokuz ücretsiz ürün koleksiyonlara tek tek eklendi",
   );
   console.log(JSON.stringify({ result: "PASS", checks: count }));
 } catch (error) {

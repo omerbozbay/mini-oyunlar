@@ -11,7 +11,7 @@ export const games: GameDefinition[] = [
     status: "available",
     rules: [
       "20 TL bütçe, 10 ürün ve bolca tatlı rekabet.",
-      "Sırayla teklif ver veya pas geç. Her oyuncu 5 ürün toplar.",
+      "Sırayla teklif ver veya pas geç. Ürün sınırı yok; hediye de verebilirsin.",
       "En iyi kombinasyonu birlikte oylayın.",
     ],
   },

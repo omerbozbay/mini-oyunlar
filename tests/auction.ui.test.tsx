@@ -82,9 +82,9 @@ afterEach(async () => {
   vi.clearAllMocks();
 });
 describe("Açık Artırma arayüzü", () => {
-  it("açılışta 16 TL üst sınırını gösterir ve ilk pası kapatır", async () => {
+  it("açılışta tüm 20 TL bütçeyi kullanabilir ve ilk pası kapatır", async () => {
     await render();
-    expect(node.textContent).toContain("16 TL");
+    expect(node.textContent).toContain("20 TL");
     expect(button("Pas").disabled).toBe(true);
     expect(button("Teklif ver").disabled).toBe(false);
     await act(async () => button("+5").click());
@@ -141,7 +141,7 @@ describe("Açık Artırma arayüzü", () => {
       expect.objectContaining({ p_action: "lobby" }),
     );
   });
-  it("dokuz tema sunar, misafirin tema seçmesini engeller", async () => {
+  it("on yedi tema sunar, misafirin tema seçmesini engeller", async () => {
     const select = vi.fn();
     await act(async () =>
       root.render(
@@ -153,7 +153,7 @@ describe("Açık Artırma arayüzü", () => {
         />,
       ),
     );
-    expect(node.querySelectorAll("button")).toHaveLength(9);
+    expect(node.querySelectorAll("button")).toHaveLength(17);
     expect(
       Array.from(node.querySelectorAll("button")).every((b) => b.disabled),
     ).toBe(true);
@@ -173,9 +173,53 @@ describe("Açık Artırma arayüzü", () => {
   it("görsel yükleme hatası hamleleri kilitlemez", async () => {
     await render();
     await act(async () =>
-      node.querySelector("img")?.dispatchEvent(new Event("error")),
+      node.querySelector("image")?.dispatchEvent(new Event("error")),
     );
     expect(node.querySelector(".product-fallback")).not.toBeNull();
     expect(button("Teklif ver").disabled).toBe(false);
+  });
+  it("yalnız kendi ürününde hediye düğmesi sunar ve ürün kimliğini gönderir", async () => {
+    g.state.players[0].items = [
+      { ...themes[0].items[0], price: 1, automatic: false },
+    ];
+    g.state.players[1].items = [
+      { ...themes[0].items[1], price: 1, automatic: false },
+    ];
+    await render();
+    expect(node.querySelectorAll(".gift-button")).toHaveLength(1);
+    await act(async () => button("Arkadaşına ver").click());
+    expect(api.sendCommand).toHaveBeenCalledWith(
+      expect.objectContaining({
+        p_action: "gift",
+        p_choice: themes[0].items[0].id,
+      }),
+    );
+  });
+  it("on ürün sonrasında koleksiyon onayı gösterir; oylamada hediye düğmelerini kapatır", async () => {
+    g.phase = "arranging";
+    g.state.index = 10;
+    await render();
+    expect(button("Koleksiyonum hazır").disabled).toBe(false);
+    await act(async () => button("Koleksiyonum hazır").click());
+    expect(api.sendCommand).toHaveBeenCalledWith(
+      expect.objectContaining({ p_action: "confirm" }),
+    );
+    g.phase = "voting";
+    await render();
+    expect(node.querySelector(".gift-button")).toBeNull();
+    expect(node.textContent).not.toContain("/5");
+  });
+  it("bir bütçe bitince parası kalan oyuncuya ücretsiz iki hedef sunar", async () => {
+    g.state.players[1].budget = 0;
+    await render();
+    expect(node.textContent).toContain("para kesilmez");
+    expect(button("Ücretsiz kendime al").disabled).toBe(false);
+    await act(async () => button("Ücretsiz arkadaşıma ver").click());
+    expect(api.sendCommand).toHaveBeenCalledWith(
+      expect.objectContaining({ p_action: "allocate", p_choice: "b" }),
+    );
+    await render("b");
+    expect(button("Ücretsiz kendime al").disabled).toBe(true);
+    expect(node.querySelector("#auction-amount")).toBeNull();
   });
 });

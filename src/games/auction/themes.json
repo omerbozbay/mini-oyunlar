@@ -9,113 +9,161 @@
         "id": "pizza-1",
         "name": "Mozzarella",
         "description": "Uzayan, yumuşacık İtalyan peyniri.",
-        "image": "/auction/pizza-1.svg",
-        "kind": "cheese"
+        "kind": "cheese",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 0
       },
       {
         "id": "pizza-2",
         "name": "Domates",
         "description": "Güneşte olgunlaşmış sulu dilimler.",
-        "image": "/auction/pizza-2.svg",
-        "kind": "tomato"
+        "kind": "tomato",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 1
       },
       {
         "id": "pizza-3",
         "name": "Fesleğen",
         "description": "Taptaze yapraklarla mis gibi aroma.",
-        "image": "/auction/pizza-3.svg",
-        "kind": "greens"
+        "kind": "greens",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 2
       },
       {
         "id": "pizza-4",
         "name": "Sucuk",
         "description": "Baharatlı, kızarmış ince dilimler.",
-        "image": "/auction/pizza-4.svg",
-        "kind": "meat"
+        "kind": "meat",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 3
       },
       {
         "id": "pizza-5",
         "name": "Mantar",
         "description": "Toprak kokulu, narin kültür mantarı.",
-        "image": "/auction/pizza-5.svg",
-        "kind": "mushroom"
+        "kind": "mushroom",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 4
       },
       {
         "id": "pizza-6",
         "name": "Siyah zeytin",
         "description": "Akdeniz'den tuzlu bir dokunuş.",
-        "image": "/auction/pizza-6.svg",
-        "kind": "olive"
+        "kind": "olive",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 5
       },
       {
         "id": "pizza-7",
         "name": "Kırmızı biber",
         "description": "Tatlı ve çıtır köz biber.",
-        "image": "/auction/pizza-7.svg",
-        "kind": "pepper"
+        "kind": "pepper",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 6
       },
       {
         "id": "pizza-8",
         "name": "Ananas",
         "description": "Tatlı-tuzlu sevenlere tropik sürpriz.",
-        "image": "/auction/pizza-8.svg",
-        "kind": "pineapple"
+        "kind": "pineapple",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 7
       },
       {
         "id": "pizza-9",
         "name": "Parmesan",
         "description": "Olgunlaştırılmış, yoğun lezzet.",
-        "image": "/auction/pizza-9.svg",
-        "kind": "cheese"
+        "kind": "cheese",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 8
       },
       {
         "id": "pizza-10",
         "name": "Roka",
         "description": "Hafif acı, taptaze yeşillik.",
-        "image": "/auction/pizza-10.svg",
-        "kind": "greens"
+        "kind": "greens",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 9
       },
       {
         "id": "pizza-11",
         "name": "Karamelize soğan",
         "description": "Ağır ateşte tatlanmış soğan.",
-        "image": "/auction/pizza-11.svg",
-        "kind": "onion"
+        "kind": "onion",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 10
       },
       {
         "id": "pizza-12",
         "name": "Acı sos",
         "description": "Cesur damaklara ateşli dokunuş.",
-        "image": "/auction/pizza-12.svg",
-        "kind": "sauce"
+        "kind": "sauce",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 11
       },
       {
         "id": "pizza-13",
         "name": "Tavuk",
         "description": "Izgarada pişmiş yumuşak parçalar.",
-        "image": "/auction/pizza-13.svg",
-        "kind": "meat"
+        "kind": "meat",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 12
       },
       {
         "id": "pizza-14",
         "name": "Mısır",
         "description": "Tatlı sarı tanelerle renk kat.",
-        "image": "/auction/pizza-14.svg",
-        "kind": "corn"
+        "kind": "corn",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 13
       },
       {
         "id": "pizza-15",
         "name": "Ton balığı",
         "description": "Denizden gelen doyurucu lezzet.",
-        "image": "/auction/pizza-15.svg",
-        "kind": "fish"
+        "kind": "fish",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 14
       },
       {
         "id": "pizza-16",
         "name": "Trüf yağı",
         "description": "Birkaç damlayla gurme bir final.",
-        "image": "/auction/pizza-16.svg",
-        "kind": "sauce"
+        "kind": "sauce",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "pizza-17",
+        "name": "Sosis",
+        "description": "Sosis ile pizzana yeni bir lezzet kat.",
+        "kind": "topping",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "pizza-18",
+        "name": "Yeşil zeytin",
+        "description": "Yeşil zeytin ile pizzana yeni bir lezzet kat.",
+        "kind": "topping",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "pizza-19",
+        "name": "Jalapeno",
+        "description": "Jalapeno ile pizzana yeni bir lezzet kat.",
+        "kind": "topping",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "pizza-20",
+        "name": "Füme hindi",
+        "description": "Füme hindi ile pizzana yeni bir lezzet kat.",
+        "kind": "topping",
+        "image": "/auction/atlas/pizza.webp",
+        "image_cell": 19
       }
     ]
   },
@@ -129,113 +177,113 @@
         "id": "burger-1",
         "name": "Dana köfte",
         "description": "Sulu, kalın ve ızgara izli.",
-        "image": "/auction/burger-1.svg",
-        "kind": "meat"
+        "kind": "meat",
+        "image": "/auction/burger-1.svg"
       },
       {
         "id": "burger-2",
         "name": "Cheddar",
         "description": "Sıcakta eriyen altın renkli peynir.",
-        "image": "/auction/burger-2.svg",
-        "kind": "cheese"
+        "kind": "cheese",
+        "image": "/auction/burger-2.svg"
       },
       {
         "id": "burger-3",
         "name": "Marul",
         "description": "Her ısırığa çıtır ferahlık.",
-        "image": "/auction/burger-3.svg",
-        "kind": "greens"
+        "kind": "greens",
+        "image": "/auction/burger-3.svg"
       },
       {
         "id": "burger-4",
         "name": "Domates dilimi",
         "description": "Taze ve sulu bir katman.",
-        "image": "/auction/burger-4.svg",
-        "kind": "tomato"
+        "kind": "tomato",
+        "image": "/auction/burger-4.svg"
       },
       {
         "id": "burger-5",
         "name": "Turşu",
         "description": "Ekşi ve gevrek kornişon.",
-        "image": "/auction/burger-5.svg",
-        "kind": "pickle"
+        "kind": "pickle",
+        "image": "/auction/burger-5.svg"
       },
       {
         "id": "burger-6",
         "name": "Çıtır soğan",
         "description": "Altın renkli kızarmış halkalar.",
-        "image": "/auction/burger-6.svg",
-        "kind": "onion"
+        "kind": "onion",
+        "image": "/auction/burger-6.svg"
       },
       {
         "id": "burger-7",
         "name": "Barbekü sos",
         "description": "İsli, tatlı ve yoğun.",
-        "image": "/auction/burger-7.svg",
-        "kind": "sauce"
+        "kind": "sauce",
+        "image": "/auction/burger-7.svg"
       },
       {
         "id": "burger-8",
         "name": "Acılı mayonez",
         "description": "Kremalı lezzete küçük bir ateş.",
-        "image": "/auction/burger-8.svg",
-        "kind": "sauce"
+        "kind": "sauce",
+        "image": "/auction/burger-8.svg"
       },
       {
         "id": "burger-9",
         "name": "Brioche ekmek",
         "description": "Yumuşacık tereyağlı ekmek.",
-        "image": "/auction/burger-9.svg",
-        "kind": "bread"
+        "kind": "bread",
+        "image": "/auction/burger-9.svg"
       },
       {
         "id": "burger-10",
         "name": "Avokado",
         "description": "İpeksi ve doyurucu yeşil katman.",
-        "image": "/auction/burger-10.svg",
-        "kind": "avocado"
+        "kind": "avocado",
+        "image": "/auction/burger-10.svg"
       },
       {
         "id": "burger-11",
         "name": "Yumurta",
         "description": "Akışkan sarısıyla farklı bir dokunuş.",
-        "image": "/auction/burger-11.svg",
-        "kind": "egg"
+        "kind": "egg",
+        "image": "/auction/burger-11.svg"
       },
       {
         "id": "burger-12",
         "name": "Pastırma",
         "description": "Çemen kokulu ince et dilimleri.",
-        "image": "/auction/burger-12.svg",
-        "kind": "meat"
+        "kind": "meat",
+        "image": "/auction/burger-12.svg"
       },
       {
         "id": "burger-13",
         "name": "Mantar sote",
         "description": "Tereyağında çevrilmiş mantarlar.",
-        "image": "/auction/burger-13.svg",
-        "kind": "mushroom"
+        "kind": "mushroom",
+        "image": "/auction/burger-13.svg"
       },
       {
         "id": "burger-14",
         "name": "Jalapeno",
         "description": "Acı sevenlere yeşil biber.",
-        "image": "/auction/burger-14.svg",
-        "kind": "pepper"
+        "kind": "pepper",
+        "image": "/auction/burger-14.svg"
       },
       {
         "id": "burger-15",
         "name": "Mozzarella çubuğu",
         "description": "Çıtır dış, uzayan peynir.",
-        "image": "/auction/burger-15.svg",
-        "kind": "cheese"
+        "kind": "cheese",
+        "image": "/auction/burger-15.svg"
       },
       {
         "id": "burger-16",
         "name": "Hardal",
         "description": "Keskin, canlı ve sarı.",
-        "image": "/auction/burger-16.svg",
-        "kind": "sauce"
+        "kind": "sauce",
+        "image": "/auction/burger-16.svg"
       }
     ]
   },
@@ -249,113 +297,113 @@
         "id": "cake-1",
         "name": "Çilek",
         "description": "Parlak kırmızı, mis kokulu meyve.",
-        "image": "/auction/cake-1.svg",
-        "kind": "berry"
+        "kind": "berry",
+        "image": "/auction/cake-1.svg"
       },
       {
         "id": "cake-2",
         "name": "Bitter çikolata",
         "description": "Yoğun kakaolu zarif lezzet.",
-        "image": "/auction/cake-2.svg",
-        "kind": "chocolate"
+        "kind": "chocolate",
+        "image": "/auction/cake-2.svg"
       },
       {
         "id": "cake-3",
         "name": "Vanilyalı krema",
         "description": "Hafif ve bulut gibi yumuşak.",
-        "image": "/auction/cake-3.svg",
-        "kind": "cream"
+        "kind": "cream",
+        "image": "/auction/cake-3.svg"
       },
       {
         "id": "cake-4",
         "name": "Frambuaz",
         "description": "Mayhoş küçük kırmızı taneler.",
-        "image": "/auction/cake-4.svg",
-        "kind": "berry"
+        "kind": "berry",
+        "image": "/auction/cake-4.svg"
       },
       {
         "id": "cake-5",
         "name": "Beyaz çikolata",
         "description": "Sütlü ve tatlı bir katman.",
-        "image": "/auction/cake-5.svg",
-        "kind": "chocolate"
+        "kind": "chocolate",
+        "image": "/auction/cake-5.svg"
       },
       {
         "id": "cake-6",
         "name": "Muz",
         "description": "Yumuşak dokulu meyve dilimleri.",
-        "image": "/auction/cake-6.svg",
-        "kind": "banana"
+        "kind": "banana",
+        "image": "/auction/cake-6.svg"
       },
       {
         "id": "cake-7",
         "name": "Antep fıstığı",
         "description": "Yeşil, çıtır ve özel.",
-        "image": "/auction/cake-7.svg",
-        "kind": "nut"
+        "kind": "nut",
+        "image": "/auction/cake-7.svg"
       },
       {
         "id": "cake-8",
         "name": "Karamel",
         "description": "Altın renkli akışkan mutluluk.",
-        "image": "/auction/cake-8.svg",
-        "kind": "honey"
+        "kind": "honey",
+        "image": "/auction/cake-8.svg"
       },
       {
         "id": "cake-9",
         "name": "Yaban mersini",
         "description": "Minik mor lezzet topları.",
-        "image": "/auction/cake-9.svg",
-        "kind": "berry"
+        "kind": "berry",
+        "image": "/auction/cake-9.svg"
       },
       {
         "id": "cake-10",
         "name": "Hindistan cevizi",
         "description": "Tropik kokulu beyaz dokunuş.",
-        "image": "/auction/cake-10.svg",
-        "kind": "coconut"
+        "kind": "coconut",
+        "image": "/auction/cake-10.svg"
       },
       {
         "id": "cake-11",
         "name": "Limon kreması",
         "description": "Ferah ve hafif ekşi dolgu.",
-        "image": "/auction/cake-11.svg",
-        "kind": "cream"
+        "kind": "cream",
+        "image": "/auction/cake-11.svg"
       },
       {
         "id": "cake-12",
         "name": "Kakaolu pandispanya",
         "description": "Yumuşak çikolatalı taban.",
-        "image": "/auction/cake-12.svg",
-        "kind": "cake"
+        "kind": "cake",
+        "image": "/auction/cake-12.svg"
       },
       {
         "id": "cake-13",
         "name": "Şeker çiçekler",
         "description": "Pastana renkli bir bahçe ekle.",
-        "image": "/auction/cake-13.svg",
-        "kind": "flower"
+        "kind": "flower",
+        "image": "/auction/cake-13.svg"
       },
       {
         "id": "cake-14",
         "name": "Bisküvi kırığı",
         "description": "Her lokmada çıtır sürpriz.",
-        "image": "/auction/cake-14.svg",
-        "kind": "cookie"
+        "kind": "cookie",
+        "image": "/auction/cake-14.svg"
       },
       {
         "id": "cake-15",
         "name": "Kiraz",
         "description": "Kutlamanın parlak kırmızı tacı.",
-        "image": "/auction/cake-15.svg",
-        "kind": "cherry"
+        "kind": "cherry",
+        "image": "/auction/cake-15.svg"
       },
       {
         "id": "cake-16",
         "name": "Yenilebilir inci",
         "description": "Işıltılı, küçük ve zarif süsler.",
-        "image": "/auction/cake-16.svg",
-        "kind": "pearls"
+        "kind": "pearls",
+        "image": "/auction/cake-16.svg"
       }
     ]
   },
@@ -369,113 +417,113 @@
         "id": "breakfast-1",
         "name": "Simit",
         "description": "Susamlı, çıtır ve sıcacık.",
-        "image": "/auction/breakfast-1.svg",
-        "kind": "bread"
+        "kind": "bread",
+        "image": "/auction/breakfast-1.svg"
       },
       {
         "id": "breakfast-2",
         "name": "Beyaz peynir",
         "description": "Klasik kahvaltının vazgeçilmezi.",
-        "image": "/auction/breakfast-2.svg",
-        "kind": "cheese"
+        "kind": "cheese",
+        "image": "/auction/breakfast-2.svg"
       },
       {
         "id": "breakfast-3",
         "name": "Bal kaymak",
         "description": "Tatlı ve ipeksi ikili.",
-        "image": "/auction/breakfast-3.svg",
-        "kind": "honey"
+        "kind": "honey",
+        "image": "/auction/breakfast-3.svg"
       },
       {
         "id": "breakfast-4",
         "name": "Menemen",
         "description": "Domates, biber ve yumurta uyumu.",
-        "image": "/auction/breakfast-4.svg",
-        "kind": "egg"
+        "kind": "egg",
+        "image": "/auction/breakfast-4.svg"
       },
       {
         "id": "breakfast-5",
         "name": "Siyah zeytin",
         "description": "Küçük bir Ege esintisi.",
-        "image": "/auction/breakfast-5.svg",
-        "kind": "olive"
+        "kind": "olive",
+        "image": "/auction/breakfast-5.svg"
       },
       {
         "id": "breakfast-6",
         "name": "Çilek reçeli",
         "description": "Ev yapımı meyveli mutluluk.",
-        "image": "/auction/breakfast-6.svg",
-        "kind": "berry"
+        "kind": "berry",
+        "image": "/auction/breakfast-6.svg"
       },
       {
         "id": "breakfast-7",
         "name": "Sucuklu yumurta",
         "description": "Tavadan yükselen nefis koku.",
-        "image": "/auction/breakfast-7.svg",
-        "kind": "egg"
+        "kind": "egg",
+        "image": "/auction/breakfast-7.svg"
       },
       {
         "id": "breakfast-8",
         "name": "Taze domates",
         "description": "Bahçeden sofraya kırmızı dilimler.",
-        "image": "/auction/breakfast-8.svg",
-        "kind": "tomato"
+        "kind": "tomato",
+        "image": "/auction/breakfast-8.svg"
       },
       {
         "id": "breakfast-9",
         "name": "Salatalık",
         "description": "Ferah ve gevrek yeşil dilimler.",
-        "image": "/auction/breakfast-9.svg",
-        "kind": "pickle"
+        "kind": "pickle",
+        "image": "/auction/breakfast-9.svg"
       },
       {
         "id": "breakfast-10",
         "name": "Gözleme",
         "description": "İncecik hamurda sıcacık iç.",
-        "image": "/auction/breakfast-10.svg",
-        "kind": "bread"
+        "kind": "bread",
+        "image": "/auction/breakfast-10.svg"
       },
       {
         "id": "breakfast-11",
         "name": "Çay",
         "description": "İnce belli bardakta demli çay.",
-        "image": "/auction/breakfast-11.svg",
-        "kind": "tea"
+        "kind": "tea",
+        "image": "/auction/breakfast-11.svg"
       },
       {
         "id": "breakfast-12",
         "name": "Portakal suyu",
         "description": "Taze sıkılmış güneş enerjisi.",
-        "image": "/auction/breakfast-12.svg",
-        "kind": "orange"
+        "kind": "orange",
+        "image": "/auction/breakfast-12.svg"
       },
       {
         "id": "breakfast-13",
         "name": "Pankek",
         "description": "Yumuşacık mini kahvaltı kuleleri.",
-        "image": "/auction/breakfast-13.svg",
-        "kind": "cake"
+        "kind": "cake",
+        "image": "/auction/breakfast-13.svg"
       },
       {
         "id": "breakfast-14",
         "name": "Avokado ezmesi",
         "description": "Modern sofraya kremsi yeşillik.",
-        "image": "/auction/breakfast-14.svg",
-        "kind": "avocado"
+        "kind": "avocado",
+        "image": "/auction/breakfast-14.svg"
       },
       {
         "id": "breakfast-15",
         "name": "Ceviz",
         "description": "Çıtır ve doyurucu bir eşlikçi.",
-        "image": "/auction/breakfast-15.svg",
-        "kind": "nut"
+        "kind": "nut",
+        "image": "/auction/breakfast-15.svg"
       },
       {
         "id": "breakfast-16",
         "name": "Kruvasan",
         "description": "Kat kat tereyağlı Fransız dokunuşu.",
-        "image": "/auction/breakfast-16.svg",
-        "kind": "bread"
+        "kind": "bread",
+        "image": "/auction/breakfast-16.svg"
       }
     ]
   },
@@ -489,233 +537,281 @@
         "id": "pasta-1",
         "name": "Domates sosu",
         "description": "Kısık ateşte pişmiş klasik sos.",
-        "image": "/auction/pasta-1.svg",
-        "kind": "tomato"
+        "kind": "tomato",
+        "image": "/auction/pasta-1.svg"
       },
       {
         "id": "pasta-2",
         "name": "Pesto",
         "description": "Fesleğenle yemyeşil bir lezzet.",
-        "image": "/auction/pasta-2.svg",
-        "kind": "greens"
+        "kind": "greens",
+        "image": "/auction/pasta-2.svg"
       },
       {
         "id": "pasta-3",
         "name": "Parmesan",
         "description": "Üzerine serpiştirilecek yoğun aroma.",
-        "image": "/auction/pasta-3.svg",
-        "kind": "cheese"
+        "kind": "cheese",
+        "image": "/auction/pasta-3.svg"
       },
       {
         "id": "pasta-4",
         "name": "Krema",
         "description": "İpeksi ve pürüzsüz bir sos tabanı.",
-        "image": "/auction/pasta-4.svg",
-        "kind": "cream"
+        "kind": "cream",
+        "image": "/auction/pasta-4.svg"
       },
       {
         "id": "pasta-5",
         "name": "Karides",
         "description": "Denizden gelen zarif lokmalar.",
-        "image": "/auction/pasta-5.svg",
-        "kind": "shrimp"
+        "kind": "shrimp",
+        "image": "/auction/pasta-5.svg"
       },
       {
         "id": "pasta-6",
         "name": "Mantar",
         "description": "Sosa derinlik katan yumuşak doku.",
-        "image": "/auction/pasta-6.svg",
-        "kind": "mushroom"
+        "kind": "mushroom",
+        "image": "/auction/pasta-6.svg"
       },
       {
         "id": "pasta-7",
         "name": "Izgara tavuk",
         "description": "Doyurucu ve hafif protein.",
-        "image": "/auction/pasta-7.svg",
-        "kind": "meat"
+        "kind": "meat",
+        "image": "/auction/pasta-7.svg"
       },
       {
         "id": "pasta-8",
         "name": "Sarımsak",
         "description": "Azıyla bile kocaman aroma.",
-        "image": "/auction/pasta-8.svg",
-        "kind": "garlic"
+        "kind": "garlic",
+        "image": "/auction/pasta-8.svg"
       },
       {
         "id": "pasta-9",
         "name": "Ispanak",
         "description": "Taze, yeşil ve hafif.",
-        "image": "/auction/pasta-9.svg",
-        "kind": "greens"
+        "kind": "greens",
+        "image": "/auction/pasta-9.svg"
       },
       {
         "id": "pasta-10",
         "name": "Kurutulmuş domates",
         "description": "Güneşte yoğunlaşmış lezzet.",
-        "image": "/auction/pasta-10.svg",
-        "kind": "tomato"
+        "kind": "tomato",
+        "image": "/auction/pasta-10.svg"
       },
       {
         "id": "pasta-11",
         "name": "Zeytinyağı",
         "description": "Akdeniz'in altın damlaları.",
-        "image": "/auction/pasta-11.svg",
-        "kind": "sauce"
+        "kind": "sauce",
+        "image": "/auction/pasta-11.svg"
       },
       {
         "id": "pasta-12",
         "name": "Fesleğen",
         "description": "Sona eklenen mis kokulu yapraklar.",
-        "image": "/auction/pasta-12.svg",
-        "kind": "greens"
+        "kind": "greens",
+        "image": "/auction/pasta-12.svg"
       },
       {
         "id": "pasta-13",
         "name": "Somon",
         "description": "Yumuşak ve zengin balık dilimleri.",
-        "image": "/auction/pasta-13.svg",
-        "kind": "fish"
+        "kind": "fish",
+        "image": "/auction/pasta-13.svg"
       },
       {
         "id": "pasta-14",
         "name": "Acı pul biber",
         "description": "Sosa sıcak bir hareket kat.",
-        "image": "/auction/pasta-14.svg",
-        "kind": "pepper"
+        "kind": "pepper",
+        "image": "/auction/pasta-14.svg"
       },
       {
         "id": "pasta-15",
         "name": "Burrata",
         "description": "İçi kremalı yumuşak peynir.",
-        "image": "/auction/pasta-15.svg",
-        "kind": "cheese"
+        "kind": "cheese",
+        "image": "/auction/pasta-15.svg"
       },
       {
         "id": "pasta-16",
         "name": "Çam fıstığı",
         "description": "Minik, çıtır ve aromatik.",
-        "image": "/auction/pasta-16.svg",
-        "kind": "nut"
+        "kind": "nut",
+        "image": "/auction/pasta-16.svg"
       }
     ]
   },
   {
     "id": "dessert",
-    "title": "En Güzel Tatlı Tabağını Hazırla",
+    "title": "En İyi Tatlı Tabağını Kur",
     "subtitle": "Bir tabakta beş küçük mutluluk biriktir.",
     "color": "#eaddf2",
     "items": [
       {
         "id": "dessert-1",
-        "name": "Brownie",
-        "description": "İçi nemli, yoğun çikolatalı küp.",
-        "image": "/auction/dessert-1.svg",
-        "kind": "chocolate"
+        "name": "Künefe",
+        "description": "Tatlı koleksiyonunun yıldızı: Künefe.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 0
       },
       {
         "id": "dessert-2",
-        "name": "Makaron",
-        "description": "Renkli, narin bademli lokmalar.",
-        "image": "/auction/dessert-2.svg",
-        "kind": "cookie"
+        "name": "Fırın sütlaç",
+        "description": "Tatlı koleksiyonunun yıldızı: Fırın sütlaç.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 1
       },
       {
         "id": "dessert-3",
-        "name": "Çilek",
-        "description": "Tatlılara meyveli ferahlık.",
-        "image": "/auction/dessert-3.svg",
-        "kind": "berry"
+        "name": "İrmik helvası",
+        "description": "Tatlı koleksiyonunun yıldızı: İrmik helvası.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 2
       },
       {
         "id": "dessert-4",
-        "name": "Vanilyalı dondurma",
-        "description": "Serin ve kremalı bir top.",
-        "image": "/auction/dessert-4.svg",
-        "kind": "cream"
+        "name": "Lokma",
+        "description": "Tatlı koleksiyonunun yıldızı: Lokma.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 3
       },
       {
         "id": "dessert-5",
-        "name": "Profiterol",
-        "description": "Çikolata soslu minik hamur topları.",
-        "image": "/auction/dessert-5.svg",
-        "kind": "cake"
+        "name": "Güllaç",
+        "description": "Tatlı koleksiyonunun yıldızı: Güllaç.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 4
       },
       {
         "id": "dessert-6",
-        "name": "Baklava",
-        "description": "Fıstıklı, şerbetli ince katlar.",
-        "image": "/auction/dessert-6.svg",
-        "kind": "cake"
+        "name": "Revani",
+        "description": "Tatlı koleksiyonunun yıldızı: Revani.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 5
       },
       {
         "id": "dessert-7",
-        "name": "Cheesecake",
-        "description": "Kremamsı, hafif ekşi dilim.",
-        "image": "/auction/dessert-7.svg",
-        "kind": "cake"
+        "name": "Kazandibi",
+        "description": "Tatlı koleksiyonunun yıldızı: Kazandibi.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 6
       },
       {
         "id": "dessert-8",
-        "name": "Çikolata sos",
-        "description": "Tabağını çizgilerle süsle.",
-        "image": "/auction/dessert-8.svg",
-        "kind": "sauce"
+        "name": "Baklava",
+        "description": "Tatlı koleksiyonunun yıldızı: Baklava.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 7
       },
       {
         "id": "dessert-9",
-        "name": "Fındık",
-        "description": "Kavrulmuş çıtır eşlikçi.",
-        "image": "/auction/dessert-9.svg",
-        "kind": "nut"
+        "name": "Şekerpare",
+        "description": "Tatlı koleksiyonunun yıldızı: Şekerpare.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 8
       },
       {
         "id": "dessert-10",
-        "name": "Limon sorbe",
-        "description": "Tertemiz ve serinletici aroma.",
-        "image": "/auction/dessert-10.svg",
-        "kind": "orange"
+        "name": "Aşure",
+        "description": "Tatlı koleksiyonunun yıldızı: Aşure.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 9
       },
       {
         "id": "dessert-11",
-        "name": "Waffle",
-        "description": "Kare kare tatlı bir taban.",
-        "image": "/auction/dessert-11.svg",
-        "kind": "cookie"
+        "name": "Profiterol",
+        "description": "Tatlı koleksiyonunun yıldızı: Profiterol.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 10
       },
       {
         "id": "dessert-12",
-        "name": "Muz dilimleri",
-        "description": "Yumuşak ve doğal tatlılık.",
-        "image": "/auction/dessert-12.svg",
-        "kind": "banana"
+        "name": "Trileçe",
+        "description": "Tatlı koleksiyonunun yıldızı: Trileçe.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 11
       },
       {
         "id": "dessert-13",
-        "name": "Karamel sos",
-        "description": "Akışkan altın renkli dokunuş.",
-        "image": "/auction/dessert-13.svg",
-        "kind": "honey"
+        "name": "San Sebastian cheesecake",
+        "description": "Tatlı koleksiyonunun yıldızı: San Sebastian cheesecake.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 12
       },
       {
         "id": "dessert-14",
-        "name": "Nane",
-        "description": "Tatlı tabağında ferah bir yaprak.",
-        "image": "/auction/dessert-14.svg",
-        "kind": "greens"
+        "name": "Tiramisu",
+        "description": "Tatlı koleksiyonunun yıldızı: Tiramisu.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 13
       },
       {
         "id": "dessert-15",
-        "name": "Tiramisu",
-        "description": "Kahve kokulu İtalyan klasiği.",
-        "image": "/auction/dessert-15.svg",
-        "kind": "cake"
+        "name": "Sufle",
+        "description": "Tatlı koleksiyonunun yıldızı: Sufle.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 14
       },
       {
         "id": "dessert-16",
-        "name": "Pamuk şeker",
-        "description": "Bulut gibi hafif ve pembe.",
-        "image": "/auction/dessert-16.svg",
-        "kind": "cream"
+        "name": "Ekler",
+        "description": "Tatlı koleksiyonunun yıldızı: Ekler.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "dessert-17",
+        "name": "Tulumba",
+        "description": "Tatlı koleksiyonunun yıldızı: Tulumba.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "dessert-18",
+        "name": "Waffle",
+        "description": "Tatlı koleksiyonunun yıldızı: Waffle.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "dessert-19",
+        "name": "Dondurma",
+        "description": "Tatlı koleksiyonunun yıldızı: Dondurma.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "dessert-20",
+        "name": "Sütlü nuriye",
+        "description": "Tatlı koleksiyonunun yıldızı: Sütlü nuriye.",
+        "kind": "dessert",
+        "image": "/auction/atlas/dessert.webp",
+        "image_cell": 19
       }
     ]
   },
@@ -729,113 +825,113 @@
         "id": "animals-1",
         "name": "Aslan",
         "description": "Cesur lider, güçlü bir kükreme.",
-        "image": "/auction/animals-1.svg",
-        "kind": "lion"
+        "kind": "lion",
+        "image": "/auction/animals-1.svg"
       },
       {
         "id": "animals-2",
         "name": "Fil",
         "description": "Dev gövde, sarsılmaz savunma.",
-        "image": "/auction/animals-2.svg",
-        "kind": "elephant"
+        "kind": "elephant",
+        "image": "/auction/animals-2.svg"
       },
       {
         "id": "animals-3",
         "name": "Kurt",
         "description": "Takım çalışmasının hızlı ustası.",
-        "image": "/auction/animals-3.svg",
-        "kind": "wolf"
+        "kind": "wolf",
+        "image": "/auction/animals-3.svg"
       },
       {
         "id": "animals-4",
         "name": "Kartal",
         "description": "Gökyüzünden keskin gözlem.",
-        "image": "/auction/animals-4.svg",
-        "kind": "eagle"
+        "kind": "eagle",
+        "image": "/auction/animals-4.svg"
       },
       {
         "id": "animals-5",
         "name": "Kaplan",
         "description": "Sessiz, çevik ve çok güçlü.",
-        "image": "/auction/animals-5.svg",
-        "kind": "tiger"
+        "kind": "tiger",
+        "image": "/auction/animals-5.svg"
       },
       {
         "id": "animals-6",
         "name": "Ayı",
         "description": "Kalın kürk ve dev pençeler.",
-        "image": "/auction/animals-6.svg",
-        "kind": "bear"
+        "kind": "bear",
+        "image": "/auction/animals-6.svg"
       },
       {
         "id": "animals-7",
         "name": "Gergedan",
         "description": "Zırh gibi deri, kararlı hücum.",
-        "image": "/auction/animals-7.svg",
-        "kind": "rhino"
+        "kind": "rhino",
+        "image": "/auction/animals-7.svg"
       },
       {
         "id": "animals-8",
         "name": "Goril",
         "description": "Kuvvet ve zekâ bir arada.",
-        "image": "/auction/animals-8.svg",
-        "kind": "gorilla"
+        "kind": "gorilla",
+        "image": "/auction/animals-8.svg"
       },
       {
         "id": "animals-9",
         "name": "Timsah",
         "description": "Suda bekleyen sabırlı avcı.",
-        "image": "/auction/animals-9.svg",
-        "kind": "croc"
+        "kind": "croc",
+        "image": "/auction/animals-9.svg"
       },
       {
         "id": "animals-10",
         "name": "Tilki",
         "description": "Kurnaz planların küçük ustası.",
-        "image": "/auction/animals-10.svg",
-        "kind": "fox"
+        "kind": "fox",
+        "image": "/auction/animals-10.svg"
       },
       {
         "id": "animals-11",
         "name": "Bizon",
         "description": "Sürünün dayanıklı koruyucusu.",
-        "image": "/auction/animals-11.svg",
-        "kind": "bison"
+        "kind": "bison",
+        "image": "/auction/animals-11.svg"
       },
       {
         "id": "animals-12",
         "name": "At",
         "description": "Uzak yolların hızlı yol arkadaşı.",
-        "image": "/auction/animals-12.svg",
-        "kind": "horse"
+        "kind": "horse",
+        "image": "/auction/animals-12.svg"
       },
       {
         "id": "animals-13",
         "name": "Baykuş",
         "description": "Gecenin sessiz gözcüsü.",
-        "image": "/auction/animals-13.svg",
-        "kind": "owl"
+        "kind": "owl",
+        "image": "/auction/animals-13.svg"
       },
       {
         "id": "animals-14",
         "name": "Köpekbalığı",
         "description": "Okyanusun keskin yüzücüsü.",
-        "image": "/auction/animals-14.svg",
-        "kind": "shark"
+        "kind": "shark",
+        "image": "/auction/animals-14.svg"
       },
       {
         "id": "animals-15",
         "name": "Kobra",
         "description": "Küçük gövdede büyük caydırıcılık.",
-        "image": "/auction/animals-15.svg",
-        "kind": "cobra"
+        "kind": "cobra",
+        "image": "/auction/animals-15.svg"
       },
       {
         "id": "animals-16",
         "name": "Ejderha",
         "description": "Hayal gücünden gelen efsanevi güç.",
-        "image": "/auction/animals-16.svg",
-        "kind": "dragon"
+        "kind": "dragon",
+        "image": "/auction/animals-16.svg"
       }
     ]
   },
@@ -849,113 +945,113 @@
         "id": "holiday-1",
         "name": "Beyaz kumlu plaj",
         "description": "Dalgalar, şezlong ve uzun bir gün.",
-        "image": "/auction/holiday-1.svg",
-        "kind": "beach"
+        "kind": "beach",
+        "image": "/auction/holiday-1.svg"
       },
       {
         "id": "holiday-2",
         "name": "Dağ evi",
         "description": "Sessizlik ve çam kokulu sabahlar.",
-        "image": "/auction/holiday-2.svg",
-        "kind": "cabin"
+        "kind": "cabin",
+        "image": "/auction/holiday-2.svg"
       },
       {
         "id": "holiday-3",
         "name": "Balon turu",
         "description": "Gündoğumunda gökyüzüne yüksel.",
-        "image": "/auction/holiday-3.svg",
-        "kind": "balloon"
+        "kind": "balloon",
+        "image": "/auction/holiday-3.svg"
       },
       {
         "id": "holiday-4",
         "name": "Ada kaçamağı",
         "description": "Kalabalıktan uzakta küçük bir cennet.",
-        "image": "/auction/holiday-4.svg",
-        "kind": "island"
+        "kind": "island",
+        "image": "/auction/holiday-4.svg"
       },
       {
         "id": "holiday-5",
         "name": "Safari",
         "description": "Vahşi doğaya saygılı bir keşif.",
-        "image": "/auction/holiday-5.svg",
-        "kind": "safari"
+        "kind": "safari",
+        "image": "/auction/holiday-5.svg"
       },
       {
         "id": "holiday-6",
         "name": "Şehir gezisi",
         "description": "Sokaklar, meydanlar ve yeni hikâyeler.",
-        "image": "/auction/holiday-6.svg",
-        "kind": "city"
+        "kind": "city",
+        "image": "/auction/holiday-6.svg"
       },
       {
         "id": "holiday-7",
         "name": "Tren yolculuğu",
         "description": "Pencereden akan manzaralar.",
-        "image": "/auction/holiday-7.svg",
-        "kind": "train"
+        "kind": "train",
+        "image": "/auction/holiday-7.svg"
       },
       {
         "id": "holiday-8",
         "name": "Yelken turu",
         "description": "Rüzgârla koydan koya yolculuk.",
-        "image": "/auction/holiday-8.svg",
-        "kind": "ship"
+        "kind": "ship",
+        "image": "/auction/holiday-8.svg"
       },
       {
         "id": "holiday-9",
         "name": "Yıldızlı kamp",
         "description": "Gökyüzünün altında bir gece.",
-        "image": "/auction/holiday-9.svg",
-        "kind": "tent"
+        "kind": "tent",
+        "image": "/auction/holiday-9.svg"
       },
       {
         "id": "holiday-10",
         "name": "Kayak",
         "description": "Bembeyaz pistlerde özgürlük.",
-        "image": "/auction/holiday-10.svg",
-        "kind": "ski"
+        "kind": "ski",
+        "image": "/auction/holiday-10.svg"
       },
       {
         "id": "holiday-11",
         "name": "Kuzey ışıkları",
         "description": "Gökyüzünde renkli bir dans.",
-        "image": "/auction/holiday-11.svg",
-        "kind": "aurora"
+        "kind": "aurora",
+        "image": "/auction/holiday-11.svg"
       },
       {
         "id": "holiday-12",
         "name": "Dalış",
         "description": "Mavi dünyanın sessiz misafiri ol.",
-        "image": "/auction/holiday-12.svg",
-        "kind": "scuba"
+        "kind": "scuba",
+        "image": "/auction/holiday-12.svg"
       },
       {
         "id": "holiday-13",
         "name": "Müze günü",
         "description": "Sanatla ve tarihle dolu saatler.",
-        "image": "/auction/holiday-13.svg",
-        "kind": "museum"
+        "kind": "museum",
+        "image": "/auction/holiday-13.svg"
       },
       {
         "id": "holiday-14",
         "name": "Spa molası",
         "description": "Dinlenmeye ayrılmış özel bir gün.",
-        "image": "/auction/holiday-14.svg",
-        "kind": "spa"
+        "kind": "spa",
+        "image": "/auction/holiday-14.svg"
       },
       {
         "id": "holiday-15",
         "name": "Şelale yürüyüşü",
         "description": "Yeşilin içinde serin bir rota.",
-        "image": "/auction/holiday-15.svg",
-        "kind": "waterfall"
+        "kind": "waterfall",
+        "image": "/auction/holiday-15.svg"
       },
       {
         "id": "holiday-16",
         "name": "Zirve yürüyüşü",
         "description": "Manzaranın en yüksek noktasına çık.",
-        "image": "/auction/holiday-16.svg",
-        "kind": "mountain"
+        "kind": "mountain",
+        "image": "/auction/holiday-16.svg"
       }
     ]
   },
@@ -969,113 +1065,1457 @@
         "id": "home-1",
         "name": "Kocaman kanepe",
         "description": "Uzun sohbetlere yumuşak bir yer.",
-        "image": "/auction/home-1.svg",
-        "kind": "sofa"
+        "kind": "sofa",
+        "image": "/auction/home-1.svg"
       },
       {
         "id": "home-2",
         "name": "Okuma lambası",
         "description": "Kitap köşene sıcak bir ışık.",
-        "image": "/auction/home-2.svg",
-        "kind": "lamp"
+        "kind": "lamp",
+        "image": "/auction/home-2.svg"
       },
       {
         "id": "home-3",
         "name": "Duvar kitaplığı",
         "description": "Hikâyelerine kat kat yer aç.",
-        "image": "/auction/home-3.svg",
-        "kind": "bookshelf"
+        "kind": "bookshelf",
+        "image": "/auction/home-3.svg"
       },
       {
         "id": "home-4",
         "name": "Küvet",
         "description": "Günün sonunda sakin bir mola.",
-        "image": "/auction/home-4.svg",
-        "kind": "bathtub"
+        "kind": "bathtub",
+        "image": "/auction/home-4.svg"
       },
       {
         "id": "home-5",
         "name": "Piyano",
         "description": "Evin ritmini kendin belirle.",
-        "image": "/auction/home-5.svg",
-        "kind": "piano"
+        "kind": "piano",
+        "image": "/auction/home-5.svg"
       },
       {
         "id": "home-6",
         "name": "Rahat yatak",
         "description": "Dinlendirici uykunun merkezi.",
-        "image": "/auction/home-6.svg",
-        "kind": "bed"
+        "kind": "bed",
+        "image": "/auction/home-6.svg"
       },
       {
         "id": "home-7",
         "name": "Çalışma masası",
         "description": "Yeni fikirler için ferah bir köşe.",
-        "image": "/auction/home-7.svg",
-        "kind": "desk"
+        "kind": "desk",
+        "image": "/auction/home-7.svg"
       },
       {
         "id": "home-8",
         "name": "Şömine",
         "description": "Kış akşamlarına çıtırdayan sıcaklık.",
-        "image": "/auction/home-8.svg",
-        "kind": "fireplace"
+        "kind": "fireplace",
+        "image": "/auction/home-8.svg"
       },
       {
         "id": "home-9",
         "name": "İç mekân bahçesi",
         "description": "Her mevsim yemyeşil bir nefes.",
-        "image": "/auction/home-9.svg",
-        "kind": "plant"
+        "kind": "plant",
+        "image": "/auction/home-9.svg"
       },
       {
         "id": "home-10",
         "name": "Yumuşak halı",
         "description": "Çıplak ayaklara sıcak bir karşılama.",
-        "image": "/auction/home-10.svg",
-        "kind": "rug"
+        "kind": "rug",
+        "image": "/auction/home-10.svg"
       },
       {
         "id": "home-11",
         "name": "Boy aynası",
         "description": "Işığı çoğaltan zarif bir parça.",
-        "image": "/auction/home-11.svg",
-        "kind": "mirror"
+        "kind": "mirror",
+        "image": "/auction/home-11.svg"
       },
       {
         "id": "home-12",
         "name": "Manzaralı teras",
         "description": "Açık havada uzun akşamlar.",
-        "image": "/auction/home-12.svg",
-        "kind": "terrace"
+        "kind": "terrace",
+        "image": "/auction/home-12.svg"
       },
       {
         "id": "home-13",
         "name": "Ada mutfak",
         "description": "Birlikte yemek yapmaya davet.",
-        "image": "/auction/home-13.svg",
-        "kind": "kitchen"
+        "kind": "kitchen",
+        "image": "/auction/home-13.svg"
       },
       {
         "id": "home-14",
         "name": "Ev sineması",
         "description": "Patlamış mısırla film geceleri.",
-        "image": "/auction/home-14.svg",
-        "kind": "cinema"
+        "kind": "cinema",
+        "image": "/auction/home-14.svg"
       },
       {
         "id": "home-15",
         "name": "Sallanan koltuk",
         "description": "Yavaşlamak için küçük bir bahane.",
-        "image": "/auction/home-15.svg",
-        "kind": "chair"
+        "kind": "chair",
+        "image": "/auction/home-15.svg"
       },
       {
         "id": "home-16",
         "name": "Mini havuz",
         "description": "Evde küçük bir tatil köşesi.",
-        "image": "/auction/home-16.svg",
-        "kind": "pool"
+        "kind": "pool",
+        "image": "/auction/home-16.svg"
+      }
+    ]
+  },
+  {
+    "id": "heroes",
+    "title": "Süper Kahraman Takımını Kur",
+    "subtitle": "Gücün kadar takım uyumuna da güven.",
+    "color": "#dce8f4",
+    "items": [
+      {
+        "id": "heroes-1",
+        "name": "Deadpool",
+        "description": "Süper Kahraman Takımını: Deadpool.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "heroes-2",
+        "name": "Hulk",
+        "description": "Süper Kahraman Takımını: Hulk.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "heroes-3",
+        "name": "Thor",
+        "description": "Süper Kahraman Takımını: Thor.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "heroes-4",
+        "name": "Örümcek Adam",
+        "description": "Süper Kahraman Takımını: Örümcek Adam.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "heroes-5",
+        "name": "Iron Man",
+        "description": "Süper Kahraman Takımını: Iron Man.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "heroes-6",
+        "name": "Kaptan Amerika",
+        "description": "Süper Kahraman Takımını: Kaptan Amerika.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "heroes-7",
+        "name": "Batman",
+        "description": "Süper Kahraman Takımını: Batman.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "heroes-8",
+        "name": "Superman",
+        "description": "Süper Kahraman Takımını: Superman.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "heroes-9",
+        "name": "Wonder Woman",
+        "description": "Süper Kahraman Takımını: Wonder Woman.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "heroes-10",
+        "name": "Wolverine",
+        "description": "Süper Kahraman Takımını: Wolverine.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "heroes-11",
+        "name": "Doctor Strange",
+        "description": "Süper Kahraman Takımını: Doctor Strange.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "heroes-12",
+        "name": "Black Panther",
+        "description": "Süper Kahraman Takımını: Black Panther.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "heroes-13",
+        "name": "Flash",
+        "description": "Süper Kahraman Takımını: Flash.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "heroes-14",
+        "name": "Aquaman",
+        "description": "Süper Kahraman Takımını: Aquaman.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "heroes-15",
+        "name": "Captain Marvel",
+        "description": "Süper Kahraman Takımını: Captain Marvel.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "heroes-16",
+        "name": "Scarlet Witch",
+        "description": "Süper Kahraman Takımını: Scarlet Witch.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "heroes-17",
+        "name": "Ant-Man",
+        "description": "Süper Kahraman Takımını: Ant-Man.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "heroes-18",
+        "name": "Hawkeye",
+        "description": "Süper Kahraman Takımını: Hawkeye.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "heroes-19",
+        "name": "Black Widow",
+        "description": "Süper Kahraman Takımını: Black Widow.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "heroes-20",
+        "name": "Green Lantern",
+        "description": "Süper Kahraman Takımını: Green Lantern.",
+        "kind": "heroes",
+        "image": "/auction/atlas/heroes.webp",
+        "image_cell": 19
+      }
+    ]
+  },
+  {
+    "id": "meals",
+    "title": "En İyi Yemek Menüsünü Kur",
+    "subtitle": "Sokak lezzetlerinden sofranın yıldızlarına.",
+    "color": "#f4e1cf",
+    "items": [
+      {
+        "id": "meals-1",
+        "name": "Lahmacun",
+        "description": "En İyi Yemek Menüsünü: Lahmacun.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "meals-2",
+        "name": "Makarna",
+        "description": "En İyi Yemek Menüsünü: Makarna.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "meals-3",
+        "name": "Pizza",
+        "description": "En İyi Yemek Menüsünü: Pizza.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "meals-4",
+        "name": "İskender",
+        "description": "En İyi Yemek Menüsünü: İskender.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "meals-5",
+        "name": "Çiğ köfte",
+        "description": "En İyi Yemek Menüsünü: Çiğ köfte.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "meals-6",
+        "name": "Kokoreç",
+        "description": "En İyi Yemek Menüsünü: Kokoreç.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "meals-7",
+        "name": "Kavurma",
+        "description": "En İyi Yemek Menüsünü: Kavurma.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "meals-8",
+        "name": "Mantı",
+        "description": "En İyi Yemek Menüsünü: Mantı.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "meals-9",
+        "name": "Kuru fasulye",
+        "description": "En İyi Yemek Menüsünü: Kuru fasulye.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "meals-10",
+        "name": "Adana kebap",
+        "description": "En İyi Yemek Menüsünü: Adana kebap.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "meals-11",
+        "name": "Döner",
+        "description": "En İyi Yemek Menüsünü: Döner.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "meals-12",
+        "name": "İçli köfte",
+        "description": "En İyi Yemek Menüsünü: İçli köfte.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "meals-13",
+        "name": "Hünkar beğendi",
+        "description": "En İyi Yemek Menüsünü: Hünkar beğendi.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "meals-14",
+        "name": "Karnıyarık",
+        "description": "En İyi Yemek Menüsünü: Karnıyarık.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "meals-15",
+        "name": "Yaprak sarma",
+        "description": "En İyi Yemek Menüsünü: Yaprak sarma.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "meals-16",
+        "name": "Pide",
+        "description": "En İyi Yemek Menüsünü: Pide.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "meals-17",
+        "name": "Balık ekmek",
+        "description": "En İyi Yemek Menüsünü: Balık ekmek.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "meals-18",
+        "name": "Tavuk pilav",
+        "description": "En İyi Yemek Menüsünü: Tavuk pilav.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "meals-19",
+        "name": "İmam bayıldı",
+        "description": "En İyi Yemek Menüsünü: İmam bayıldı.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "meals-20",
+        "name": "Mercimek çorbası",
+        "description": "En İyi Yemek Menüsünü: Mercimek çorbası.",
+        "kind": "meals",
+        "image": "/auction/atlas/meals.webp",
+        "image_cell": 19
+      }
+    ]
+  },
+  {
+    "id": "teatime",
+    "title": "En Güzel Gün Tabağını Hazırla",
+    "subtitle": "Bir tabakta tatlı, tuzlu ve bol muhabbet.",
+    "color": "#eee0ed",
+    "items": [
+      {
+        "id": "teatime-1",
+        "name": "Kısır",
+        "description": "En Güzel Gün Tabağını: Kısır.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "teatime-2",
+        "name": "Islak kek",
+        "description": "En Güzel Gün Tabağını: Islak kek.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "teatime-3",
+        "name": "Patates salatası",
+        "description": "En Güzel Gün Tabağını: Patates salatası.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "teatime-4",
+        "name": "Yaprak sarması",
+        "description": "En Güzel Gün Tabağını: Yaprak sarması.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "teatime-5",
+        "name": "Börek",
+        "description": "En Güzel Gün Tabağını: Börek.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "teatime-6",
+        "name": "Poğaça",
+        "description": "En Güzel Gün Tabağını: Poğaça.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "teatime-7",
+        "name": "İçli köfte",
+        "description": "En Güzel Gün Tabağını: İçli köfte.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "teatime-8",
+        "name": "Kıbrıs tatlısı",
+        "description": "En Güzel Gün Tabağını: Kıbrıs tatlısı.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "teatime-9",
+        "name": "Mercimek köftesi",
+        "description": "En Güzel Gün Tabağını: Mercimek köftesi.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "teatime-10",
+        "name": "Rus salatası",
+        "description": "En Güzel Gün Tabağını: Rus salatası.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "teatime-11",
+        "name": "Makarna salatası",
+        "description": "En Güzel Gün Tabağını: Makarna salatası.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "teatime-12",
+        "name": "Havuç tarator",
+        "description": "En Güzel Gün Tabağını: Havuç tarator.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "teatime-13",
+        "name": "Acılı ezme",
+        "description": "En Güzel Gün Tabağını: Acılı ezme.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "teatime-14",
+        "name": "Mini sandviç",
+        "description": "En Güzel Gün Tabağını: Mini sandviç.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "teatime-15",
+        "name": "Elmalı kurabiye",
+        "description": "En Güzel Gün Tabağını: Elmalı kurabiye.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "teatime-16",
+        "name": "Tuzlu kurabiye",
+        "description": "En Güzel Gün Tabağını: Tuzlu kurabiye.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "teatime-17",
+        "name": "Açma",
+        "description": "En Güzel Gün Tabağını: Açma.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "teatime-18",
+        "name": "Trileçe",
+        "description": "En Güzel Gün Tabağını: Trileçe.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "teatime-19",
+        "name": "Mozaik pasta",
+        "description": "En Güzel Gün Tabağını: Mozaik pasta.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "teatime-20",
+        "name": "Çay",
+        "description": "En Güzel Gün Tabağını: Çay.",
+        "kind": "teatime",
+        "image": "/auction/atlas/teatime.webp",
+        "image_cell": 19
+      }
+    ]
+  },
+  {
+    "id": "series",
+    "title": "En İyi Diziler Listesini Kur",
+    "subtitle": "Unutulmaz hikâyelere kendi sıralamanı ver.",
+    "color": "#e1dcf1",
+    "items": [
+      {
+        "id": "series-1",
+        "name": "Aşk-ı Memnu",
+        "description": "En İyi Diziler Listesini: Aşk-ı Memnu.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "series-2",
+        "name": "Muhteşem Yüzyıl",
+        "description": "En İyi Diziler Listesini: Muhteşem Yüzyıl.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "series-3",
+        "name": "Ezel",
+        "description": "En İyi Diziler Listesini: Ezel.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "series-4",
+        "name": "Kurtlar Vadisi",
+        "description": "En İyi Diziler Listesini: Kurtlar Vadisi.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "series-5",
+        "name": "Yaprak Dökümü",
+        "description": "En İyi Diziler Listesini: Yaprak Dökümü.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "series-6",
+        "name": "Medcezir",
+        "description": "En İyi Diziler Listesini: Medcezir.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "series-7",
+        "name": "Sihirli Annem",
+        "description": "En İyi Diziler Listesini: Sihirli Annem.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "series-8",
+        "name": "Doktorlar",
+        "description": "En İyi Diziler Listesini: Doktorlar.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "series-9",
+        "name": "Avrupa Yakası",
+        "description": "En İyi Diziler Listesini: Avrupa Yakası.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "series-10",
+        "name": "Leyla ile Mecnun",
+        "description": "En İyi Diziler Listesini: Leyla ile Mecnun.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "series-11",
+        "name": "Behzat Ç.",
+        "description": "En İyi Diziler Listesini: Behzat Ç..",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "series-12",
+        "name": "Çukur",
+        "description": "En İyi Diziler Listesini: Çukur.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "series-13",
+        "name": "İçerde",
+        "description": "En İyi Diziler Listesini: İçerde.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "series-14",
+        "name": "Şahsiyet",
+        "description": "En İyi Diziler Listesini: Şahsiyet.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "series-15",
+        "name": "Bir Başkadır",
+        "description": "En İyi Diziler Listesini: Bir Başkadır.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "series-16",
+        "name": "Masum",
+        "description": "En İyi Diziler Listesini: Masum.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "series-17",
+        "name": "İkinci Bahar",
+        "description": "En İyi Diziler Listesini: İkinci Bahar.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "series-18",
+        "name": "Ekmek Teknesi",
+        "description": "En İyi Diziler Listesini: Ekmek Teknesi.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "series-19",
+        "name": "Yargı",
+        "description": "En İyi Diziler Listesini: Yargı.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "series-20",
+        "name": "Gibi",
+        "description": "En İyi Diziler Listesini: Gibi.",
+        "kind": "series",
+        "image": "/auction/atlas/series.webp",
+        "image_cell": 19
+      }
+    ]
+  },
+  {
+    "id": "survival",
+    "title": "Hayatta Kalma Çantanı Hazırla",
+    "subtitle": "Doğada doğru ekipman hayat kurtarır.",
+    "color": "#dde8d4",
+    "items": [
+      {
+        "id": "survival-1",
+        "name": "Balta",
+        "description": "Hayatta Kalma Çantanı: Balta.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "survival-2",
+        "name": "Çadır",
+        "description": "Hayatta Kalma Çantanı: Çadır.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "survival-3",
+        "name": "Bıçak",
+        "description": "Hayatta Kalma Çantanı: Bıçak.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "survival-4",
+        "name": "Kibrit",
+        "description": "Hayatta Kalma Çantanı: Kibrit.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "survival-5",
+        "name": "Pusula",
+        "description": "Hayatta Kalma Çantanı: Pusula.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "survival-6",
+        "name": "Damacana su",
+        "description": "Hayatta Kalma Çantanı: Damacana su.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "survival-7",
+        "name": "Balıkçılık seti",
+        "description": "Hayatta Kalma Çantanı: Balıkçılık seti.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "survival-8",
+        "name": "Uyku tulumu",
+        "description": "Hayatta Kalma Çantanı: Uyku tulumu.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "survival-9",
+        "name": "Fener",
+        "description": "Hayatta Kalma Çantanı: Fener.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "survival-10",
+        "name": "İlk yardım çantası",
+        "description": "Hayatta Kalma Çantanı: İlk yardım çantası.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "survival-11",
+        "name": "İp",
+        "description": "Hayatta Kalma Çantanı: İp.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "survival-12",
+        "name": "Su filtresi",
+        "description": "Hayatta Kalma Çantanı: Su filtresi.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "survival-13",
+        "name": "Kamp ocağı",
+        "description": "Hayatta Kalma Çantanı: Kamp ocağı.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "survival-14",
+        "name": "Tencere",
+        "description": "Hayatta Kalma Çantanı: Tencere.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "survival-15",
+        "name": "Yağmurluk",
+        "description": "Hayatta Kalma Çantanı: Yağmurluk.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "survival-16",
+        "name": "Termal battaniye",
+        "description": "Hayatta Kalma Çantanı: Termal battaniye.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "survival-17",
+        "name": "Düdük",
+        "description": "Hayatta Kalma Çantanı: Düdük.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "survival-18",
+        "name": "Harita",
+        "description": "Hayatta Kalma Çantanı: Harita.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "survival-19",
+        "name": "Çok amaçlı çakı",
+        "description": "Hayatta Kalma Çantanı: Çok amaçlı çakı.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "survival-20",
+        "name": "Telsiz",
+        "description": "Hayatta Kalma Çantanı: Telsiz.",
+        "kind": "survival",
+        "image": "/auction/atlas/survival.webp",
+        "image_cell": 19
+      }
+    ]
+  },
+  {
+    "id": "commanders",
+    "title": "Tarihi Komutanlar Kadrosunu Kur",
+    "subtitle": "Farklı çağlardan bir strateji masası.",
+    "color": "#e8dfcf",
+    "items": [
+      {
+        "id": "commanders-1",
+        "name": "Yavuz Sultan Selim",
+        "description": "Tarihi Komutanlar Kadrosunu: Yavuz Sultan Selim.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "commanders-2",
+        "name": "Kanuni Sultan Süleyman",
+        "description": "Tarihi Komutanlar Kadrosunu: Kanuni Sultan Süleyman.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "commanders-3",
+        "name": "Mustafa Kemal Atatürk",
+        "description": "Tarihi Komutanlar Kadrosunu: Mustafa Kemal Atatürk.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "commanders-4",
+        "name": "Timurlenk",
+        "description": "Tarihi Komutanlar Kadrosunu: Timurlenk.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "commanders-5",
+        "name": "Fatih Sultan Mehmet",
+        "description": "Tarihi Komutanlar Kadrosunu: Fatih Sultan Mehmet.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "commanders-6",
+        "name": "Attila",
+        "description": "Tarihi Komutanlar Kadrosunu: Attila.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "commanders-7",
+        "name": "Mete Han",
+        "description": "Tarihi Komutanlar Kadrosunu: Mete Han.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "commanders-8",
+        "name": "Alp Arslan",
+        "description": "Tarihi Komutanlar Kadrosunu: Alp Arslan.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "commanders-9",
+        "name": "Yıldırım Bayezid",
+        "description": "Tarihi Komutanlar Kadrosunu: Yıldırım Bayezid.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "commanders-10",
+        "name": "Büyük İskender",
+        "description": "Tarihi Komutanlar Kadrosunu: Büyük İskender.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "commanders-11",
+        "name": "Cengiz Han",
+        "description": "Tarihi Komutanlar Kadrosunu: Cengiz Han.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "commanders-12",
+        "name": "Napolyon Bonapart",
+        "description": "Tarihi Komutanlar Kadrosunu: Napolyon Bonapart.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "commanders-13",
+        "name": "Jül Sezar",
+        "description": "Tarihi Komutanlar Kadrosunu: Jül Sezar.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "commanders-14",
+        "name": "Selahaddin Eyyubi",
+        "description": "Tarihi Komutanlar Kadrosunu: Selahaddin Eyyubi.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "commanders-15",
+        "name": "Halid bin Velid",
+        "description": "Tarihi Komutanlar Kadrosunu: Halid bin Velid.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "commanders-16",
+        "name": "Hannibal",
+        "description": "Tarihi Komutanlar Kadrosunu: Hannibal.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "commanders-17",
+        "name": "Subutay",
+        "description": "Tarihi Komutanlar Kadrosunu: Subutay.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "commanders-18",
+        "name": "İsmet İnönü",
+        "description": "Tarihi Komutanlar Kadrosunu: İsmet İnönü.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "commanders-19",
+        "name": "Kazım Karabekir",
+        "description": "Tarihi Komutanlar Kadrosunu: Kazım Karabekir.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "commanders-20",
+        "name": "Tomris Hatun",
+        "description": "Tarihi Komutanlar Kadrosunu: Tomris Hatun.",
+        "kind": "commanders",
+        "image": "/auction/atlas/commanders.webp",
+        "image_cell": 19
+      }
+    ]
+  },
+  {
+    "id": "countries",
+    "title": "Ülkeler Koleksiyonunu Kur",
+    "subtitle": "Dünyanın farklı köşelerini bir araya getir.",
+    "color": "#dbe9ee",
+    "items": [
+      {
+        "id": "countries-1",
+        "name": "ABD",
+        "description": "Ülkeler Koleksiyonunu: ABD.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "countries-2",
+        "name": "Çin",
+        "description": "Ülkeler Koleksiyonunu: Çin.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "countries-3",
+        "name": "Türkiye",
+        "description": "Ülkeler Koleksiyonunu: Türkiye.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "countries-4",
+        "name": "Japonya",
+        "description": "Ülkeler Koleksiyonunu: Japonya.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "countries-5",
+        "name": "İtalya",
+        "description": "Ülkeler Koleksiyonunu: İtalya.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "countries-6",
+        "name": "Fransa",
+        "description": "Ülkeler Koleksiyonunu: Fransa.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "countries-7",
+        "name": "Almanya",
+        "description": "Ülkeler Koleksiyonunu: Almanya.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "countries-8",
+        "name": "Birleşik Krallık",
+        "description": "Ülkeler Koleksiyonunu: Birleşik Krallık.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "countries-9",
+        "name": "İspanya",
+        "description": "Ülkeler Koleksiyonunu: İspanya.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "countries-10",
+        "name": "Brezilya",
+        "description": "Ülkeler Koleksiyonunu: Brezilya.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "countries-11",
+        "name": "Kanada",
+        "description": "Ülkeler Koleksiyonunu: Kanada.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "countries-12",
+        "name": "Avustralya",
+        "description": "Ülkeler Koleksiyonunu: Avustralya.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "countries-13",
+        "name": "Mısır",
+        "description": "Ülkeler Koleksiyonunu: Mısır.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "countries-14",
+        "name": "Yunanistan",
+        "description": "Ülkeler Koleksiyonunu: Yunanistan.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "countries-15",
+        "name": "Güney Kore",
+        "description": "Ülkeler Koleksiyonunu: Güney Kore.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "countries-16",
+        "name": "Hindistan",
+        "description": "Ülkeler Koleksiyonunu: Hindistan.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "countries-17",
+        "name": "Meksika",
+        "description": "Ülkeler Koleksiyonunu: Meksika.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "countries-18",
+        "name": "Norveç",
+        "description": "Ülkeler Koleksiyonunu: Norveç.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "countries-19",
+        "name": "İsviçre",
+        "description": "Ülkeler Koleksiyonunu: İsviçre.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "countries-20",
+        "name": "Güney Afrika",
+        "description": "Ülkeler Koleksiyonunu: Güney Afrika.",
+        "kind": "countries",
+        "image": "/auction/atlas/countries.webp",
+        "image_cell": 19
+      }
+    ]
+  },
+  {
+    "id": "powers",
+    "title": "Süper Güçlerini Seç",
+    "subtitle": "Hayalindeki yetenekler için teklif ver.",
+    "color": "#e8ddf4",
+    "items": [
+      {
+        "id": "powers-1",
+        "name": "Görünmezlik",
+        "description": "Süper Güçlerini: Görünmezlik.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 0
+      },
+      {
+        "id": "powers-2",
+        "name": "Işınlanma",
+        "description": "Süper Güçlerini: Işınlanma.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 1
+      },
+      {
+        "id": "powers-3",
+        "name": "Uçmak",
+        "description": "Süper Güçlerini: Uçmak.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 2
+      },
+      {
+        "id": "powers-4",
+        "name": "Zamanı durdurmak",
+        "description": "Süper Güçlerini: Zamanı durdurmak.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 3
+      },
+      {
+        "id": "powers-5",
+        "name": "Zihin okumak",
+        "description": "Süper Güçlerini: Zihin okumak.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 4
+      },
+      {
+        "id": "powers-6",
+        "name": "Telekinezi",
+        "description": "Süper Güçlerini: Telekinezi.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 5
+      },
+      {
+        "id": "powers-7",
+        "name": "Süper hız",
+        "description": "Süper Güçlerini: Süper hız.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 6
+      },
+      {
+        "id": "powers-8",
+        "name": "Süper güç",
+        "description": "Süper Güçlerini: Süper güç.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 7
+      },
+      {
+        "id": "powers-9",
+        "name": "Şekil değiştirmek",
+        "description": "Süper Güçlerini: Şekil değiştirmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 8
+      },
+      {
+        "id": "powers-10",
+        "name": "İyileştirme",
+        "description": "Süper Güçlerini: İyileştirme.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 9
+      },
+      {
+        "id": "powers-11",
+        "name": "Ateşi kontrol etmek",
+        "description": "Süper Güçlerini: Ateşi kontrol etmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 10
+      },
+      {
+        "id": "powers-12",
+        "name": "Suyu kontrol etmek",
+        "description": "Süper Güçlerini: Suyu kontrol etmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 11
+      },
+      {
+        "id": "powers-13",
+        "name": "Buzu kontrol etmek",
+        "description": "Süper Güçlerini: Buzu kontrol etmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 12
+      },
+      {
+        "id": "powers-14",
+        "name": "Elektriği kontrol etmek",
+        "description": "Süper Güçlerini: Elektriği kontrol etmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 13
+      },
+      {
+        "id": "powers-15",
+        "name": "Yer çekimini kontrol etmek",
+        "description": "Süper Güçlerini: Yer çekimini kontrol etmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 14
+      },
+      {
+        "id": "powers-16",
+        "name": "Hayvanlarla konuşmak",
+        "description": "Süper Güçlerini: Hayvanlarla konuşmak.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 15
+      },
+      {
+        "id": "powers-17",
+        "name": "Geleceği görmek",
+        "description": "Süper Güçlerini: Geleceği görmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 16
+      },
+      {
+        "id": "powers-18",
+        "name": "Işık hızında düşünmek",
+        "description": "Süper Güçlerini: Işık hızında düşünmek.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 17
+      },
+      {
+        "id": "powers-19",
+        "name": "Boyut kapısı açmak",
+        "description": "Süper Güçlerini: Boyut kapısı açmak.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 18
+      },
+      {
+        "id": "powers-20",
+        "name": "Kopyalanmak",
+        "description": "Süper Güçlerini: Kopyalanmak.",
+        "kind": "powers",
+        "image": "/auction/atlas/powers.webp",
+        "image_cell": 19
       }
     ]
   }

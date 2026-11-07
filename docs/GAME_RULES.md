@@ -4,47 +4,13 @@ Beş oyun da oynanabilir olarak geliştirilmiştir. Kurulum ve ayrıntılı kura
 
 ### OYUN 1 — AÇIK ARTIRMA
 
-İki oyuncuya 20 TL verilir.
+Kişi başına 20 TL ile temadan rastgele seçilmiş 10 ürün sırayla açık artırmaya çıkar. Ürün sayısı sınırı yoktur; 7–3 veya 10–0 olabilir. İki bütçe de pozitifken sıra tabanlı teklif verilir; üst sınır kalan bütçedir, teklif en az 1 TL artırılır. İlk tekliften önce pas yoktur. Teklif varken pas ürünü son teklif sahibine verir. Sonraki ürünler otomatik tahsis edilmez; on ürünün tamamı gösterilir.
 
-Toplam 10 ürün sırayla açık artırmaya çıkar.
+Bir oyuncunun bütçesi sıfıra düşerse normal ihale biter. Parası kalan oyuncu sıradaki her ürünü **ücretsiz kendine alır veya ücretsiz arkadaşına verir**; hiçbir bütçeden para kesilmez. Her ürün bir koleksiyona gider, ürün alınmadan geçilmez. Eski bir maçtan iki bütçenin de sıfır olduğu bir durum kalmışsa o ürünün açılış sırasındaki oyuncu ücretsiz dağıtımı seçer.
 
-Her oyuncu 5 ürün toplar.
+Oyuncu kendi ürünlerini açık artırma ve son düzenleme aşamasında hediye edebilir; bütçe iadesi yoktur. On ürün bittikten sonra iki oyuncu koleksiyonunu onaylar. Hediye onayları sıfırlar. İki onaydan sonra koleksiyonlar kilitlenip gizli oylama açılır; aynı kazananı seçerlerse o kazanır, anlaşamazlarsa beraberliktir. Rövanş iki onay ister.
 
-Teklifler sıra tabanlıdır. Aynı anda iki oyuncu teklif veremez.
-
-Sırası gelen oyuncu en az 1 TL artırır veya pas geçer.
-
-Pas geçen oyuncu mevcut ürünün açık artırmasına geri dönemez.
-
-Ürün son geçerli teklif sahibine verilir.
-
-Her oyuncunun kalan ürünleri satın alabilmek için yeterli bütçesi korunur.
-
-Her oyuncu beş ürün toplamalıdır.
-
-Yeni ürünün açılış hakkı oyuncular arasında dönüşümlü verilir.
-
-İki oyuncu da ürünlerini tamamlayınca kombinasyonlar yan yana gösterilir.
-
-Kazananı oyuncular belirler. Aynı kişiye oy verirlerse o kazanır, anlaşamazlarsa beraberlik olur.
-
-Oyun temaları:
-
-- En iyi pizza
-- En iyi hamburger
-- En güzel pasta
-- En iyi kahvaltı sofrası
-- En iyi makarna
-- En güzel tatlı tabağı
-- En güçlü hayvan ordusu
-- Hayalindeki tatil
-- Hayalindeki ev
-
-Her temanın kendine özgü ürünleri, açıklamaları ve kaliteli görselleri olacak.
-
-Oynanabilir sürümde dokuz havuzun her birinde 16 ürün vardır. Sunucu her maçta bunlardan 10 farklı ürün seçip sırasını sabitler. Açılış 1 TL'dir; ilk teklif öncesi pas geçilemez. Üst sınır `bütçe - (4 - alınan ürün sayısı)` olarak hesaplanır. Rakip mevcut teklifi artıramıyorsa ürün otomatik olarak son teklif sahibine verilir. Beş ürünü tamamlayan oyuncu sonraki ürünlere girmez; kalanlar diğer oyuncuya 1'er TL'den otomatik tahsis edilir.
-
-İlk açılış oyuncusu rastgele, sonraki ürünlerde dönüşümlüdür. İki oyuncu çevrimiçi değilse oyun durur; aynı kimlikle geri gelindiğinde aynı maç devam eder. On ürün dağıtıldığında oylar gizli olarak alınır. İki oyuncu aynı gerçek kazanan kimliğini seçerse o kazanır; diğer bütün durumlar beraberliktir. Rövanş iki tarafın onayıyla aynı temada yeni ürün seçimiyle başlar. Tema maç ortasında değiştirilemez.
+17 tema, 312 seçenek: pizza, hamburger, pasta, kahvaltı, makarna, tatlı, hayvan, tatil, ev, süper kahraman, yemek, gün tabağı, dizi, hayatta kalma, tarihî komutan, ülke ve süper güç. [Kurulum ve ayrıntılar](AUCTION.md).
 
 ### OYUN 2 — KELİME ZİNCİRİ
 

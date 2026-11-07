@@ -36,7 +36,7 @@ Gizli hazırlık değerleri yalnız kontrollü RPC ile gönderilir. Rakibe ilk h
 
 ## Kurallardaki uygulama kararları
 
-Açık Artırma'da minimum açılış 1 TL, ilk teklif öncesi pas yasağı ve beş ürün sonrası rakibe 1 TL'den otomatik tahsis uygulanır. Bütçe rezervi sunucuda korunur. Artıramayan oyuncuya otomatik pas uygulanır. Oylama tamamlanana kadar tercih yayınlanmaz. Rövanş iki oyuncunun onayını ister.
+Açık Artırma'da minimum açılış 1 TL ve ilk teklif öncesi pas yasağı vardır. 009–011 ile ürün sayısı sınırı/otomatik tahsis/bütçe rezervi kaldırılmıştır. Bir bütçe sıfırlandığında parası kalan oyuncu sıradaki ürünü ücretsiz kendine veya karşıya verir; para kesilmez, her ürün ayrı onaylanır. Hediye yalnız kendi ürününü aktarır ve son koleksiyon onaylarını sıfırlar. İki koleksiyon onayından sonra oylama başlar; tercihler iki oy gelene kadar gizlidir. Mutasyonlar oda→maç kilidi, UUID tekrar ve gerektiğinde global sürüm kontrolü kullanır. Rövanş iki oyuncunun onayını ister.
 
 Sayı Dedektifi'nde ilk oyuncunun bulduğu turda ikinci oyuncuya eşit tahmin hakkı verilir; sonuç tur tamamlanana kadar kesinleştirilmez. Doğru rakam sayısı konumdan bağımsızdır; yalnız sayı tam eşitse çözülür.
 

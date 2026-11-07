@@ -29,4 +29,11 @@ export function command(
   };
 }
 export const sendCommand = (action: AuctionCommand) =>
-  rpc("auction_action", { ...action });
+  action.p_action === "gift"
+    ? rpc("auction_gift", {
+        p_session_id: action.p_session_id,
+        p_version: action.p_version,
+        p_request_id: action.p_request_id,
+        p_item_id: action.p_choice,
+      })
+    : rpc("auction_action", { ...action });

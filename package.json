@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test:puzzles:live": "node scripts/test-puzzles-live.mjs",
-    "assets:auction": "node scripts/build-auction-assets.mjs",
+    "assets:auction": "node scripts/build-auction-expansion.mjs",
     "test:auction:live": "node scripts/test-auction-live.mjs",
     "dev": "vite --host 0.0.0.0",
     "typecheck": "tsc --noEmit",

@@ -3,11 +3,15 @@ export interface AuctionProduct {
   name: string;
   description: string;
   image: string;
+  image_cell?: number;
   kind: string;
 }
 export interface WonProduct extends AuctionProduct {
   price: number;
   automatic: boolean;
+  paid_by?: string | null;
+  gifted_by?: string | null;
+  free?: boolean;
 }
 export interface AuctionPlayer {
   id: string;
@@ -28,6 +32,11 @@ export interface AuctionState {
   rematch_ready: string[];
   votes?: Record<string, string | null>;
   automatic_count?: number;
+  passes?: string[];
+  arrange_ready?: string[];
+  skipped?: AuctionProduct[];
+  last_skipped?: AuctionProduct | null;
+  last_gift?: { from: string; to: string; product: WonProduct };
   last_award?: { player_id: string; product: WonProduct };
 }
 export interface AuctionSession {
@@ -35,7 +44,7 @@ export interface AuctionSession {
   room_id: string;
   game: "auction";
   theme: string;
-  phase: "bidding" | "voting" | "finished" | "abandoned";
+  phase: "bidding" | "arranging" | "voting" | "finished" | "abandoned";
   version: number;
   state: AuctionState;
 }

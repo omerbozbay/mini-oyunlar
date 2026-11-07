@@ -31,7 +31,7 @@ Supabase Dashboard → Project Settings → API Keys bölümünden **publishable
 
 1. `mini-oyunlar` Supabase projesini açın.
 2. Authentication → Sign In / Providers bölümünde **Anonymous Sign-Ins** seçeneğini etkinleştirin. Kullanıcıdan e-posta veya şifre istenmez.
-3. SQL Editor → New query açın. Yeni kurulumda `supabase/migrations` içindeki **001 → 002 → 003 → 004 → 005 → 006 → 007 → 008** dosyalarının tamamını sırasıyla birer kez çalıştırın. İlk dört oyun zaten çalışıyorsa yalnız **008 Tersine Konuş!** gerekir. Başarılı migration'ı ikinci kez çalıştırmayın. [Sesli oyunun kurulum ayrıntıları](docs/REVERSE.md).
+3. SQL Editor → New query açın. Yeni kurulumda `supabase/migrations` içindeki **001 → 002 → 003 → 004 → 005 → 006 → 007 → 008 → 009 → 010 → 011** dosyalarının tamamını sırasıyla birer kez çalıştırın. Beş oyun zaten çalışıyorsa Açık Artırma güncellemesi için yalnız **009 katalog → 010 esnek koleksiyon → 011 ücretsiz dağıtım** gerekir. Başarılı migration'ı ikinci kez çalıştırmayın. [Açık Artırma kuralları](docs/AUCTION.md) · [Sesli oyun kurulumu](docs/REVERSE.md).
 4. `rooms`, `room_players` ve `game_sessions` tablolarında RLS'nin açık olduğunu kontrol edin. Migration'lar bunları `supabase_realtime` publication'ına ekler. Replication/Realtime ayarlarında üçünü de doğrulayın. Supabase'in standart publication'ı yoksa önce panelden etkinleştirin, ardından aşağıdaki komutu yalnız henüz eklenmemiş tablolar için çalıştırın:
 
    ```sql
@@ -100,5 +100,7 @@ docs/TESTING.md           Gerçek iki cihaz için test adımları
 ```
 
 Yeni oyun ekleme ve güvenlik sınırları için [mimari belgesini](docs/ARCHITECTURE.md) okuyun. İlk iki migration oda altyapısıdır; 003/004 Açık Artırma kataloğunu ve maç motorunu ekler. [Yerel görsellerin kaynak/lisans bilgisi](docs/ASSETS.md).
+
+Açık Artırma güncel sürümü 17 tema/312 seçenek, rastgele 10 ürün, sınırsız ürün sayısı ve hediye içerir. Birinin bütçesi bitince diğeri kalan ürünleri tek tek ücretsiz kendine veya arkadaşına verir; para kesilmez. Tüm ürünler görülmeden oylama başlamaz. Fotoğraf hissi veren yerel WebP kartları ve tam kurallar [AUCTION.md](docs/AUCTION.md) içindedir.
 
 Supabase resmi kaynakları: [Anonim giriş](https://supabase.com/docs/guides/auth/auth-anonymous), [RLS](https://supabase.com/docs/guides/database/postgres/row-level-security), [Postgres Changes](https://supabase.com/docs/guides/realtime/postgres-changes).

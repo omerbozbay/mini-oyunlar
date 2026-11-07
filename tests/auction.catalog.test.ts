@@ -23,36 +23,43 @@ describe("Açık Artırma kataloğu ve bütçe ipuçları", () => {
       vi.unstubAllGlobals();
     }
   });
-  it("dokuz temanın her birinde 16 farklı yerel görselli ürün vardır", () => {
-    expect(themes).toHaveLength(9);
+  it("17 temada 312 farklı yerel görselli ürün vardır", () => {
+    expect(themes).toHaveLength(17);
     const ids = new Set();
     for (const theme of themes) {
-      expect(theme.items).toHaveLength(16);
+      expect(theme.items.length).toBeGreaterThanOrEqual(16);
       for (const item of theme.items) {
         expect(ids.has(item.id)).toBe(false);
         ids.add(item.id);
         expect(item.description.length).toBeGreaterThan(10);
         expect(existsSync(`public${item.image}`)).toBe(true);
-        const svg = readFileSync(`public${item.image}`, "utf8");
-        expect(svg).toContain("<svg");
-        expect(svg).not.toMatch(/href=["']https?:/);
+        const asset = readFileSync(`public${item.image}`);
+        if ("image_cell" in item) {
+          expect(asset.toString("ascii", 0, 4)).toBe("RIFF");
+          expect(asset.toString("ascii", 8, 12)).toBe("WEBP");
+          expect(item.image_cell).toBeGreaterThanOrEqual(0);
+          expect(item.image_cell).toBeLessThan(20);
+        } else {
+          expect(asset.toString()).toContain("<svg");
+          expect(asset.toString()).not.toMatch(/href=["']https?:/);
+        }
       }
     }
-    expect(ids.size).toBe(144);
+    expect(ids.size).toBe(312);
   });
   it("sunucu ürün havuzu istemcideki katalogla aynıdır", () => {
     const sql = readFileSync(
-      "supabase/migrations/202611060003_auction_catalog.sql",
+      "supabase/migrations/202611070009_auction_expanded_catalog.sql",
       "utf8",
     );
     for (const theme of themes)
       expect(sql).toContain(JSON.stringify(theme.items));
   });
-  it("bütçe rezervi örneklerini hesaplar", () => {
-    expect(maxBid({ id: "a", name: "A", budget: 20, items: [] })).toBe(16);
+  it("ürün sayısından bağımsız kalan bütçeyi teklif sınırı yapar", () => {
+    expect(maxBid({ id: "a", name: "A", budget: 20, items: [] })).toBe(20);
     expect(
       maxBid({ id: "a", name: "A", budget: 10, items: [{}, {}] as never[] }),
-    ).toBe(8);
+    ).toBe(10);
     expect(
       maxBid({
         id: "a",
@@ -60,6 +67,24 @@ describe("Açık Artırma kataloğu ve bütçe ipuçları", () => {
         budget: 10,
         items: [{}, {}, {}, {}, {}] as never[],
       }),
-    ).toBe(0);
+    ).toBe(10);
+  });
+  it("istenen yeni temaların her birinde 20 seçenek ve pizzada sosis/mısır vardır", () => {
+    for (const id of [
+      "heroes",
+      "meals",
+      "teatime",
+      "series",
+      "survival",
+      "dessert",
+      "commanders",
+      "countries",
+      "powers",
+    ])
+      expect(themes.find((t) => t.id === id)?.items).toHaveLength(20);
+    const pizza = themes.find((t) => t.id === "pizza")!;
+    expect(pizza.items.map((i) => i.name)).toEqual(
+      expect.arrayContaining(["Sosis", "Mısır"]),
+    );
   });
 });
